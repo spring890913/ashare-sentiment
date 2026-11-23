@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="期权日内监控" />
+  <meta name="theme-color" content="#0b0f17" />
+  <title>A股期权日内盘中监控器</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <!-- __STANDALONE_THEME_CSS__ -->
+  <style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .canvas-box { position: relative; width: 100%; }
+    .canvas-box canvas { display: block; width: 100%; height: 100%; }
+    .pill-dot { width: 7px; height: 7px; border-radius: 9999px; display: inline-block; }
+    .custom-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .etf-row { transition: background-color 120ms ease; cursor: pointer; }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased m-0 p-0">
+  <div class="max-w-7xl mx-auto px-3 sm:px-5 py-4 space-y-3.5">
+
+    <!-- Header -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <div class="space-y-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <h1 class="text-lg font-bold tracking-tight text-[var(--foreground)]">A股期权日内盘中监控器</h1>
+          <span id="opt-status-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+          <span id="opt-roll-pill" class="text-xs font-medium px-2 py-0.5 rounded-full border border-[var(--border)] text-[var(--muted-foreground)]"></span>
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)]">
+          盘前情绪定剧本（STSI / Health_MO / s_MB10 / QVIX）× 盘中实时全A宽度（B / M / M-B）× 5大期权ETF分时 VWAP 与 BS 实时隐波/PCR
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <a id="lnk-home" href="./index.html" class="hidden px-2.5 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80">← 返回情绪作战室</a>
+        <button id="btn-auto" type="button" class="hidden items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] cursor-pointer">
+          <span id="auto-dot" class="pill-dot"></span>
+          <span id="auto-txt">自动轮询 60s</span>
+        </button>
+        <button id="btn-opt-refresh" type="button" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+          <span>↻</span>
+          <span id="opt-ref-txt">立即刷新</span>
+        </button>
+        <button id="btn-theme-toggle" type="button" class="hidden px-2.5 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] cursor-pointer">切换主题</button>
+        <div class="text-xs text-[var(--muted-foreground)] tabular-nums text-right leading-tight">
+          <div id="opt-updated"></div>
+          <div id="opt-elapsed"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Live Alert Stack -->
+    <section id="alert-stack" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></section>
+
+    <!-- Top Row: Pre-Market Script + Live Market Breadth -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-3">
+      <!-- Pre-market Playbook (5 cols) -->
+      <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-2.5">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">① 盘前情绪定调（昨收 <span id="pb-date"></span>）</span>
+          <span id="pb-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+        </div>
+        <div>
+          <div id="pb-stance" class="text-sm font-bold text-[var(--foreground)]"></div>
+          <p id="pb-reason" class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed"></p>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-[var(--border)] text-xs">
+          <div class="bg-[var(--content)] rounded-lg px-2.5 py-1.5">
+            <div class="text-[var(--muted-foreground)]">日内做多首选</div>
+            <div id="pb-long" class="font-semibold text-[var(--foreground)] mt-0.5"></div>
+          </div>
+          <div class="bg-[var(--content)] rounded-lg px-2.5 py-1.5">
+            <div class="text-[var(--muted-foreground)]">做空 / 对冲首选</div>
+            <div id="pb-short" class="font-semibold text-[var(--foreground)] mt-0.5"></div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs tabular-nums text-[var(--muted-foreground)]">
+          <span>STSI: <strong id="pb-stsi" class="text-[var(--foreground)]"></strong></span>
+          <span>Health_MO: <strong id="pb-hmo" class="text-[var(--foreground)]"></strong></span>
+          <span>s_MB10: <strong id="pb-smb" class="text-[var(--foreground)]"></strong></span>
+          <span>50QVIX: <strong id="pb-qvix" class="text-[var(--foreground)]"></strong></span>
+        </div>
+      </div>
+
+      <!-- Live Full-Market Breadth Pulse (7 cols) -->
+      <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">② 盘中实时全 A 广度温度计（<span id="br-cnt"></span> 只活跃股）</span>
+          <span id="br-verdict" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2.5 tabular-nums">
+          <div class="bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted-foreground)]">上涨家数比 B</span>
+              <span id="br-b" class="text-base font-bold"></span>
+            </div>
+            <div class="h-1.5 rounded-full bg-[var(--card)] overflow-hidden">
+              <div id="br-b-bar" class="h-full rounded-full"></div>
+            </div>
+            <div id="br-updn" class="text-xs text-[var(--muted-foreground)]"></div>
+          </div>
+
+          <div class="bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted-foreground)]">上涨成交比 M</span>
+              <span id="br-m" class="text-base font-bold"></span>
+            </div>
+            <div class="h-1.5 rounded-full bg-[var(--card)] overflow-hidden">
+              <div id="br-m-bar" class="h-full rounded-full"></div>
+            </div>
+            <div id="br-amt" class="text-xs text-[var(--muted-foreground)]"></div>
+          </div>
+
+          <div class="bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[var(--muted-foreground)]">资金集中 M-B</span>
+              <span id="br-mb" class="text-base font-bold"></span>
+            </div>
+            <div class="h-1.5 rounded-full bg-[var(--card)] overflow-hidden relative">
+              <div class="absolute top-0 bottom-0 w-px bg-[var(--muted-foreground)]" style="left:50%"></div>
+              <div id="br-mb-bar" class="h-full rounded-full absolute"></div>
+            </div>
+            <div id="br-mb-lbl" class="text-xs text-[var(--muted-foreground)]"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs tabular-nums pt-1 border-t border-[var(--border)]">
+          <div><span class="text-[var(--muted-foreground)]">涨停 / 跌停：</span><strong id="br-ztdt"></strong></div>
+          <div><span class="text-[var(--muted-foreground)]">炸板 / 炸板率：</span><strong id="br-zb"></strong></div>
+          <div><span class="text-[var(--muted-foreground)]">最高连板：</span><strong id="br-lb"></strong></div>
+          <div><span class="text-[var(--muted-foreground)]">昨涨停大面率：</span><strong id="br-bl"></strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5-ETF Options Radar Matrix (Click any row to inspect!) -->
+    <section class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="text-sm font-semibold text-[var(--foreground)]">③ 5 大期权 ETF 实时强弱 &amp; 隐波雷达（点击任意行切换下方分时与 T 型报价）</h2>
+          <p class="text-xs text-[var(--muted-foreground)]">实测核心维度：相对 VWAP 强弱 · 实际振幅 vs 隐含日波（IV/√252）· 今日 ΔIV 升/降波 · 25D 偏度与成交 PCR</p>
+        </div>
+        <span id="radar-ym" class="text-xs text-[var(--muted-foreground)] tabular-nums"></span>
+      </div>
+      <div class="overflow-x-auto custom-scroll">
+        <table class="w-full text-xs text-left border-collapse tabular-nums">
+          <thead>
+            <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+              <th class="py-2 pr-3 font-medium">标的 / 风格</th>
+              <th class="py-2 px-2 font-medium text-right">现价</th>
+              <th class="py-2 px-2 font-medium text-right">涨跌%</th>
+              <th class="py-2 px-2 font-medium text-right">日内O→C</th>
+              <th class="py-2 px-2 font-medium text-right">距VWAP</th>
+              <th class="py-2 px-2 font-medium text-right">实际振幅 / 隐含日波</th>
+              <th class="py-2 px-2 font-medium text-right">主力 ATM IV</th>
+              <th class="py-2 px-2 font-medium text-right">实时 ΔIV</th>
+              <th class="py-2 px-2 font-medium text-right">25D Skew</th>
+              <th class="py-2 px-2 font-medium text-right">成交PCR</th>
+              <th class="py-2 pl-2 font-medium">日内定位</th>
+            </tr>
+          </thead>
+          <tbody id="radar-body" class="divide-y divide-[var(--border)]"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive Detail Row: 1-Min VWAP Chart + Recommended Contracts -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-3">
+      <!-- Left: 1-Min Price vs VWAP Chart (7 cols) -->
+      <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 id="vwap-title" class="text-sm font-semibold text-[var(--foreground)]"></h2>
+            <p id="vwap-readout" class="text-xs text-[var(--muted-foreground)] tabular-nums mt-0.5"></p>
+          </div>
+          <div class="flex items-center gap-3 text-xs text-[var(--muted-foreground)]">
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-1)"></span>分时价格</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-4)"></span>VWAP 均价线</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--muted-foreground)"></span>昨收线</span>
+          </div>
+        </div>
+        <div class="canvas-box h-60"><canvas id="cv-vwap"></canvas></div>
+        <div id="vwap-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[var(--border)] text-xs tabular-nums"></div>
+      </div>
+
+      <!-- Right: Recommended Buyer Contracts (5 cols) -->
+      <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-3">
+        <div class="flex items-center justify-between">
+          <h2 id="rec-title" class="text-sm font-semibold text-[var(--foreground)]">主力推荐合约（平值 / 浅实值1档）</h2>
+          <span id="rec-exp" class="text-xs text-[var(--muted-foreground)] tabular-nums"></span>
+        </div>
+        <div class="space-y-2.5">
+          <div>
+            <div class="text-xs font-medium text-[var(--error)] mb-1">偏多备选 · 认购 Call（Delta 0.50–0.68）</div>
+            <div id="rec-calls" class="space-y-1.5"></div>
+          </div>
+          <div>
+            <div class="text-xs font-medium text-[var(--success)] mb-1">偏空 / 对冲备选 · 认沽 Put（Delta -0.50~-0.68）</div>
+            <div id="rec-puts" class="space-y-1.5"></div>
+          </div>
+        </div>
+        <div class="text-xs text-[var(--muted-foreground)] bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 leading-relaxed">
+          <strong class="text-[var(--foreground)]">降波对冲提示：</strong>若该标的 <code class="text-[var(--code-foreground)]">ΔIV ≤ -1.5%</code>，建议用上方<strong>浅实值合约</strong>作为买腿 + 卖出虚值 1–2 档组成垂直价差，锁死 Vega 降波损耗。
+        </div>
+      </div>
+    </section>
+
+    <!-- Live T-Quote Chain (ATM +/- 3 Strikes) -->
+    <section class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <h2 id="tchain-title" class="text-sm font-semibold text-[var(--foreground)]">主力合约 T 型报价与实时 Greeks（平值 ±3 档）</h2>
+        <span class="text-xs text-[var(--muted-foreground)]">左：认购 Call ｜ 中：行权价 K ｜ 右：认沽 Put（Theta 为单张日损耗元）</span>
+      </div>
+      <div class="overflow-x-auto custom-scroll">
+        <table class="w-full text-xs border-collapse tabular-nums">
+          <thead>
+            <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+              <th class="py-1.5 px-1.5 text-right font-medium">成交量</th>
+              <th class="py-1.5 px-1.5 text-right font-medium">Theta(元)</th>
+              <th class="py-1.5 px-1.5 text-right font-medium">Delta</th>
+              <th class="py-1.5 px-1.5 text-right font-medium">IV% (ΔIV)</th>
+              <th class="py-1.5 px-1.5 text-right font-medium">涨跌%</th>
+              <th class="py-1.5 px-2 text-right font-medium">认购价</th>
+              <th class="py-1.5 px-2.5 text-center font-bold bg-[var(--content)] text-[var(--foreground)]">行权价 K</th>
+              <th class="py-1.5 px-2 text-left font-medium">认沽价</th>
+              <th class="py-1.5 px-1.5 text-left font-medium">涨跌%</th>
+              <th class="py-1.5 px-1.5 text-left font-medium">IV% (ΔIV)</th>
+              <th class="py-1.5 px-1.5 text-left font-medium">Delta</th>
+              <th class="py-1.5 px-1.5 text-left font-medium">Theta(元)</th>
+              <th class="py-1.5 px-1.5 text-left font-medium">成交量</th>
+            </tr>
+          </thead>
+          <tbody id="tchain-body" class="divide-y divide-[var(--border)]"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bottom Discipline & Runner Strip -->
+    <footer class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-[var(--muted-foreground)]">
+      <div class="flex flex-wrap gap-x-4 gap-y-1">
+        <span><strong class="text-[var(--foreground)]">风控铁律：</strong>① 避开 9:30–9:45 盲打</span>
+        <span>② 买方 30–45 分钟不走单边即时间止损</span>
+        <span>③ 卖方必须价差保护</span>
+        <span>④ 14:55 前清仓不留裸卖隔夜</span>
+      </div>
+      <div class="font-mono text-[var(--code-foreground)]">
+        盘中每60秒轮询：.venv/bin/python options_intraday.py --loop --interval 60
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const DATA = __OPTIONS_PAYLOAD_JSON__;
+
+    let selectedCode = (DATA.etfs && DATA.etfs[0]) ? DATA.etfs[0].code : "159915";
+    let hoverMinIdx = -1;
+    let autoTimer = null;
+    let autoRemain = 60;
+
+    function cssVar(name, fb) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fb;
+    }
+
+    function toneStyles(tone) {
+      const map = {
+        green:  { fg: cssVar("--success", "#16a34a"), bg: "rgba(22,163,74,0.14)" },
+        red:    { fg: cssVar("--error", "#dc2626"),   bg: "rgba(220,38,38,0.14)" },
+        amber:  { fg: cssVar("--warning", "#d97706"), bg: "rgba(217,119,6,0.15)" },
+        warn:   { fg: cssVar("--warning", "#d97706"), bg: "rgba(217,119,6,0.15)" },
+        purple: { fg: cssVar("--chart-5", "#9333ea"), bg: "rgba(147,51,234,0.14)" },
+        cyan:   { fg: cssVar("--chart-3", "#0891b2"), bg: "rgba(8,145,178,0.14)" },
+        blue:   { fg: cssVar("--primary", "#2563eb"), bg: "rgba(37,99,235,0.14)" },
+      };
+      return map[tone] || map.blue;
+    }
+
+    function applyPill(el, text, tone) {
+      const st = toneStyles(tone);
+      el.textContent = text;
+      el.style.color = st.fg;
+      el.style.backgroundColor = st.bg;
+    }
+
+    function fmtPct(v, d = 2) {
+      if (v === null || v === undefined || Number.isNaN(v)) return "--";
+      return (v >= 0 ? "+" : "") + Number(v).toFixed(d) + "%";
+    }
+
+    function retColor(v) {
+      if (v > 0) return cssVar("--error", "#ef4444");
+      if (v < 0) return cssVar("--success", "#22c55e");
+      return cssVar("--muted-foreground", "#888");
+    }
+
+    function getSelectedETF() {
+      return DATA.etfs.find(e => e.code === selectedCode) || DATA.etfs[0];
+    }
+
+    function renderHeaderAndAlerts() {
+      const m = DATA.meta;
+      const stEl = document.getElementById("opt-status-pill");
+      if (m.is_trading) {
+        applyPill(stEl, "● 盘中实时 · " + m.snap_date + " " + m.quote_time, "red");
+      } else {
+        applyPill(stEl, "✓ 收盘快照 · " + m.snap_date + " " + m.quote_time, "green");
+      }
+
+      const firstOk = DATA.etfs.find(e => e.opt && e.opt.ok);
+      const rollEl = document.getElementById("opt-roll-pill");
+      if (firstOk) {
+        const o = firstOk.opt;
+        rollEl.textContent = o.rolled
+          ? `当月 ${o.near_ym} 仅剩 ${o.near_dte} 天 · 已自动切换主力 ${o.active_ym} (${o.active_dte}天)`
+          : `主力合约月 ${o.active_ym} (剩余 ${o.active_dte} 天)`;
+      }
+      document.getElementById("opt-updated").textContent = "更新于 " + m.updated_at_bjt;
+      document.getElementById("opt-elapsed").textContent = "全A+5期权链耗时 " + m.elapsed_sec + "s";
+
+      // Alerts
+      const stack = document.getElementById("alert-stack");
+      stack.innerHTML = (DATA.alerts || []).map(a => {
+        const st = toneStyles(a.level);
+        return `<div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 flex flex-col gap-1" style="border-left: 3px solid ${st.fg}">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="color:${st.fg};background:${st.bg}">${a.tag}</span>
+            <span class="text-xs font-semibold text-[var(--foreground)]">${a.title}</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">${a.detail}</p>
+        </div>`;
+      }).join("");
+    }
+
+    function renderPlaybookAndBreadth() {
+      const pb = DATA.playbook;
+      document.getElementById("pb-date").textContent = pb.eod_date || "--";
+      applyPill(document.getElementById("pb-pill"), pb.regime, pb.tone);
+      document.getElementById("pb-stance").textContent = "核心剧本：" + pb.stance;
+      document.getElementById("pb-reason").textContent = pb.reason;
+      document.getElementById("pb-long").textContent = pb.style_long;
+      document.getElementById("pb-short").textContent = pb.style_short;
+      document.getElementById("pb-stsi").textContent = pb.stsi.toFixed(1);
+      document.getElementById("pb-hmo").textContent = pb.health_mo.toFixed(1);
+      document.getElementById("pb-smb").textContent = pb.s_mb10.toFixed(1);
+      document.getElementById("pb-qvix").textContent = pb.qvix !== null ? pb.qvix.toFixed(1) : "--";
+
+      const br = DATA.breadth;
+      document.getElementById("br-cnt").textContent = br.active_stocks;
+      let vTxt = "广度中性", vTone = "blue";
+      if (br.b_pct >= 65 && br.m_pct >= 65) { vTxt = "全市场共振走强（利好买Call）"; vTone = "green"; }
+      else if (br.b_pct <= 25 && br.m_pct <= 35) { vTxt = "普跌弱势（谨防假反抽）"; vTone = "red"; }
+      else if (br.mb_pct >= 10) { vTxt = "资金抱团核心成长（偏创业板）"; vTone = "purple"; }
+      else if (br.mb_pct <= -8) { vTxt = "广谱小盘扩散（偏中证500/1000）"; vTone = "cyan"; }
+      applyPill(document.getElementById("br-verdict"), vTxt, vTone);
+
+      const bEl = document.getElementById("br-b");
+      bEl.textContent = br.b_pct.toFixed(1) + "%";
+      bEl.style.color = br.b_pct >= 50 ? retColor(1) : retColor(-1);
+      const bBar = document.getElementById("br-b-bar");
+      bBar.style.width = Math.max(2, Math.min(100, br.b_pct)) + "%";
+      bBar.style.backgroundColor = br.b_pct >= 50 ? retColor(1) : retColor(-1);
+      document.getElementById("br-updn").textContent = `${br.up_cnt}涨 / ${br.dn_cnt}跌`;
+
+      const mEl = document.getElementById("br-m");
+      mEl.textContent = br.m_pct.toFixed(1) + "%";
+      mEl.style.color = br.m_pct >= 50 ? retColor(1) : retColor(-1);
+      const mBar = document.getElementById("br-m-bar");
+      mBar.style.width = Math.max(2, Math.min(100, br.m_pct)) + "%";
+      mBar.style.backgroundColor = br.m_pct >= 50 ? retColor(1) : retColor(-1);
+      document.getElementById("br-amt").textContent = "两市样本 " + Number(br.tot_amt_yi).toLocaleString() + " 亿";
+
+      const mbEl = document.getElementById("br-mb");
+      mbEl.textContent = fmtPct(br.mb_pct, 1);
+      mbEl.style.color = br.mb_pct >= 0 ? cssVar("--chart-5", "#9333ea") : cssVar("--chart-3", "#0891b2");
+      const mbBar = document.getElementById("br-mb-bar");
+      const wPct = Math.min(50, Math.abs(br.mb_pct) * 1.6);
+      mbBar.style.width = wPct + "%";
+      mbBar.style.left = br.mb_pct >= 0 ? "50%" : (50 - wPct) + "%";
+      mbBar.style.backgroundColor = br.mb_pct >= 0 ? cssVar("--chart-5", "#9333ea") : cssVar("--chart-3", "#0891b2");
+      document.getElementById("br-mb-lbl").textContent = br.mb_pct >= 5 ? "资金流向大成交龙头" : (br.mb_pct <= -5 ? "资金扩散至中小盘" : "大小盘资金均衡");
+
+      document.getElementById("br-ztdt").innerHTML = `<span style="color:${retColor(1)}">${br.zt}</span> / <span style="color:${retColor(-1)}">${br.dt}</span>`;
+      document.getElementById("br-zb").textContent = `${br.zb} (${br.zb_rate_pct.toFixed(0)}%)`;
+      document.getElementById("br-lb").textContent = `${br.max_lb} 板`;
+      document.getElementById("br-bl").innerHTML = `<span style="color:${br.big_loss_pct >= 50 ? cssVar("--error","#dc2626") : cssVar("--foreground","#eee")}">${br.big_loss_pct.toFixed(1)}%</span> (昨涨停 ${fmtPct(br.prev_zt_ret_pct, 1)})`;
+    }
+
+    function renderRadar() {
+      const body = document.getElementById("radar-body");
+      const firstOk = DATA.etfs.find(e => e.opt && e.opt.ok);
+      document.getElementById("radar-ym").textContent = firstOk ? `主力月份：${firstOk.opt.active_ym}（到期 ${firstOk.opt.active_exp}）` : "";
+
+      body.innerHTML = DATA.etfs.map(e => {
+        const m = e.min || {};
+        const o = e.opt || {};
+        const isSel = e.code === selectedCode;
+        let tag = "观察", tagTone = "blue";
+        if (m.ok && o.ok) {
+          if (m.vwap_diff_pct > 0.3 && o.iv_chg <= -1.2) { tag = "强势+降波(牛市价差)"; tagTone = "green"; }
+          else if (m.vwap_diff_pct > 0.3 && o.iv_chg >= 1.2) { tag = "强势+升波(买Call顺风)"; tagTone = "red"; }
+          else if (m.vwap_diff_pct > 0.2) { tag = "站稳VWAP(偏多)"; tagTone = "green"; }
+          else if (m.vwap_diff_pct < -0.3 && o.iv_chg >= 1.2) { tag = "弱势+升波(买Put顺风)"; tagTone = "amber"; }
+          else if (m.vwap_diff_pct < -0.2) { tag = "VWAP下方(偏弱)"; tagTone = "amber"; }
+          else { tag = "贴近VWAP(震荡)"; tagTone = "blue"; }
+        }
+        const ts = toneStyles(tagTone);
+        const ivCol = (o.iv_chg || 0) >= 1.2 ? cssVar("--error", "#dc2626") : ((o.iv_chg || 0) <= -1.2 ? cssVar("--chart-3", "#0891b2") : cssVar("--muted-foreground", "#888"));
+        return `<tr data-code="${e.code}" class="etf-row ${isSel ? "bg-[var(--content)]" : "hover:bg-[var(--content)]"}" style="${isSel ? "box-shadow: inset 3px 0 0 var(--primary)" : ""}">
+          <td class="py-2 pr-3 whitespace-nowrap">
+            <div class="font-semibold text-[var(--foreground)]">${e.name} <span class="text-[var(--muted-foreground)] font-normal">${e.code}</span></div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">${e.style}</div>
+          </td>
+          <td class="py-2 px-2 text-right font-semibold">${m.ok ? m.last.toFixed(3) : "--"}</td>
+          <td class="py-2 px-2 text-right font-semibold" style="color:${retColor(m.ret_pct)}">${m.ok ? fmtPct(m.ret_pct, 2) : "--"}</td>
+          <td class="py-2 px-2 text-right" style="color:${retColor(m.o2c_pct)}">${m.ok ? fmtPct(m.o2c_pct, 2) : "--"}</td>
+          <td class="py-2 px-2 text-right font-semibold" style="color:${retColor(m.vwap_diff_pct)}">${m.ok ? fmtPct(m.vwap_diff_pct, 2) : "--"}</td>
+          <td class="py-2 px-2 text-right">${m.ok && o.ok ? `${m.amp_pct.toFixed(2)}% / ${o.implied_daily_pct ? o.implied_daily_pct.toFixed(2) + "%" : "--"}` : "--"}</td>
+          <td class="py-2 px-2 text-right font-semibold">${o.ok && o.atm_iv ? o.atm_iv.toFixed(2) + "%" : "--"}</td>
+          <td class="py-2 px-2 text-right font-semibold" style="color:${ivCol}">${o.ok ? fmtPct(o.iv_chg, 2) : "--"}</td>
+          <td class="py-2 px-2 text-right">${o.ok && o.skew_25d !== null ? (o.skew_25d >= 0 ? "+" : "") + o.skew_25d.toFixed(1) : "--"}</td>
+          <td class="py-2 px-2 text-right">${o.ok ? o.pcr_vol.toFixed(2) : "--"}</td>
+          <td class="py-2 pl-2 whitespace-nowrap"><span class="px-2 py-0.5 rounded-full font-medium" style="color:${ts.fg};background:${ts.bg}">${tag}</span></td>
+        </tr>`;
+      }).join("");
+
+      body.querySelectorAll("tr[data-code]").forEach(tr => {
+        tr.addEventListener("click", () => {
+          selectedCode = tr.dataset.code;
+          hoverMinIdx = -1;
+          renderRadar();
+          renderSelectedDetail();
+        });
+      });
+    }
+
+    function drawVWAPChart() {
+      const e = getSelectedETF();
+      const m = e.min || {};
+      const cv = document.getElementById("cv-vwap");
+      const rect = cv.parentElement.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.max(300, Math.floor(rect.width));
+      const h = Math.max(180, Math.floor(rect.height));
+      cv.width = w * dpr; cv.height = h * dpr;
+      const ctx = cv.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      if (!m.ok || !m.bars || m.bars.t.length < 2) return;
+      const { t, p, v } = m.bars;
+      const n = t.length;
+      const pad = { l: 50, r: 16, t: 12, b: 22 };
+      const all = p.concat(v, [m.prev_close]);
+      const mn = Math.min(...all) * 0.9985;
+      const mx = Math.max(...all) * 1.0015;
+      const xOf = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+      const yOf = val => pad.t + (1 - (val - mn) / Math.max(1e-6, mx - mn)) * (h - pad.t - pad.b);
+
+      const border = cssVar("--border", "rgba(128,128,128,0.2)");
+      const muted = cssVar("--muted-foreground", "#888");
+      const c1 = cssVar("--chart-1", "#3b82f6");
+      const c4 = cssVar("--chart-4", "#f59e0b");
+
+      // Grid
+      ctx.font = "11px ui-monospace, SFMono-Regular, Menlo, monospace";
+      for (let g = 0; g <= 4; g++) {
+        const val = mn + (g / 4) * (mx - mn);
+        const y = yOf(val);
+        ctx.strokeStyle = border; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+        ctx.fillStyle = muted; ctx.textAlign = "right"; ctx.textBaseline = "middle";
+        ctx.fillText(val.toFixed(3), pad.l - 6, y);
+      }
+
+      // X labels
+      const step = Math.max(1, Math.floor(n / 6));
+      ctx.fillStyle = muted; ctx.textAlign = "center"; ctx.textBaseline = "top";
+      for (let i = 0; i < n; i += step) {
+        ctx.fillText(t[i], xOf(i), h - pad.b + 5);
+      }
+      ctx.fillText(t[n - 1], xOf(n - 1), h - pad.b + 5);
+
+      // Prev close reference line
+      ctx.save();
+      ctx.strokeStyle = muted; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pad.l, yOf(m.prev_close)); ctx.lineTo(w - pad.r, yOf(m.prev_close)); ctx.stroke();
+      ctx.restore();
+
+      // Fill between price and VWAP
+      for (let i = 1; i < n; i++) {
+        const above = p[i] >= v[i];
+        ctx.fillStyle = above ? "rgba(239,68,68,0.10)" : "rgba(34,197,94,0.10)";
+        ctx.beginPath();
+        ctx.moveTo(xOf(i - 1), yOf(p[i - 1]));
+        ctx.lineTo(xOf(i), yOf(p[i]));
+        ctx.lineTo(xOf(i), yOf(v[i]));
+        ctx.lineTo(xOf(i - 1), yOf(v[i - 1]));
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // VWAP line
+      ctx.save();
+      ctx.strokeStyle = c4; ctx.lineWidth = 1.6; ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      v.forEach((val, i) => i === 0 ? ctx.moveTo(xOf(i), yOf(val)) : ctx.lineTo(xOf(i), yOf(val)));
+      ctx.stroke();
+      ctx.restore();
+
+      // Price line
+      ctx.strokeStyle = c1; ctx.lineWidth = 2.1;
+      ctx.beginPath();
+      p.forEach((val, i) => i === 0 ? ctx.moveTo(xOf(i), yOf(val)) : ctx.lineTo(xOf(i), yOf(val)));
+      ctx.stroke();
+
+      // Hover crosshair
+      const ro = document.getElementById("vwap-readout");
+      if (hoverMinIdx >= 0 && hoverMinIdx < n) {
+        const x = xOf(hoverMinIdx);
+        ctx.save();
+        ctx.strokeStyle = muted; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, h - pad.b); ctx.stroke();
+        ctx.restore();
+        const px = p[hoverMinIdx], vw = v[hoverMinIdx];
+        const dv = (px / vw - 1) * 100;
+        const dr = (px / m.prev_close - 1) * 100;
+        ro.textContent = `${t[hoverMinIdx]} ｜ 价格 ${px.toFixed(3)} (${fmtPct(dr, 2)}) ｜ VWAP ${vw.toFixed(3)} ｜ 偏离VWAP ${fmtPct(dv, 2)}`;
+      } else {
+        ro.textContent = `现价 ${m.last.toFixed(3)} (${fmtPct(m.ret_pct, 2)}) ｜ VWAP ${m.vwap.toFixed(3)} (偏离 ${fmtPct(m.vwap_diff_pct, 2)}) ｜ 鼠标悬停查看每分钟明细`;
+      }
+    }
+
+    function renderSelectedDetail() {
+      const e = getSelectedETF();
+      const m = e.min || {};
+      const o = e.opt || {};
+
+      document.getElementById("vwap-title").textContent = `${e.name} (${e.code}) 分时价格 vs VWAP 均价线`;
+      drawVWAPChart();
+
+      document.getElementById("vwap-stats").innerHTML = m.ok ? [
+        ["开盘至今 O→C", fmtPct(m.o2c_pct, 2), retColor(m.o2c_pct)],
+        ["近15分钟斜率", fmtPct(m.slope15_pct, 2), retColor(m.slope15_pct)],
+        ["日内高低区间位", m.pos_in_range.toFixed(0) + "%", cssVar("--foreground", "#eee")],
+        ["实际振幅 / 隐含日波", `${m.amp_pct.toFixed(2)}% / ${o.ok && o.implied_daily_pct ? o.implied_daily_pct.toFixed(2) + "%" : "--"}`, cssVar("--foreground", "#eee")],
+      ].map(([k, val, col]) => `<div class="bg-[var(--content)] rounded-lg px-2.5 py-1.5">
+        <div class="text-[var(--muted-foreground)]">${k}</div>
+        <div class="font-semibold mt-0.5" style="color:${col}">${val}</div>
+      </div>`).join("") : "";
+
+      document.getElementById("rec-title").textContent = `${e.name} 买方推荐合约（平值 / 浅实值1档）`;
+      document.getElementById("rec-exp").textContent = o.ok ? `${o.active_ym}月 · 剩${o.active_dte}天` : "";
+
+      const renderRecList = (arr, isCall) => {
+        if (!arr || !arr.length) return `<div class="text-xs text-[var(--muted-foreground)]">暂无合约数据</div>`;
+        return arr.map(c => `<div class="bg-[var(--content)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs tabular-nums flex items-center justify-between gap-2">
+          <div>
+            <div class="font-semibold text-[var(--foreground)]">${c.name} <span class="text-[var(--muted-foreground)] font-normal">(${c.id})</span></div>
+            <div class="text-[var(--muted-foreground)] mt-0.5">Δ=${c.delta.toFixed(2)} · IV=${c.iv !== null ? c.iv.toFixed(1) + "%" : "--"} · 杠杆 ${c.lev}x · 价差 ${c.spread.toFixed(1)}%</div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm font-bold" style="color:${isCall ? cssVar("--error","#dc2626") : cssVar("--success","#16a34a")}">${c.last.toFixed(4)}</div>
+            <div class="text-[var(--muted-foreground)]">日耗 ${c.theta.toFixed(0)}元/张</div>
+          </div>
+        </div>`).join("");
+      };
+      document.getElementById("rec-calls").innerHTML = o.ok ? renderRecList(o.rec_calls, true) : "";
+      document.getElementById("rec-puts").innerHTML = o.ok ? renderRecList(o.rec_puts, false) : "";
+
+      // T-Quote Table
+      document.getElementById("tchain-title").textContent = `${e.name} (${o.ok ? o.active_ym + "月 · 剩" + o.active_dte + "天" : "--"}) T 型报价与实时 Greeks`;
+      const tbody = document.getElementById("tchain-body");
+      if (!o.ok || !o.t_chain) {
+        tbody.innerHTML = `<tr><td colspan="13" class="py-4 text-center text-[var(--muted-foreground)]">暂无期权链数据</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = o.t_chain.map(row => {
+        const c = row.c || {}, p = row.p || {};
+        const atmCls = row.is_atm ? "bg-[var(--content)] font-semibold" : "hover:bg-[var(--content)]";
+        const fmtIv = (x) => x.iv !== null && x.iv !== undefined ? `${x.iv.toFixed(1)}% <span class="text-[11px] text-[var(--muted-foreground)]">(${x.iv_chg !== null ? (x.iv_chg >= 0 ? "+" : "") + x.iv_chg.toFixed(1) : "--"})</span>` : "--";
+        return `<tr class="${atmCls}">
+          <td class="py-1.5 px-1.5 text-right text-[var(--muted-foreground)]">${c.vol !== undefined ? c.vol.toLocaleString() : "--"}</td>
+          <td class="py-1.5 px-1.5 text-right text-[var(--muted-foreground)]">${c.theta !== undefined ? c.theta.toFixed(0) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-right">${c.delta !== undefined ? c.delta.toFixed(2) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-right">${fmtIv(c)}</td>
+          <td class="py-1.5 px-1.5 text-right" style="color:${retColor(c.chg)}">${c.chg !== undefined ? fmtPct(c.chg, 1) : "--"}</td>
+          <td class="py-1.5 px-2 text-right font-semibold">${c.last !== undefined ? c.last.toFixed(4) : "--"}</td>
+          <td class="py-1.5 px-2.5 text-center font-bold bg-[var(--content)]" style="${row.is_atm ? "color:var(--primary)" : ""}">${row.k.toFixed(3)}${row.is_atm ? " ★" : ""}</td>
+          <td class="py-1.5 px-2 text-left font-semibold">${p.last !== undefined ? p.last.toFixed(4) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-left" style="color:${retColor(p.chg)}">${p.chg !== undefined ? fmtPct(p.chg, 1) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-left">${fmtIv(p)}</td>
+          <td class="py-1.5 px-1.5 text-left">${p.delta !== undefined ? p.delta.toFixed(2) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-left text-[var(--muted-foreground)]">${p.theta !== undefined ? p.theta.toFixed(0) : "--"}</td>
+          <td class="py-1.5 px-1.5 text-left text-[var(--muted-foreground)]">${p.vol !== undefined ? p.vol.toLocaleString() : "--"}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    // Bind hover & mobile touch on VWAP canvas
+    const vwapCv = document.getElementById("cv-vwap");
+    const onVwapMove = (clientX) => {
+      const e = getSelectedETF();
+      if (!e.min || !e.min.ok || !e.min.bars) return;
+      const rect = vwapCv.getBoundingClientRect();
+      const frac = Math.max(0, Math.min(1, (clientX - rect.left - 50) / Math.max(1, rect.width - 66)));
+      hoverMinIdx = Math.round(frac * (e.min.bars.t.length - 1));
+      drawVWAPChart();
+    };
+    vwapCv.addEventListener("mousemove", ev => onVwapMove(ev.clientX));
+    vwapCv.addEventListener("touchstart", ev => { if (ev.touches[0]) onVwapMove(ev.touches[0].clientX); }, { passive: true });
+    vwapCv.addEventListener("touchmove", ev => { if (ev.touches[0]) onVwapMove(ev.touches[0].clientX); }, { passive: true });
+    vwapCv.addEventListener("mouseleave", () => { hoverMinIdx = -1; drawVWAPChart(); });
+
+    // Cross-page link on HTTP/HTTPS (GitHub Pages & local server) + optional local server refresh
+    if (location.protocol.startsWith("http")) {
+      document.getElementById("lnk-home").classList.remove("hidden");
+      fetch("/api/status").then(r => {
+        if (!r.ok) return;
+        const btnRef = document.getElementById("btn-opt-refresh");
+        const btnAuto = document.getElementById("btn-auto");
+        btnRef.classList.remove("hidden"); btnRef.classList.add("inline-flex");
+        btnAuto.classList.remove("hidden"); btnAuto.classList.add("inline-flex");
+        document.getElementById("auto-dot").style.backgroundColor = cssVar("--muted-foreground", "#888");
+
+        const doRefresh = () => {
+          btnRef.disabled = true;
+          document.getElementById("opt-ref-txt").textContent = "拉取盘中数据...";
+          fetch("/api/options/refresh", { method: "POST" })
+            .then(res => res.json())
+            .then(() => location.reload())
+            .catch(() => {
+              btnRef.disabled = false;
+              document.getElementById("opt-ref-txt").textContent = "刷新失败";
+            });
+        };
+        btnRef.addEventListener("click", doRefresh);
+
+        btnAuto.addEventListener("click", () => {
+          if (autoTimer) {
+            clearInterval(autoTimer); autoTimer = null;
+            document.getElementById("auto-dot").style.backgroundColor = cssVar("--muted-foreground", "#888");
+            document.getElementById("auto-txt").textContent = "自动轮询 60s";
+          } else {
+            autoRemain = 60;
+            document.getElementById("auto-dot").style.backgroundColor = cssVar("--success", "#16a34a");
+            document.getElementById("auto-txt").textContent = "轮询中 60s";
+            autoTimer = setInterval(() => {
+              autoRemain -= 1;
+              document.getElementById("auto-txt").textContent = "轮询中 " + autoRemain + "s";
+              if (autoRemain <= 0) { clearInterval(autoTimer); doRefresh(); }
+            }, 1000);
+          }
+        });
+      }).catch(() => {});
+    }
+
+    function redrawAll() {
+      renderHeaderAndAlerts();
+      renderPlaybookAndBreadth();
+      renderRadar();
+      renderSelectedDetail();
+    }
+
+    window.addEventListener("resize", drawVWAPChart);
+    window.addEventListener("themechange", redrawAll);
+    redrawAll();
+  </script>
+</body>
+</html>

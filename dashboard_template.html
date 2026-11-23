@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="A股情绪作战室" />
+  <meta name="theme-color" content="#0b0f17" />
+  <title>A股情绪作战室 · 每日核心信号看板</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <!-- __STANDALONE_THEME_CSS__ -->
+  <style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .canvas-box { position: relative; width: 100%; }
+    .canvas-box canvas { display: block; width: 100%; height: 100%; }
+    .tab-btn { transition: all 150ms ease; }
+    .pill-dot { width: 7px; height: 7px; border-radius: 9999px; display: inline-block; }
+    .custom-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased m-0 p-0">
+  <div class="max-w-7xl mx-auto px-3 sm:px-5 py-4 space-y-4">
+
+    <!-- Top Command Header -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <div class="space-y-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <h1 class="text-lg font-bold tracking-tight text-[var(--foreground)]">A股情绪作战室 · 每日信号看板</h1>
+          <span id="hdr-mode-badge" class="text-xs font-medium px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)]"></span>
+          <span id="hdr-phase-badge" class="text-xs font-medium px-2 py-0.5 rounded-full border border-[var(--border)] text-[var(--muted-foreground)]"></span>
+        </div>
+        <p class="text-xs text-[var(--muted-foreground)]">
+          仅聚焦实测第一梯队靠谱指标：<span class="text-[var(--foreground)] font-medium">s_MB10 资金风格</span> ·
+          <span class="text-[var(--foreground)] font-medium">Health_MO 波段择时</span> ·
+          <span class="text-[var(--foreground)] font-medium">ACSI 十年大周期</span> +
+          <span class="text-[var(--foreground)] font-medium">STSI / 大面率逆向护栏</span>
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- EOD vs Intraday Live Toggle -->
+        <div id="mode-switch" class="inline-flex rounded-lg border border-[var(--border)] bg-[var(--content)] p-0.5 text-xs">
+          <button id="btn-mode-live" class="px-2.5 py-1 rounded-md font-medium transition-colors" type="button">盘中实时</button>
+          <button id="btn-mode-eod" class="px-2.5 py-1 rounded-md font-medium transition-colors" type="button">收盘确认</button>
+        </div>
+        <!-- Cross-page link (shown on GitHub Pages & local server) -->
+        <a id="lnk-options" href="./options.html" class="hidden px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80">期权日内监控 →</a>
+        <button id="btn-refresh" type="button" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition-opacity cursor-pointer">
+          <span id="refresh-icon">↻</span>
+          <span id="refresh-txt">立即拉取最新</span>
+        </button>
+        <!-- Theme button (auto-shown only in external standalone browsers) -->
+        <button id="btn-theme-toggle" type="button" class="hidden px-2.5 py-1.5 rounded-lg text-xs border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] cursor-pointer">切换主题</button>
+        <div class="text-xs text-[var(--muted-foreground)] tabular-nums text-right leading-tight">
+          <div id="hdr-updated"></div>
+          <div id="hdr-coverage"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 4 Action Decision Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+      <!-- Card 1: Dual Engine Master Directive -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">① 波段总指令（双引擎 ETF）</span>
+          <span id="c1-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+        </div>
+        <div>
+          <div id="c1-directive" class="text-base font-bold leading-snug text-[var(--foreground)]"></div>
+          <div id="c1-etf" class="text-xs text-[var(--muted-foreground)] mt-1"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-1.5 pt-2 border-t border-[var(--border)] text-xs tabular-nums">
+          <div class="bg-[var(--content)] rounded-lg px-2 py-1">
+            <div class="text-[var(--muted-foreground)]">创业板</div>
+            <div id="c1-cy" class="font-semibold"></div>
+          </div>
+          <div class="bg-[var(--content)] rounded-lg px-2 py-1">
+            <div class="text-[var(--muted-foreground)]">中证1000</div>
+            <div id="c1-zz" class="font-semibold"></div>
+          </div>
+          <div class="bg-[var(--content)] rounded-lg px-2 py-1">
+            <div class="text-[var(--muted-foreground)]">沪深300</div>
+            <div id="c1-hs" class="font-semibold"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Timing Engine (Health_MO + STSI Ice) -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">② 仓位择时 · Health_MO</span>
+          <span id="c2-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+        </div>
+        <div class="flex items-baseline justify-between gap-2">
+          <div class="flex items-baseline gap-2">
+            <span id="c2-val" class="text-2xl font-bold tabular-nums text-[var(--foreground)]"></span>
+            <span class="text-xs text-[var(--muted-foreground)]">/ 100</span>
+          </div>
+          <div class="text-xs tabular-nums text-right">
+            <span class="text-[var(--muted-foreground)]">MO </span>
+            <span id="c2-mo" class="font-semibold"></span>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="relative h-2 rounded-full bg-[var(--content)] overflow-hidden border border-[var(--border)]">
+            <div id="c2-bar" class="h-full rounded-full transition-all duration-300"></div>
+            <div class="absolute top-0 bottom-0 w-px bg-[var(--muted-foreground)] opacity-60" style="left:40%"></div>
+            <div class="absolute top-0 bottom-0 w-px bg-[var(--muted-foreground)] opacity-60" style="left:60%"></div>
+          </div>
+          <div class="flex justify-between text-xs text-[var(--muted-foreground)] tabular-nums">
+            <span>0 空</span><span>40 退潮</span><span>60 进场</span><span>100</span>
+          </div>
+        </div>
+        <div id="c2-dist" class="text-xs text-[var(--muted-foreground)] leading-relaxed pt-1 border-t border-[var(--border)]"></div>
+      </div>
+
+      <!-- Card 3: Style Rotation (s_MB10) -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">③ 风格轮动 · s_MB10</span>
+          <span id="c3-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+        </div>
+        <div class="flex items-baseline justify-between gap-2">
+          <div class="flex items-baseline gap-2">
+            <span id="c3-val" class="text-2xl font-bold tabular-nums text-[var(--foreground)]"></span>
+            <span class="text-xs text-[var(--muted-foreground)]">/ 100</span>
+          </div>
+          <div class="text-xs tabular-nums text-right">
+            <span class="text-[var(--muted-foreground)]">当日 M-B </span>
+            <span id="c3-mb" class="font-semibold"></span>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="relative h-2 rounded-full bg-[var(--content)] overflow-hidden border border-[var(--border)]">
+            <div id="c3-bar" class="h-full rounded-full transition-all duration-300"></div>
+            <div class="absolute top-0 bottom-0 w-px bg-[var(--muted-foreground)] opacity-60" style="left:35%"></div>
+            <div class="absolute top-0 bottom-0 w-px bg-[var(--muted-foreground)] opacity-60" style="left:65%"></div>
+          </div>
+          <div class="flex justify-between text-xs text-[var(--muted-foreground)] tabular-nums">
+            <span>≤35 中证1000</span><span>缓冲</span><span>≥65 创业板</span>
+          </div>
+        </div>
+        <div id="c3-dist" class="text-xs text-[var(--muted-foreground)] leading-relaxed pt-1 border-t border-[var(--border)]"></div>
+      </div>
+
+      <!-- Card 4: Long-Term ACSI + Short-Term Relay Guardrail -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-2.5">
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)]">④ 大周期水位 · ACSI</span>
+            <span id="c4-acsi-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+          </div>
+          <div class="flex items-baseline justify-between">
+            <div class="flex items-baseline gap-1.5">
+              <span id="c4-acsi" class="text-xl font-bold tabular-nums text-[var(--foreground)]"></span>
+              <span id="c4-acsi-zone" class="text-xs text-[var(--muted-foreground)]"></span>
+            </div>
+            <span id="c4-acsi-act" class="text-xs font-medium text-[var(--foreground)]"></span>
+          </div>
+        </div>
+        <div class="pt-2 border-t border-[var(--border)] space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)]">短线打板护栏（逆向）</span>
+            <span id="c4-relay-pill" class="text-xs font-semibold px-2 py-0.5 rounded-full"></span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 text-xs tabular-nums">
+            <span id="chk-stsi" class="inline-flex items-center gap-1"></span>
+            <span id="chk-bl" class="inline-flex items-center gap-1"></span>
+            <span id="chk-mo" class="inline-flex items-center gap-1"></span>
+          </div>
+          <div id="c4-relay-reason" class="text-xs text-[var(--muted-foreground)] leading-snug"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Breadth & Limit-Up Pulse Strip -->
+    <section class="bg-[var(--card)] border border-[var(--border)] rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-xs tabular-nums">
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--muted-foreground)]">涨跌家数</span>
+        <span id="p-updn" class="font-semibold"></span>
+        <span class="text-[var(--muted-foreground)]">(B=<span id="p-b" class="text-[var(--foreground)] font-medium"></span> / M=<span id="p-m" class="text-[var(--foreground)] font-medium"></span>)</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--muted-foreground)]">全A样本成交</span>
+        <span id="p-amt" class="font-semibold text-[var(--foreground)]"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--muted-foreground)]">涨停 / 跌停 / 炸板</span>
+        <span id="p-ztdt" class="font-semibold"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--muted-foreground)]">最高连板 / 2板+</span>
+        <span id="p-lb" class="font-semibold text-[var(--foreground)]"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--muted-foreground)]">昨涨停均涨 / 大面率</span>
+        <span id="p-prev" class="font-semibold"></span>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-2">
+      <div class="flex flex-wrap gap-1.5" role="tablist">
+        <button data-tab="monitor" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer" type="button">核心走势监控</button>
+        <button data-tab="acsi" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer" type="button">ACSI 十年周期</button>
+        <button data-tab="matrix" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer" type="button">近25日流水 &amp; 连板梯队</button>
+        <button data-tab="deploy" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer" type="button">每日自动更新配置</button>
+      </div>
+      <div id="range-bar" class="inline-flex items-center gap-1 bg-[var(--content)] border border-[var(--border)] rounded-lg p-0.5 text-xs">
+        <button data-range="65" class="range-btn px-2 py-1 rounded-md cursor-pointer" type="button">近3月</button>
+        <button data-range="130" class="range-btn px-2 py-1 rounded-md cursor-pointer" type="button">近6月</button>
+        <button data-range="245" class="range-btn px-2 py-1 rounded-md cursor-pointer" type="button">近1年</button>
+        <button data-range="730" class="range-btn px-2 py-1 rounded-md cursor-pointer" type="button">近3年</button>
+        <button data-range="9999" class="range-btn px-2 py-1 rounded-md cursor-pointer" type="button">全部</button>
+      </div>
+    </nav>
+
+    <!-- TAB 1: Core Monitoring Charts -->
+    <section id="panel-monitor" class="space-y-3">
+      <!-- Hover Readout Strip -->
+      <div id="st-readout" class="bg-[var(--card)] border border-[var(--border)] rounded-xl px-4 py-2 text-xs tabular-nums flex flex-wrap items-center gap-x-4 gap-y-1 text-[var(--muted-foreground)]">
+        移动鼠标到下方任意图表，即可同步查看该交易日的净值、仓位与指标读数
+      </div>
+
+      <!-- Chart 1: Equity Curve + Style Allocation Strip -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold text-[var(--foreground)]">双引擎策略净值 vs 50/50 基准（T+1开盘 · 含0.1%单边费 · 2%货基）</h2>
+            <p id="c-eq-sub" class="text-xs text-[var(--muted-foreground)]"></p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)]">
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-1)"></span>双引擎(创业板/1000)</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-3)"></span>稳健版(300/1000)</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--muted-foreground)"></span>50/50基准</span>
+            <span class="inline-flex items-center gap-1">底带：紫=创业板 / 青=中证1000 / 灰=空仓</span>
+          </div>
+        </div>
+        <div class="canvas-box h-56"><canvas id="cv-eq"></canvas></div>
+      </div>
+
+      <!-- Chart 2: Timing Engine (Health_MO + MO + STSI) -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold text-[var(--foreground)]">仓位择时引擎 · Health_MO (60/40) + MO 宽度动量 + STSI 冰点开关 (≤20)</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">绿色虚线=60右侧进场，橙色虚线=40退潮离场，蓝色底部带=STSI≤20冰点抄底区</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)]">
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-2)"></span>Health_MO</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-4)"></span>STSI 综合情绪</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-1)"></span>MO 动量柱(右轴)</span>
+          </div>
+        </div>
+        <div class="canvas-box h-48"><canvas id="cv-timing"></canvas></div>
+      </div>
+
+      <!-- Chart 3: Style Engine (s_MB10 vs ChiNext/ZZ1000 Relative Strength) -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold text-[var(--foreground)]">风格切换引擎 · s_MB10 (10日 M-B 资金集中度分位) vs 创业板/中证1000 相对强弱</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">实测跨周期最稳单因子（10/20日风格差 IC +0.19/+0.17）：≥65切创业板核心，≤35切中证1000小盘</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)]">
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-5)"></span>s_MB10 (左轴 0-100)</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-1)"></span>创业板/中证1000比值(右轴)</span>
+          </div>
+        </div>
+        <div class="canvas-box h-48"><canvas id="cv-style"></canvas></div>
+      </div>
+    </section>
+
+    <!-- TAB 2: ACSI 10-Year Cycle -->
+    <section id="panel-acsi" class="hidden space-y-3">
+      <div id="acsi-readout" class="bg-[var(--card)] border border-[var(--border)] rounded-xl px-4 py-2 text-xs tabular-nums text-[var(--muted-foreground)]">
+        移动鼠标到下方图表查看 2016 至今任意交易日 ACSI 情绪水位与沪深300策略净值
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">ACSI 逆向年化 (10年)</div>
+          <div id="a-cagr" class="text-lg font-bold tabular-nums mt-0.5 text-[var(--success)]"></div>
+        </div>
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">ACSI 最大回撤</div>
+          <div id="a-mdd" class="text-lg font-bold tabular-nums mt-0.5 text-[var(--foreground)]"></div>
+        </div>
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">沪深300 持有年化</div>
+          <div id="a-hcagr" class="text-lg font-bold tabular-nums mt-0.5 text-[var(--muted-foreground)]"></div>
+        </div>
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3">
+          <div class="text-[var(--muted-foreground)]">沪深300 最大回撤</div>
+          <div id="a-hmdd" class="text-lg font-bold tabular-nums mt-0.5 text-[var(--error)]"></div>
+        </div>
+      </div>
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-sm font-semibold text-[var(--foreground)]">ACSI 逆向双阈值策略 (30买 / 70卖 · 含2%货基) vs 沪深300 净值</h2>
+          <div class="flex items-center gap-3 text-xs text-[var(--muted-foreground)]">
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--chart-2)"></span>ACSI 逆向策略</span>
+            <span class="inline-flex items-center gap-1"><span class="pill-dot" style="background:var(--muted-foreground)"></span>沪深300 买入持有</span>
+          </div>
+        </div>
+        <div class="canvas-box h-56"><canvas id="cv-acsi-eq"></canvas></div>
+      </div>
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-sm font-semibold text-[var(--foreground)]">ACSI 十年情绪水位（0-20 极度恐慌绿带：持有1年胜率 71.3%；≥70 过热红带）</h2>
+          <span class="text-xs text-[var(--muted-foreground)]">2016-2026 全样本 250日 IC = -0.216，年换手仅 2.8x</span>
+        </div>
+        <div class="canvas-box h-48"><canvas id="cv-acsi-val"></canvas></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Recent 25-Day Matrix & Live Limit-Up Boards -->
+    <section id="panel-matrix" class="hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-sm font-semibold text-[var(--foreground)]">近 25 个交易日核心信号流水</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">按日期倒序展示，盘中实时行自动置顶标红，便于复盘拐点与状态切换</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs">
+            <button data-mfilter="all" class="mfilter-btn px-2.5 py-1 rounded-md border border-[var(--border)] cursor-pointer" type="button">全部</button>
+            <button data-mfilter="long" class="mfilter-btn px-2.5 py-1 rounded-md border border-[var(--border)] cursor-pointer" type="button">仅满仓</button>
+            <button data-mfilter="cash" class="mfilter-btn px-2.5 py-1 rounded-md border border-[var(--border)] cursor-pointer" type="button">仅空仓</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto custom-scroll">
+          <table class="w-full text-xs text-left border-collapse tabular-nums">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                <th class="py-2 pr-3 font-medium">日期</th>
+                <th class="py-2 px-2 font-medium text-right">创业板</th>
+                <th class="py-2 px-2 font-medium text-right">中证1000</th>
+                <th class="py-2 px-2 font-medium text-right">ACSI</th>
+                <th class="py-2 px-2 font-medium text-right">Health_MO</th>
+                <th class="py-2 px-2 font-medium text-right">MO%</th>
+                <th class="py-2 px-2 font-medium text-right">s_MB10</th>
+                <th class="py-2 px-2 font-medium text-right">M-B%</th>
+                <th class="py-2 px-2 font-medium text-right">STSI</th>
+                <th class="py-2 px-2 font-medium text-right">涨/跌停</th>
+                <th class="py-2 px-2 font-medium text-right">大面%</th>
+                <th class="py-2 px-2 font-medium">双引擎指令</th>
+                <th class="py-2 pl-2 font-medium">打板接力</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-body" class="divide-y divide-[var(--border)]"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Live Limit-Up & Yesterday Limit-Up Boards -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[var(--foreground)]">当前涨停梯队（按连板高度 / 成交额排序）</h3>
+            <span id="zt-board-meta" class="text-xs text-[var(--muted-foreground)]"></span>
+          </div>
+          <div class="overflow-x-auto custom-scroll">
+            <table class="w-full text-xs border-collapse tabular-nums">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                  <th class="py-1.5 text-left font-medium">代码 / 名称</th>
+                  <th class="py-1.5 text-right font-medium">连板</th>
+                  <th class="py-1.5 text-right font-medium">现价</th>
+                  <th class="py-1.5 text-right font-medium">涨幅</th>
+                  <th class="py-1.5 text-right font-medium">成交(亿)</th>
+                  <th class="py-1.5 text-right font-medium">形态</th>
+                </tr>
+              </thead>
+              <tbody id="zt-board-body" class="divide-y divide-[var(--border)]"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[var(--foreground)]">昨日涨停今日表现（赚钱 / 核按钮监测）</h3>
+            <span id="pzt-board-meta" class="text-xs text-[var(--muted-foreground)]"></span>
+          </div>
+          <div class="overflow-x-auto custom-scroll">
+            <table class="w-full text-xs border-collapse tabular-nums">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                  <th class="py-1.5 text-left font-medium">代码 / 名称</th>
+                  <th class="py-1.5 text-right font-medium">昨连板</th>
+                  <th class="py-1.5 text-right font-medium">开盘%</th>
+                  <th class="py-1.5 text-right font-medium">现涨跌%</th>
+                  <th class="py-1.5 text-right font-medium">状态</th>
+                </tr>
+              </thead>
+              <tbody id="pzt-board-body" class="divide-y divide-[var(--border)]"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Daily Automation & Deployment -->
+    <section id="panel-deploy" class="hidden space-y-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[var(--foreground)]">方案 A · GitHub Actions + Pages（推荐）</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--success)] font-medium">零成本云端</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            已预置 <code class="text-[var(--code-foreground)]">.github/workflows/daily_sentiment_update.yml</code>。推送到 GitHub 并开启 Pages（Source 选 <code class="text-[var(--code-foreground)]">/docs</code>）后，每个交易日 <strong>15:15 北京时间</strong>自动拉取全 A 5,200+ 股收盘数据、刷新图表并发布网页，手机/电脑直接收藏访问。
+          </p>
+          <pre class="text-xs bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 overflow-x-auto text-[var(--code-foreground)]">git init &amp;&amp; git add . &amp;&amp; git commit -m "init"
+# Push to GitHub -&gt; Settings -&gt; Pages -&gt; main /docs
+# Optional Secret: WEBHOOK_URL (飞书/钉钉/企微推送)</pre>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[var(--foreground)]">方案 B · 本机 / VPS / NAS 定时更新</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--primary)] font-medium">3.5秒增量</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            单次增量更新仅需 ~4 秒（腾讯批量行情 API），收盘后自动写入历史 CSV，盘中运行仅生成实时预览不污染历史。运行安装脚本即可配置工作日 15:15 定时任务 + 本地交互服务（带“一键刷新”按钮）。
+          </p>
+          <pre class="text-xs bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 overflow-x-auto text-[var(--code-foreground)]"># 安装工作日 15:15 crontab 定时更新
+bash setup_cron.sh
+# 启动本地实时看板（含一键刷新接口）
+.venv/bin/python serve_dashboard.py --port 8765</pre>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[var(--foreground)]">方案 C · 每日收盘 Webhook 推送</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--content)] text-[var(--warning)] font-medium">免盯盘</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            自动识别飞书、钉钉、企业微信或通用 Webhook 格式，每日 15:15 将仓位指令、风格切换、距离触发阈值及大面率预警直接推送到群聊。
+          </p>
+          <pre class="text-xs bg-[var(--content)] border border-[var(--border)] rounded-lg p-2.5 overflow-x-auto text-[var(--code-foreground)]">export WEBHOOK_URL="https://open.feishu.cn/..."
+.venv/bin/python daily_update.py --notify</pre>
+        </div>
+      </div>
+
+      <!-- Pipeline Health & Telemetry -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2">
+        <h3 class="text-sm font-semibold text-[var(--foreground)]">本次流水线运行状态</h3>
+        <div id="deploy-meta" class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs tabular-nums"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const PAYLOAD = __LIVE_PAYLOAD_JSON__;
+
+    let activeMode = PAYLOAD.live ? "live" : "eod";
+    let activeTab = "monitor";
+    let rangeDays = 245;
+    let matrixFilter = "all";
+    let hoverIdxSt = -1;
+    let hoverIdxAc = -1;
+
+    function cssVar(name, fb) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fb;
+    }
+
+    function toneStyles(tone) {
+      const map = {
+        green:  { fg: cssVar("--success", "#16a34a"), bg: "rgba(22,163,74,0.14)" },
+        red:    { fg: cssVar("--error", "#dc2626"),   bg: "rgba(220,38,38,0.14)" },
+        amber:  { fg: cssVar("--warning", "#d97706"), bg: "rgba(217,119,6,0.15)" },
+        purple: { fg: cssVar("--chart-5", "#9333ea"), bg: "rgba(147,51,234,0.14)" },
+        cyan:   { fg: cssVar("--chart-3", "#0891b2"), bg: "rgba(8,145,178,0.14)" },
+        blue:   { fg: cssVar("--primary", "#2563eb"), bg: "rgba(37,99,235,0.14)" },
+      };
+      return map[tone] || map.blue;
+    }
+
+    function applyPill(el, text, tone) {
+      const st = toneStyles(tone);
+      el.textContent = text;
+      el.style.color = st.fg;
+      el.style.backgroundColor = st.bg;
+    }
+
+    function fmtPct(v, digits = 2) {
+      if (v === null || v === undefined || Number.isNaN(v)) return "--";
+      return (v >= 0 ? "+" : "") + Number(v).toFixed(digits) + "%";
+    }
+
+    function retColor(v) {
+      if (v > 0) return cssVar("--error", "#ef4444");   // A-share red = up
+      if (v < 0) return cssVar("--success", "#22c55e"); // A-share green = down
+      return cssVar("--muted-foreground", "#888");
+    }
+
+    function currentCard() {
+      return (activeMode === "live" && PAYLOAD.live) ? PAYLOAD.live : PAYLOAD.eod;
+    }
+
+    function renderHeaderAndCards() {
+      const c = currentCard();
+      const meta = PAYLOAD.meta;
+
+      // Mode switch visibility
+      const btnLive = document.getElementById("btn-mode-live");
+      const btnEod = document.getElementById("btn-mode-eod");
+      if (!PAYLOAD.live) {
+        btnLive.classList.add("hidden");
+        activeMode = "eod";
+      } else {
+        btnLive.classList.remove("hidden");
+      }
+      [btnLive, btnEod].forEach(b => {
+        const isAct = (b === btnLive && activeMode === "live") || (b === btnEod && activeMode === "eod");
+        b.style.backgroundColor = isAct ? cssVar("--primary", "#2563eb") : "transparent";
+        b.style.color = isAct ? cssVar("--primary-foreground", "#fff") : cssVar("--muted-foreground", "#888");
+      });
+
+      const modeBadge = document.getElementById("hdr-mode-badge");
+      if (activeMode === "live" && PAYLOAD.live) {
+        applyPill(modeBadge, "● " + c.mode_label, "red");
+      } else {
+        applyPill(modeBadge, "✓ " + c.mode_label, "green");
+      }
+      document.getElementById("hdr-phase-badge").textContent = "短线周期：" + c.phase;
+      document.getElementById("hdr-updated").textContent = "更新于 " + meta.updated_at_bjt;
+      document.getElementById("hdr-coverage").textContent = "有效个股 " + meta.active_stocks + " 只 · 耗时 " + meta.elapsed_sec + "s";
+
+      // Card 1: Dual engine directive
+      applyPill(document.getElementById("c1-pill"), c.pos_pct >= 99 ? "进攻满仓" : "空仓防守", c.timing_tone);
+      document.getElementById("c1-directive").textContent = c.dual_directive;
+      document.getElementById("c1-etf").textContent = "执行载体：" + (c.pos_pct >= 99 ? c.style_etf : "货币基金 / 逆回购（待风格：" + c.style_target + "）");
+      const setIdx = (id, val) => {
+        const el = document.getElementById(id);
+        el.textContent = fmtPct(val, 2);
+        el.style.color = retColor(val);
+      };
+      setIdx("c1-cy", c.chinext_ret_pct);
+      setIdx("c1-zz", c.zz1000_ret_pct);
+      setIdx("c1-hs", c.hs300_ret_pct);
+
+      // Card 2: Health_MO
+      applyPill(document.getElementById("c2-pill"), c.pos_pct >= 99 ? (c.stsi <= 20 ? "冰点抄底" : "右侧满仓") : "弱势防守", c.timing_tone);
+      document.getElementById("c2-val").textContent = c.health_mo.toFixed(1);
+      const moEl = document.getElementById("c2-mo");
+      moEl.textContent = fmtPct(c.mo_pct, 2);
+      moEl.style.color = c.mo_pct >= 0 ? cssVar("--success", "#16a34a") : cssVar("--warning", "#d97706");
+      const c2Bar = document.getElementById("c2-bar");
+      c2Bar.style.width = Math.max(2, Math.min(100, c.health_mo)) + "%";
+      c2Bar.style.backgroundColor = toneStyles(c.timing_tone).fg;
+      document.getElementById("c2-dist").textContent = c.timing_dist;
+
+      // Card 3: s_MB10
+      applyPill(document.getElementById("c3-pill"), c.w_core_pct >= 99 ? "创业板核心" : (c.w_core_pct <= 1 ? "中证1000小盘" : "均衡缓冲"), c.style_tone);
+      document.getElementById("c3-val").textContent = c.s_mb10.toFixed(1);
+      const mbEl = document.getElementById("c3-mb");
+      mbEl.textContent = fmtPct(c.mb_raw_pct, 1);
+      mbEl.style.color = c.mb_raw_pct >= 0 ? cssVar("--chart-5", "#9333ea") : cssVar("--chart-3", "#0891b2");
+      const c3Bar = document.getElementById("c3-bar");
+      c3Bar.style.width = Math.max(2, Math.min(100, c.s_mb10)) + "%";
+      c3Bar.style.backgroundColor = toneStyles(c.style_tone).fg;
+      document.getElementById("c3-dist").textContent = c.style_dist;
+
+      // Card 4: ACSI + Relay
+      applyPill(document.getElementById("c4-acsi-pill"), "仓位 " + c.acsi_pos + "%", c.acsi_tone);
+      document.getElementById("c4-acsi").textContent = c.acsi.toFixed(1);
+      document.getElementById("c4-acsi-zone").textContent = c.acsi_zone;
+      document.getElementById("c4-acsi-act").textContent = c.acsi_action;
+
+      applyPill(document.getElementById("c4-relay-pill"), c.relay_action, c.relay_tone);
+      const chk = (id, label, ok) => {
+        const el = document.getElementById(id);
+        const col = ok ? cssVar("--success", "#16a34a") : cssVar("--muted-foreground", "#888");
+        el.innerHTML = `<span class="pill-dot" style="background:${col}"></span><span>${label}</span>`;
+        el.style.color = ok ? cssVar("--foreground", "#eee") : cssVar("--muted-foreground", "#888");
+      };
+      chk("chk-stsi", "STSI " + c.stsi.toFixed(1) + "≤25", c.stsi <= 25);
+      chk("chk-bl", "大面 " + c.big_loss_pct.toFixed(1) + "%<50%", c.big_loss_pct < 50);
+      chk("chk-mo", "MO " + fmtPct(c.mo_pct, 1) + "<0", c.mo_pct < 0);
+      document.getElementById("c4-relay-reason").textContent = c.relay_reason;
+
+      // Pulse strip
+      document.getElementById("p-updn").innerHTML =
+        `<span style="color:${retColor(1)}">${c.up_cnt}涨</span> / <span style="color:${retColor(-1)}">${c.dn_cnt}跌</span>`;
+      document.getElementById("p-b").textContent = c.b_pct.toFixed(1) + "%";
+      document.getElementById("p-m").textContent = c.m_pct.toFixed(1) + "%";
+      document.getElementById("p-amt").textContent = Number(c.tot_amt_yi).toLocaleString() + " 亿元";
+      document.getElementById("p-ztdt").innerHTML =
+        `<span style="color:${retColor(1)}">${c.zt_count}</span> / <span style="color:${retColor(-1)}">${c.dt_count}</span> / <span>${c.zb_count} (${c.zb_rate_pct.toFixed(0)}%)</span>`;
+      document.getElementById("p-lb").textContent = c.max_lb + " 板 / " + c.lb2_count + " 只";
+      document.getElementById("p-prev").innerHTML =
+        `<span style="color:${retColor(c.prev_zt_ret_pct)}">${fmtPct(c.prev_zt_ret_pct, 2)}</span> / <span style="color:${c.big_loss_pct >= 50 ? cssVar("--error","#dc2626") : cssVar("--foreground","#eee")}">${c.big_loss_pct.toFixed(1)}%</span>`;
+
+      // Performance summary subtitle
+      const pf = PAYLOAD.perf;
+      document.getElementById("c-eq-sub").textContent =
+        `近 ${pf.years} 年累计 +${pf.main_total_pct}%（年化 +${pf.main_cagr_pct}% · 夏普 ${pf.main_sharpe} · 最大回撤 ${pf.main_mdd_pct}%）vs 50/50基准 ${pf.bench_total_pct}%（回撤 ${pf.bench_mdd_pct}%）`;
+
+      document.getElementById("a-cagr").textContent = "+" + pf.acsi_cagr_pct + "%";
+      document.getElementById("a-mdd").textContent = pf.acsi_mdd_pct + "%";
+      document.getElementById("a-hcagr").textContent = "+" + pf.hs300_cagr_pct + "%";
+      document.getElementById("a-hmdd").textContent = pf.hs300_mdd_pct + "%";
+    }
+
+    // ---- Canvas Chart Engine ----
+    function setupCanvas(canvas) {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.max(300, Math.floor(rect.width));
+      const h = Math.max(150, Math.floor(rect.height));
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { ctx, w, h };
+    }
+
+    function getSlicedST() {
+      const s = PAYLOAD.st_series;
+      const total = s.dates.length;
+      if (rangeDays >= 9000) return { start: 0, end: total };
+      const lastDate = new Date(s.dates[total - 1]);
+      const cut = new Date(lastDate.getTime() - rangeDays * 1.48 * 86400000);
+      const cutStr = cut.toISOString().slice(0, 10);
+      let start = s.dates.findIndex(d => d >= cutStr);
+      if (start < 0 || total - start < 20) start = Math.max(0, total - 30);
+      return { start, end: total };
+    }
+
+    function drawGridAndX(ctx, w, h, pad, dates, yTicks, yFmt) {
+      const border = cssVar("--border", "rgba(128,128,128,0.2)");
+      const muted = cssVar("--muted-foreground", "#888");
+      ctx.font = "11px ui-monospace, SFMono-Regular, Menlo, monospace";
+      ctx.lineWidth = 1;
+      yTicks.forEach(t => {
+        ctx.strokeStyle = border;
+        ctx.beginPath();
+        ctx.moveTo(pad.l, t.y);
+        ctx.lineTo(w - pad.r, t.y);
+        ctx.stroke();
+        ctx.fillStyle = muted;
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.fillText(yFmt(t.val), pad.l - 6, t.y);
+      });
+      const n = dates.length;
+      const step = Math.max(1, Math.floor(n / 6));
+      ctx.fillStyle = muted;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      for (let i = 0; i < n; i += step) {
+        const x = pad.l + (i / Math.max(1, n - 1)) * (w - pad.l - pad.r);
+        ctx.fillText(dates[i].slice(2), x, h - pad.b + 5);
+      }
+    }
+
+    function drawCrosshair(ctx, w, h, pad, idx, n) {
+      if (idx < 0 || idx >= n) return;
+      const x = pad.l + (idx / Math.max(1, n - 1)) * (w - pad.l - pad.r);
+      ctx.save();
+      ctx.strokeStyle = cssVar("--muted-foreground", "#888");
+      ctx.setLineDash([3, 3]);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.t);
+      ctx.lineTo(x, h - pad.b);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawSTCharts() {
+      if (activeTab !== "monitor") return;
+      const { start, end } = getSlicedST();
+      const s = PAYLOAD.st_series;
+      const sl = (arr) => arr.slice(start, end);
+      const dates = sl(s.dates);
+      const n = dates.length;
+      if (n < 2) return;
+
+      const pad = { l: 46, r: 44, t: 10, b: 22 };
+      const c1 = cssVar("--chart-1", "#3b82f6");
+      const c2 = cssVar("--chart-2", "#10b981");
+      const c3 = cssVar("--chart-3", "#06b6d4");
+      const c4 = cssVar("--chart-4", "#f59e0b");
+      const c5 = cssVar("--chart-5", "#a855f7");
+      const muted = cssVar("--muted-foreground", "#888");
+      const okCol = cssVar("--success", "#16a34a");
+      const warnCol = cssVar("--warning", "#d97706");
+
+      // --- 1. Equity Curve (rebased to 1.0 at range start) ---
+      {
+        const cv = document.getElementById("cv-eq");
+        const { ctx, w, h } = setupCanvas(cv);
+        const rawM = sl(s.eq_main), rawD = sl(s.eq_def), rawB = sl(s.eq_b50);
+        const pos = sl(s.pos), wc = sl(s.w_core);
+        const eqM = rawM.map(v => v / rawM[0]);
+        const eqD = rawD.map(v => v / rawD[0]);
+        const eqB = rawB.map(v => v / rawB[0]);
+        const all = eqM.concat(eqD, eqB);
+        const mn = Math.min(...all) * 0.96, mx = Math.max(...all) * 1.04;
+        const chartH = h - pad.t - pad.b - 12;
+        const yOf = v => pad.t + (1 - (v - mn) / Math.max(1e-6, mx - mn)) * chartH;
+        const xOf = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+
+        const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => {
+          const val = mn + f * (mx - mn);
+          return { val, y: yOf(val) };
+        });
+        drawGridAndX(ctx, w, h, pad, dates, ticks, v => ((v - 1) * 100).toFixed(0) + "%");
+
+        // Allocation ribbon at bottom
+        const ribY = pad.t + chartH + 3;
+        const barW = Math.max(1.5, (w - pad.l - pad.r) / n + 0.5);
+        for (let i = 0; i < n; i++) {
+          ctx.fillStyle = pos[i] < 0.5 ? "rgba(148,163,184,0.35)" : (wc[i] >= 0.5 ? "rgba(168,85,247,0.75)" : "rgba(6,182,212,0.75)");
+          ctx.fillRect(xOf(i) - barW / 2, ribY, barW, 6);
+        }
+
+        const plotLine = (arr, col, lw, dash = []) => {
+          ctx.save();
+          ctx.strokeStyle = col;
+          ctx.lineWidth = lw;
+          ctx.setLineDash(dash);
+          ctx.beginPath();
+          arr.forEach((v, i) => { i === 0 ? ctx.moveTo(xOf(i), yOf(v)) : ctx.lineTo(xOf(i), yOf(v)); });
+          ctx.stroke();
+          ctx.restore();
+        };
+        plotLine(eqB, muted, 1.3, [4, 3]);
+        plotLine(eqD, c3, 1.5);
+        plotLine(eqM, c1, 2.2);
+        drawCrosshair(ctx, w, h, pad, hoverIdxSt, n);
+      }
+
+      // --- 2. Timing Engine (Health_MO + MO bars + STSI) ---
+      {
+        const cv = document.getElementById("cv-timing");
+        const { ctx, w, h } = setupCanvas(cv);
+        const hmo = sl(s.health_mo), stsi = sl(s.stsi), mo = sl(s.mo_pct);
+        const yOf = v => pad.t + (1 - v / 100) * (h - pad.t - pad.b);
+        const xOf = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+
+        // Ice zone shading (0-20)
+        ctx.fillStyle = "rgba(37,99,235,0.08)";
+        ctx.fillRect(pad.l, yOf(20), w - pad.l - pad.r, yOf(0) - yOf(20));
+
+        drawGridAndX(ctx, w, h, pad, dates, [0, 20, 40, 60, 80, 100].map(v => ({ val: v, y: yOf(v) })), v => String(v));
+
+        // MO histogram on right axis (-20% to +20%)
+        const moMax = Math.max(15, ...mo.map(v => Math.abs(v || 0)));
+        const yZero = yOf(50);
+        const bw = Math.max(1.2, (w - pad.l - pad.r) / n * 0.65);
+        for (let i = 0; i < n; i++) {
+          const v = mo[i] || 0;
+          const bh = (v / moMax) * ((h - pad.t - pad.b) * 0.44);
+          ctx.fillStyle = v >= 0 ? "rgba(59,130,246,0.28)" : "rgba(245,158,11,0.28)";
+          ctx.fillRect(xOf(i) - bw / 2, v >= 0 ? yZero - bh : yZero, bw, Math.abs(bh));
+        }
+
+        // Threshold lines 60 & 40
+        ctx.save();
+        ctx.setLineDash([4, 4]);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = okCol; ctx.beginPath(); ctx.moveTo(pad.l, yOf(60)); ctx.lineTo(w - pad.r, yOf(60)); ctx.stroke();
+        ctx.strokeStyle = warnCol; ctx.beginPath(); ctx.moveTo(pad.l, yOf(40)); ctx.lineTo(w - pad.r, yOf(40)); ctx.stroke();
+        ctx.restore();
+
+        const plotLine = (arr, col, lw) => {
+          ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath();
+          let started = false;
+          arr.forEach((v, i) => {
+            if (v === null) return;
+            if (!started) { ctx.moveTo(xOf(i), yOf(v)); started = true; } else ctx.lineTo(xOf(i), yOf(v));
+          });
+          ctx.stroke();
+        };
+        plotLine(stsi, c4, 1.2);
+        plotLine(hmo, c2, 2.2);
+
+        // Right axis labels for MO
+        ctx.fillStyle = muted; ctx.textAlign = "left"; ctx.textBaseline = "middle";
+        ctx.fillText("+" + moMax.toFixed(0) + "%", w - pad.r + 4, pad.t + 6);
+        ctx.fillText("0%", w - pad.r + 4, yZero);
+        ctx.fillText("-" + moMax.toFixed(0) + "%", w - pad.r + 4, h - pad.b - 4);
+        drawCrosshair(ctx, w, h, pad, hoverIdxSt, n);
+      }
+
+      // --- 3. Style Engine (s_MB10 vs ChiNext/ZZ1000 ratio) ---
+      {
+        const cv = document.getElementById("cv-style");
+        const { ctx, w, h } = setupCanvas(cv);
+        const smb = sl(s.s_mb10), rat = sl(s.cy_zz_ratio);
+        const yOf = v => pad.t + (1 - v / 100) * (h - pad.t - pad.b);
+        const xOf = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+
+        // Band shading
+        ctx.fillStyle = "rgba(168,85,247,0.08)";
+        ctx.fillRect(pad.l, yOf(100), w - pad.l - pad.r, yOf(65) - yOf(100));
+        ctx.fillStyle = "rgba(6,182,212,0.08)";
+        ctx.fillRect(pad.l, yOf(35), w - pad.l - pad.r, yOf(0) - yOf(35));
+
+        drawGridAndX(ctx, w, h, pad, dates, [0, 35, 50, 65, 100].map(v => ({ val: v, y: yOf(v) })), v => String(v));
+
+        // Ratio on right axis
+        const rMin = Math.min(...rat) * 0.97, rMax = Math.max(...rat) * 1.03;
+        const yRat = v => pad.t + (1 - (v - rMin) / Math.max(1e-6, rMax - rMin)) * (h - pad.t - pad.b);
+        ctx.strokeStyle = c1; ctx.lineWidth = 1.6; ctx.beginPath();
+        rat.forEach((v, i) => { i === 0 ? ctx.moveTo(xOf(i), yRat(v)) : ctx.lineTo(xOf(i), yRat(v)); });
+        ctx.stroke();
+
+        // s_MB10 main line
+        ctx.strokeStyle = c5; ctx.lineWidth = 2.2; ctx.beginPath();
+        smb.forEach((v, i) => {
+          if (v === null) return;
+          i === 0 ? ctx.moveTo(xOf(i), yOf(v)) : ctx.lineTo(xOf(i), yOf(v));
+        });
+        ctx.stroke();
+
+        ctx.fillStyle = muted; ctx.textAlign = "left"; ctx.textBaseline = "middle";
+        ctx.fillText(rMax.toFixed(2), w - pad.r + 4, pad.t + 6);
+        ctx.fillText(rMin.toFixed(2), w - pad.r + 4, h - pad.b - 4);
+        drawCrosshair(ctx, w, h, pad, hoverIdxSt, n);
+      }
+
+      // Update readout
+      const ro = document.getElementById("st-readout");
+      if (hoverIdxSt >= 0 && hoverIdxSt < n) {
+        const k = start + hoverIdxSt;
+        const stLbl = s.pos[k] < 0.5 ? "空仓防守" : (s.w_core[k] >= 0.5 ? "满仓·创业板" : "满仓·中证1000");
+        ro.innerHTML =
+          `<strong class="text-[var(--foreground)]">${s.dates[k]}</strong>` +
+          `<span>指令：<strong class="text-[var(--foreground)]">${stLbl}</strong></span>` +
+          `<span>双引擎净值：<strong class="text-[var(--foreground)]">${s.eq_main[k].toFixed(3)}</strong></span>` +
+          `<span>Health_MO：<strong class="text-[var(--foreground)]">${s.health_mo[k]}</strong></span>` +
+          `<span>MO：<strong class="text-[var(--foreground)]">${fmtPct(s.mo_pct[k], 2)}</strong></span>` +
+          `<span>s_MB10：<strong class="text-[var(--foreground)]">${s.s_mb10[k]}</strong> (当日M-B ${fmtPct(s.mb_raw_pct[k], 1)})</span>` +
+          `<span>STSI：<strong class="text-[var(--foreground)]">${s.stsi[k]}</strong> · 大面率 ${s.big_loss_pct[k]}%</span>`;
+      }
+    }
+
+    function drawACSICharts() {
+      if (activeTab !== "acsi") return;
+      const a = PAYLOAD.acsi_series;
+      const n = a.dates.length;
+      if (n < 2) return;
+      const pad = { l: 46, r: 20, t: 10, b: 22 };
+      const c2 = cssVar("--chart-2", "#10b981");
+      const c1 = cssVar("--chart-1", "#3b82f6");
+      const muted = cssVar("--muted-foreground", "#888");
+      const xOf = i => pad.l + (i / (n - 1)) * (document.getElementById("cv-acsi-eq").parentElement.clientWidth - pad.l - pad.r);
+
+      // 1. Equity
+      {
+        const cv = document.getElementById("cv-acsi-eq");
+        const { ctx, w, h } = setupCanvas(cv);
+        const all = a.eq_acsi.concat(a.eq_hs300);
+        const mn = Math.min(...all) * 0.95, mx = Math.max(...all) * 1.05;
+        const yOf = v => pad.t + (1 - (v - mn) / (mx - mn)) * (h - pad.t - pad.b);
+        const x = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+        drawGridAndX(ctx, w, h, pad, a.dates, [0, 0.25, 0.5, 0.75, 1].map(f => ({ val: mn + f * (mx - mn), y: yOf(mn + f * (mx - mn)) })), v => v.toFixed(2));
+        ctx.strokeStyle = muted; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]); ctx.beginPath();
+        a.eq_hs300.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), yOf(v)) : ctx.lineTo(x(i), yOf(v)));
+        ctx.stroke(); ctx.setLineDash([]);
+        ctx.strokeStyle = c2; ctx.lineWidth = 2.2; ctx.beginPath();
+        a.eq_acsi.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), yOf(v)) : ctx.lineTo(x(i), yOf(v)));
+        ctx.stroke();
+        drawCrosshair(ctx, w, h, pad, hoverIdxAc, n);
+      }
+
+      // 2. ACSI level
+      {
+        const cv = document.getElementById("cv-acsi-val");
+        const { ctx, w, h } = setupCanvas(cv);
+        const yOf = v => pad.t + (1 - v / 100) * (h - pad.t - pad.b);
+        const x = i => pad.l + (i / (n - 1)) * (w - pad.l - pad.r);
+        ctx.fillStyle = "rgba(22,163,74,0.10)";
+        ctx.fillRect(pad.l, yOf(20), w - pad.l - pad.r, yOf(0) - yOf(20));
+        ctx.fillStyle = "rgba(220,38,38,0.10)";
+        ctx.fillRect(pad.l, yOf(100), w - pad.l - pad.r, yOf(70) - yOf(100));
+        drawGridAndX(ctx, w, h, pad, a.dates, [0, 20, 30, 50, 70, 100].map(v => ({ val: v, y: yOf(v) })), v => String(v));
+        ctx.strokeStyle = c1; ctx.lineWidth = 2; ctx.beginPath();
+        a.acsi.forEach((v, i) => i === 0 ? ctx.moveTo(x(i), yOf(v)) : ctx.lineTo(x(i), yOf(v)));
+        ctx.stroke();
+        drawCrosshair(ctx, w, h, pad, hoverIdxAc, n);
+      }
+
+      const ro = document.getElementById("acsi-readout");
+      if (hoverIdxAc >= 0 && hoverIdxAc < n) {
+        ro.innerHTML =
+          `<strong class="text-[var(--foreground)]">${a.dates[hoverIdxAc]}</strong> · ` +
+          `ACSI: <strong class="text-[var(--foreground)]">${a.acsi[hoverIdxAc]}</strong> · ` +
+          `沪深300: <strong class="text-[var(--foreground)]">${a.hs300[hoverIdxAc]}</strong> · ` +
+          `ACSI策略净值: <strong class="text-[var(--foreground)]">${a.eq_acsi[hoverIdxAc].toFixed(3)}</strong> · ` +
+          `目标仓位: <strong class="text-[var(--foreground)]">${a.pos[hoverIdxAc] * 100}%</strong>`;
+      }
+    }
+
+    function bindHover(canvasId, isACSI) {
+      const cv = document.getElementById(canvasId);
+      const padL = 46, padR = isACSI ? 20 : 44;
+      const onMove = (clientX) => {
+        const rect = cv.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const frac = Math.max(0, Math.min(1, (x - padL) / Math.max(1, rect.width - padL - padR)));
+        if (isACSI) {
+          hoverIdxAc = Math.round(frac * (PAYLOAD.acsi_series.dates.length - 1));
+          drawACSICharts();
+        } else {
+          const { start, end } = getSlicedST();
+          hoverIdxSt = Math.round(frac * (end - start - 1));
+          drawSTCharts();
+        }
+      };
+      cv.addEventListener("mousemove", e => onMove(e.clientX));
+      cv.addEventListener("touchstart", e => { if (e.touches[0]) onMove(e.touches[0].clientX); }, { passive: true });
+      cv.addEventListener("touchmove", e => { if (e.touches[0]) onMove(e.touches[0].clientX); }, { passive: true });
+      cv.addEventListener("mouseleave", () => {
+        if (isACSI) { hoverIdxAc = -1; drawACSICharts(); }
+        else { hoverIdxSt = -1; drawSTCharts(); }
+      });
+    }
+
+    function renderMatrixAndBoards() {
+      const body = document.getElementById("matrix-body");
+      const rows = PAYLOAD.recent.filter(r => {
+        if (matrixFilter === "long") return r.pos >= 99;
+        if (matrixFilter === "cash") return r.pos <= 1;
+        return true;
+      });
+      body.innerHTML = rows.map(r => {
+        const liveTag = r.is_live ? `<span class="ml-1 px-1.5 py-0.2 rounded text-[10px] font-semibold" style="background:rgba(220,38,38,0.15);color:${cssVar("--error","#dc2626")}">盘中</span>` : "";
+        const dirStyle = r.pos >= 99
+          ? (r.w_core >= 99 ? toneStyles("purple") : toneStyles("cyan"))
+          : toneStyles("amber");
+        const relStyle = r.relay === "可试错" ? toneStyles("green") : (r.relay === "高潮避坑" ? toneStyles("red") : toneStyles("amber"));
+        return `<tr class="hover:bg-[var(--content)]">
+          <td class="py-2 pr-3 font-medium whitespace-nowrap">${r.date}${liveTag}</td>
+          <td class="py-2 px-2 text-right" style="color:${retColor(r.chinext_ret)}">${fmtPct(r.chinext_ret, 2)}</td>
+          <td class="py-2 px-2 text-right" style="color:${retColor(r.zz1000_ret)}">${fmtPct(r.zz1000_ret, 2)}</td>
+          <td class="py-2 px-2 text-right font-medium">${r.acsi.toFixed(1)}</td>
+          <td class="py-2 px-2 text-right font-medium">${r.health_mo.toFixed(1)}</td>
+          <td class="py-2 px-2 text-right" style="color:${r.mo_pct >= 0 ? cssVar("--success","#16a34a") : cssVar("--warning","#d97706")}">${fmtPct(r.mo_pct, 2)}</td>
+          <td class="py-2 px-2 text-right font-medium">${r.s_mb10.toFixed(1)}</td>
+          <td class="py-2 px-2 text-right">${fmtPct(r.mb_raw, 1)}</td>
+          <td class="py-2 px-2 text-right">${r.stsi.toFixed(1)}</td>
+          <td class="py-2 px-2 text-right"><span style="color:${retColor(1)}">${r.zt}</span>/<span style="color:${retColor(-1)}">${r.dt}</span></td>
+          <td class="py-2 px-2 text-right" style="color:${r.big_loss >= 50 ? cssVar("--error","#dc2626") : "inherit"}">${r.big_loss.toFixed(1)}%</td>
+          <td class="py-2 px-2"><span class="px-2 py-0.5 rounded-full font-medium whitespace-nowrap" style="color:${dirStyle.fg};background:${dirStyle.bg}">${r.directive}</span></td>
+          <td class="py-2 pl-2"><span class="px-2 py-0.5 rounded-full font-medium whitespace-nowrap" style="color:${relStyle.fg};background:${relStyle.bg}">${r.relay}</span></td>
+        </tr>`;
+      }).join("");
+
+      document.querySelectorAll(".mfilter-btn").forEach(b => {
+        const act = b.dataset.mfilter === matrixFilter;
+        b.style.backgroundColor = act ? cssVar("--primary", "#2563eb") : "transparent";
+        b.style.color = act ? cssVar("--primary-foreground", "#fff") : cssVar("--muted-foreground", "#888");
+      });
+
+      // Boards
+      const b = PAYLOAD.boards || { top_zt: [], prev_zt_board: [] };
+      document.getElementById("zt-board-meta").textContent = "快照日 " + PAYLOAD.meta.snap_date + " · Top " + b.top_zt.length;
+      document.getElementById("zt-board-body").innerHTML = b.top_zt.length ? b.top_zt.map(x => `
+        <tr class="hover:bg-[var(--content)]">
+          <td class="py-1.5 font-medium">${x.name} <span class="text-[var(--muted-foreground)]">${x.code}</span></td>
+          <td class="py-1.5 text-right font-bold" style="color:${x.lb >= 3 ? cssVar("--error","#dc2626") : cssVar("--foreground","#eee")}">${x.lb}板</td>
+          <td class="py-1.5 text-right">${x.close.toFixed(2)}</td>
+          <td class="py-1.5 text-right" style="color:${retColor(x.ret_pct)}">${fmtPct(x.ret_pct, 2)}</td>
+          <td class="py-1.5 text-right">${x.amt_yi.toFixed(2)}</td>
+          <td class="py-1.5 text-right text-[var(--muted-foreground)]">${x.yizi ? "一字板" : "换手板"}</td>
+        </tr>`).join("") : `<tr><td colspan="6" class="py-4 text-center text-[var(--muted-foreground)]">暂无涨停数据</td></tr>`;
+
+      document.getElementById("pzt-board-meta").textContent = "追踪上日涨停表现 · Top " + b.prev_zt_board.length;
+      document.getElementById("pzt-board-body").innerHTML = b.prev_zt_board.length ? b.prev_zt_board.map(x => {
+        const tag = x.promoted ? `<span style="color:${cssVar("--error","#dc2626")}">晋级</span>`
+          : (x.big_loss ? `<span style="color:${cssVar("--success","#16a34a")}">核按钮/大面</span>` : `<span class="text-[var(--muted-foreground)]">震荡</span>`);
+        return `<tr class="hover:bg-[var(--content)]">
+          <td class="py-1.5 font-medium">${x.name} <span class="text-[var(--muted-foreground)]">${x.code}</span></td>
+          <td class="py-1.5 text-right">${x.prev_lb}板</td>
+          <td class="py-1.5 text-right" style="color:${retColor(x.open_pct)}">${fmtPct(x.open_pct, 2)}</td>
+          <td class="py-1.5 text-right font-semibold" style="color:${retColor(x.ret_pct)}">${fmtPct(x.ret_pct, 2)}</td>
+          <td class="py-1.5 text-right font-medium">${tag}</td>
+        </tr>`;
+      }).join("") : `<tr><td colspan="5" class="py-4 text-center text-[var(--muted-foreground)]">暂无昨日涨停追踪明细</td></tr>`;
+    }
+
+    function renderDeployMeta() {
+      const m = PAYLOAD.meta;
+      const items = [
+        ["最近更新时间", m.updated_at_bjt],
+        ["最后收盘确认日", m.last_confirmed_date],
+        ["实时快照时间", m.snap_date + " " + m.quote_time],
+        ["全市场拉取耗时", m.elapsed_sec + " 秒 (" + m.active_stocks + " 股)"],
+      ];
+      document.getElementById("deploy-meta").innerHTML = items.map(([k, v]) =>
+        `<div class="bg-[var(--content)] rounded-lg p-2.5 border border-[var(--border)]">
+          <div class="text-[var(--muted-foreground)]">${k}</div>
+          <div class="font-semibold text-[var(--foreground)] mt-0.5">${v}</div>
+        </div>`
+      ).join("");
+    }
+
+    function switchTab(tab) {
+      activeTab = tab;
+      ["monitor", "acsi", "matrix", "deploy"].forEach(t => {
+        document.getElementById("panel-" + t).classList.toggle("hidden", t !== tab);
+      });
+      document.getElementById("range-bar").classList.toggle("hidden", tab !== "monitor");
+      document.querySelectorAll(".tab-btn").forEach(b => {
+        const act = b.dataset.tab === tab;
+        b.style.backgroundColor = act ? cssVar("--primary", "#2563eb") : "transparent";
+        b.style.color = act ? cssVar("--primary-foreground", "#fff") : cssVar("--muted-foreground", "#888");
+      });
+      if (tab === "monitor") drawSTCharts();
+      if (tab === "acsi") drawACSICharts();
+    }
+
+    function setRange(days) {
+      rangeDays = days;
+      hoverIdxSt = -1;
+      document.querySelectorAll(".range-btn").forEach(b => {
+        const act = Number(b.dataset.range) === days;
+        b.style.backgroundColor = act ? cssVar("--primary", "#2563eb") : "transparent";
+        b.style.color = act ? cssVar("--primary-foreground", "#fff") : cssVar("--muted-foreground", "#888");
+      });
+      drawSTCharts();
+    }
+
+    // Wire events
+    document.getElementById("btn-mode-live").addEventListener("click", () => { activeMode = "live"; renderHeaderAndCards(); });
+    document.getElementById("btn-mode-eod").addEventListener("click", () => { activeMode = "eod"; renderHeaderAndCards(); });
+    document.querySelectorAll(".tab-btn").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tab)));
+    document.querySelectorAll(".range-btn").forEach(b => b.addEventListener("click", () => setRange(Number(b.dataset.range))));
+    document.querySelectorAll(".mfilter-btn").forEach(b => b.addEventListener("click", () => { matrixFilter = b.dataset.mfilter; renderMatrixAndBoards(); }));
+
+    ["cv-eq", "cv-timing", "cv-style"].forEach(id => bindHover(id, false));
+    ["cv-acsi-eq", "cv-acsi-val"].forEach(id => bindHover(id, true));
+
+    // Cross-page link on HTTP/HTTPS (GitHub Pages & local server) + optional local server refresh
+    if (location.protocol.startsWith("http")) {
+      const lnk = document.getElementById("lnk-options");
+      if (lnk) lnk.classList.remove("hidden");
+      fetch("/api/status").then(r => {
+        if (!r.ok) return;
+        const btn = document.getElementById("btn-refresh");
+        btn.classList.remove("hidden");
+        btn.classList.add("inline-flex");
+        btn.addEventListener("click", () => {
+          btn.disabled = true;
+          document.getElementById("refresh-txt").textContent = "拉取全A行情中...";
+          fetch("/api/refresh", { method: "POST" })
+            .then(res => res.json())
+            .then(() => location.reload())
+            .catch(() => {
+              btn.disabled = false;
+              document.getElementById("refresh-txt").textContent = "刷新失败，重试";
+            });
+        });
+      }).catch(() => {});
+    }
+
+    function redrawAll() {
+      renderHeaderAndCards();
+      renderMatrixAndBoards();
+      renderDeployMeta();
+      setRange(rangeDays);
+      switchTab(activeTab);
+    }
+
+    window.addEventListener("resize", () => { drawSTCharts(); drawACSICharts(); });
+    window.addEventListener("themechange", redrawAll);
+
+    // Init
+    redrawAll();
+  </script>
+</body>
+</html>

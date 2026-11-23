@@ -1,0 +1,7 @@
+pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+requests>=2.31
+akshare>=1.16
+baostock>=0.8.9
+matplotlib>=3.9
