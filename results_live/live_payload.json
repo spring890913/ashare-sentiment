@@ -1,21 +1,24 @@
 {
   "meta": {
-    "updated_at_bjt": "2026-11-23 15:09:53 BJT",
+    "updated_at_bjt": "2026-11-23 16:17:33 BJT",
     "snap_date": "2026-11-23",
-    "quote_time": "15:09:00",
+    "quote_time": "16:14:09",
     "last_confirmed_date": "2026-11-23",
     "has_intraday": false,
-    "elapsed_sec": 3.97,
+    "elapsed_sec": 29.83,
     "active_stocks": 5213,
     "ak_status": {
-      "mode": "skipped (--fast)"
+      "margin_info.csv": "updated (2026-11-20)",
+      "qvix_50etf.csv": "updated (2026-11-19)",
+      "below_net_asset.csv": "updated (2026-11-20)",
+      "ebs_hs300.csv": "updated (2026-11-20)"
     }
   },
   "eod": {
     "date": "2026-11-23",
     "mode_label": "收盘确认 · 2026-11-23",
     "phase": "2_修复启动",
-    "acsi": 8.5,
+    "acsi": 8.3,
     "acsi_pos": 100.0,
     "acsi_zone": "极度恐慌 (0-20)",
     "acsi_action": "分批重仓逆向布局",
@@ -4625,7 +4628,7 @@
       10.1,
       9.8,
       9.0,
-      8.5
+      8.3
     ],
     "hs300": [
       2931.0,
@@ -5622,7 +5625,7 @@
       "is_live": false,
       "zz1000_ret": 2.9,
       "chinext_ret": 3.08,
-      "acsi": 8.5,
+      "acsi": 8.3,
       "health_mo": 22.4,
       "mo_pct": -5.78,
       "s_mb10": 80.6,
@@ -6096,235 +6099,126 @@
   "boards": {
     "top_zt": [
       {
-        "code": "sz002771",
-        "name": "真视通",
-        "close": 17.4,
-        "lb": 5,
+        "code": "sh688836",
+        "name": "宇树科技-W",
+        "close": 708.0,
+        "lb": 1,
         "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 18.52,
-        "ret_pct": 9.99
+        "lim": 0.2,
+        "amt_yi": 46.77,
+        "ret_pct": 20.0
       },
       {
-        "code": "sh603324",
-        "name": "盛剑科技",
-        "close": 30.48,
-        "lb": 5,
+        "code": "sh603893",
+        "name": "瑞芯微",
+        "close": 202.88,
+        "lb": 1,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 8.08,
+        "amt_yi": 36.55,
         "ret_pct": 10.0
-      },
-      {
-        "code": "sz002579",
-        "name": "中京电子",
-        "close": 14.73,
-        "lb": 3,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 25.87,
-        "ret_pct": 10.01
       },
       {
         "code": "sz000530",
         "name": "冰山冷热",
         "close": 13.52,
-        "lb": 2,
+        "lb": 1,
         "yizi": false,
         "lim": 0.1,
         "amt_yi": 28.89,
         "ret_pct": 10.01
       },
       {
-        "code": "sz301313",
-        "name": "凡拓数创",
-        "close": 70.99,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.2,
-        "amt_yi": 17.41,
-        "ret_pct": 20.0
-      },
-      {
-        "code": "sz002086",
-        "name": "东方海洋",
-        "close": 4.13,
-        "lb": 2,
+        "code": "sh601689",
+        "name": "拓普集团",
+        "close": 52.92,
+        "lb": 1,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 17.29,
-        "ret_pct": 10.13
-      },
-      {
-        "code": "sh600327",
-        "name": "大东方",
-        "close": 5.31,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 12.83,
-        "ret_pct": 9.94
-      },
-      {
-        "code": "sh600467",
-        "name": "好当家",
-        "close": 3.15,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 12.68,
-        "ret_pct": 10.14
-      },
-      {
-        "code": "sh605577",
-        "name": "龙版传媒",
-        "close": 17.81,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 8.36,
-        "ret_pct": 10.01
-      },
-      {
-        "code": "sz002548",
-        "name": "金新农",
-        "close": 4.14,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 4.95,
-        "ret_pct": 10.11
-      },
-      {
-        "code": "sz002642",
-        "name": "荣联科技",
-        "close": 7.99,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 3.15,
-        "ret_pct": 10.06
-      },
-      {
-        "code": "sh603004",
-        "name": "鼎龙科技",
-        "close": 20.04,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 2.47,
-        "ret_pct": 9.99
-      }
-    ],
-    "prev_zt_board": [
-      {
-        "code": "sh603324",
-        "name": "盛剑科技",
-        "prev_lb": 4,
-        "ret_pct": 10.0,
-        "open_pct": -0.97,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sz002771",
-        "name": "真视通",
-        "prev_lb": 4,
-        "ret_pct": 9.99,
-        "open_pct": 9.99,
-        "promoted": true,
-        "big_loss": false
+        "amt_yi": 27.61,
+        "ret_pct": 10.0
       },
       {
         "code": "sz002579",
         "name": "中京电子",
-        "prev_lb": 2,
-        "ret_pct": 10.01,
-        "open_pct": 10.01,
-        "promoted": true,
-        "big_loss": false
+        "close": 14.73,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 25.87,
+        "ret_pct": 10.01
       },
       {
-        "code": "sz301313",
-        "name": "凡拓数创",
-        "prev_lb": 1,
-        "ret_pct": 20.0,
-        "open_pct": 4.11,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz002242",
+        "name": "九阳股份",
+        "close": 31.86,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 25.19,
+        "ret_pct": 10.01
       },
       {
-        "code": "sh600467",
-        "name": "好当家",
-        "prev_lb": 1,
-        "ret_pct": 10.14,
-        "open_pct": 2.8,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz000678",
+        "name": "襄阳轴承",
+        "close": 18.68,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 24.48,
+        "ret_pct": 10.01
       },
       {
-        "code": "sz002086",
-        "name": "东方海洋",
-        "prev_lb": 1,
-        "ret_pct": 10.13,
-        "open_pct": 9.87,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz000636",
+        "name": "风华高科",
+        "close": 28.99,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 23.18,
+        "ret_pct": 10.02
       },
       {
-        "code": "sz002548",
-        "name": "金新农",
-        "prev_lb": 1,
-        "ret_pct": 10.11,
-        "open_pct": 2.93,
-        "promoted": true,
-        "big_loss": false
+        "code": "sh688585",
+        "name": "上纬新材",
+        "close": 178.99,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.2,
+        "amt_yi": 20.95,
+        "ret_pct": 20.0
       },
       {
-        "code": "sz002642",
-        "name": "荣联科技",
-        "prev_lb": 1,
-        "ret_pct": 10.06,
-        "open_pct": 10.06,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz002148",
+        "name": "北纬科技",
+        "close": 11.07,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 19.51,
+        "ret_pct": 10.04
       },
       {
-        "code": "sz002199",
-        "name": "东晶电子",
-        "prev_lb": 1,
-        "ret_pct": 10.05,
-        "open_pct": 7.41,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz002815",
+        "name": "崇达技术",
+        "close": 14.96,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 18.65,
+        "ret_pct": 10.0
       },
       {
-        "code": "sh605018",
-        "name": "长华集团",
-        "prev_lb": 1,
-        "ret_pct": 10.04,
-        "open_pct": -2.24,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sh603960",
-        "name": "克来机电",
-        "prev_lb": 1,
-        "ret_pct": 10.02,
-        "open_pct": 10.02,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sh605577",
-        "name": "龙版传媒",
-        "prev_lb": 1,
-        "ret_pct": 10.01,
-        "open_pct": 0.49,
-        "promoted": true,
-        "big_loss": false
+        "code": "sz002771",
+        "name": "真视通",
+        "close": 17.4,
+        "lb": 1,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 18.52,
+        "ret_pct": 9.99
       }
-    ]
+    ],
+    "prev_zt_board": []
   }
 }
