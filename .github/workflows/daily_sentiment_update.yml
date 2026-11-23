@@ -1,0 +1,59 @@
+name: Daily A-Share Sentiment Update
+
+on:
+  schedule:
+    # 15:15 Beijing Time (07:15 UTC), Monday to Friday (after A-share 15:00 close)
+    - cron: '15 7 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      fast_mode:
+        description: 'Skip slow AkShare sub-feeds (faster ~4s run)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run daily incremental sentiment & options update
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          FLAGS="--notify"
+          if [ "${{ github.event.inputs.fast_mode }}" = "true" ]; then
+            FLAGS="$FLAGS --fast"
+          fi
+          python daily_update.py $FLAGS
+          python options_intraday.py --once
+
+      - name: Commit & push updated dashboard and data
+        run: |
+          git config user.name "ashare-sentiment-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/ results_live/ docs/index.html docs/options.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            TZ=Asia/Shanghai git commit -m "chore: daily sentiment update $(date +'%Y-%m-%d %H:%M BJT')"
+            git push
+          fi
