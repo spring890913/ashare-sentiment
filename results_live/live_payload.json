@@ -1,86 +1,86 @@
 {
   "meta": {
-    "updated_at_bjt": "2026-11-23 16:17:33 BJT",
-    "snap_date": "2026-11-23",
+    "updated_at_bjt": "2026-11-25 02:53:43 BJT",
+    "snap_date": "2026-11-24",
     "quote_time": "16:14:09",
-    "last_confirmed_date": "2026-11-23",
+    "last_confirmed_date": "2026-11-24",
     "has_intraday": false,
-    "elapsed_sec": 29.83,
-    "active_stocks": 5213,
+    "elapsed_sec": 28.6,
+    "active_stocks": 5219,
     "ak_status": {
-      "margin_info.csv": "updated (2026-11-20)",
+      "margin_info.csv": "updated (2026-11-23)",
       "qvix_50etf.csv": "updated (2026-11-19)",
-      "below_net_asset.csv": "updated (2026-11-20)",
-      "ebs_hs300.csv": "updated (2026-11-20)"
+      "below_net_asset.csv": "updated (2026-11-24)",
+      "ebs_hs300.csv": "updated (2026-11-24)"
     }
   },
   "eod": {
-    "date": "2026-11-23",
-    "mode_label": "收盘确认 · 2026-11-23",
-    "phase": "2_修复启动",
-    "acsi": 8.3,
+    "date": "2026-11-24",
+    "mode_label": "收盘确认 · 2026-11-24",
+    "phase": "3_发酵主升",
+    "acsi": 7.9,
     "acsi_pos": 100.0,
     "acsi_zone": "极度恐慌 (0-20)",
     "acsi_action": "分批重仓逆向布局",
     "acsi_tone": "green",
-    "health_mo": 22.4,
-    "stsi": 34.3,
-    "mo_pct": -5.78,
-    "s_mo": 10.1,
-    "s_seal": 94.5,
-    "s_anti_nuke": 94.2,
-    "s_mb10": 80.6,
-    "mb_raw_pct": -4.29,
-    "b_pct": 84.7,
-    "m_pct": 80.4,
-    "up_cnt": 4306,
-    "dn_cnt": 780,
-    "tot_amt_yi": 15375.0,
-    "zt_count": 146,
-    "dt_count": 3,
-    "zb_count": 24,
-    "zb_rate_pct": 14.1,
-    "max_lb": 5,
-    "lb2_count": 16,
-    "prev_zt_cnt": 28,
-    "promo_rate_pct": 57.1,
-    "big_loss_pct": 0.0,
-    "prev_zt_ret_pct": 7.69,
+    "health_mo": 25.4,
+    "stsi": 55.2,
+    "mo_pct": -5.74,
+    "s_mo": 10.4,
+    "s_seal": 0.2,
+    "s_anti_nuke": 72.3,
+    "s_mb10": 86.5,
+    "mb_raw_pct": 14.55,
+    "b_pct": 36.0,
+    "m_pct": 50.6,
+    "up_cnt": 1838,
+    "dn_cnt": 3267,
+    "tot_amt_yi": 16369.0,
+    "zt_count": 55,
+    "dt_count": 2,
+    "zb_count": 75,
+    "zb_rate_pct": 57.7,
+    "max_lb": 4,
+    "lb2_count": 30,
+    "prev_zt_cnt": 146,
+    "promo_rate_pct": 20.5,
+    "big_loss_pct": 13.0,
+    "prev_zt_ret_pct": 4.18,
     "pos_pct": 0,
     "w_core_pct": 100,
     "timing_action": "0% 空仓防守 (货币基金)",
-    "timing_reason": "Health_MO 处于弱势区 (22.4)",
-    "timing_dist": "距右侧进场 (60) 差 37.6 分；距冰点抄底 (STSI≤20) 差 14.3 分",
+    "timing_reason": "Health_MO 处于弱势区 (25.4)",
+    "timing_dist": "距右侧进场 (60) 差 34.6 分；距冰点抄底 (STSI≤20) 差 35.2 分",
     "timing_tone": "amber",
     "style_target": "创业板指 (核心龙头)",
     "style_etf": "创业板ETF (159915)",
-    "style_dist": "s_MB10=80.6，距切回中证1000 (≤35) 还有 45.6 分",
+    "style_dist": "s_MB10=86.5，距切回中证1000 (≤35) 还有 51.5 分",
     "style_tone": "purple",
     "dual_directive": "0% 空仓防守（风格偏向：创业板指 (核心龙头)）",
     "relay_action": "空仓观望 · 等待出清",
-    "relay_reason": "未满足：STSI=34.3>25",
+    "relay_reason": "未满足：STSI=55.2>25",
     "relay_tone": "amber",
-    "hs300_close": 3958.29,
-    "hs300_ret_pct": 0.09,
-    "zz1000_close": 5812.32,
-    "zz1000_ret_pct": 2.9,
-    "chinext_close": 2280.2,
-    "chinext_ret_pct": 3.08
+    "hs300_close": 3963.82,
+    "hs300_ret_pct": 0.14,
+    "zz1000_close": 5799.01,
+    "zz1000_ret_pct": -0.23,
+    "chinext_close": 2278.99,
+    "chinext_ret_pct": -0.05
   },
   "live": null,
   "perf": {
-    "years": 5.37,
-    "main_total_pct": 133.9,
-    "main_cagr_pct": 17.13,
+    "years": 5.38,
+    "main_total_pct": 152.3,
+    "main_cagr_pct": 18.78,
     "main_mdd_pct": -23.2,
-    "main_sharpe": 0.69,
-    "bench_total_pct": -22.8,
-    "bench_cagr_pct": -4.7,
+    "main_sharpe": 0.75,
+    "bench_total_pct": -22.9,
+    "bench_cagr_pct": -4.72,
     "bench_mdd_pct": -50.9,
     "acsi_years": 10.7,
-    "acsi_cagr_pct": 5.8,
+    "acsi_cagr_pct": 5.81,
     "acsi_mdd_pct": -28.2,
-    "hs300_cagr_pct": 2.84,
+    "hs300_cagr_pct": 2.85,
     "hs300_mdd_pct": -45.6
   },
   "st_series": {
@@ -293,7 +293,6 @@
       "2026-07-31",
       "2026-08-10",
       "2026-08-18",
-      "2026-08-24",
       "2026-08-25",
       "2026-08-26",
       "2026-08-27",
@@ -352,7 +351,8 @@
       "2026-11-18",
       "2026-11-19",
       "2026-11-20",
-      "2026-11-23"
+      "2026-11-23",
+      "2026-11-24"
     ],
     "eq_main": [
       0.986,
@@ -563,7 +563,6 @@
       2.692,
       2.936,
       3.029,
-      2.877,
       2.797,
       2.841,
       2.847,
@@ -622,7 +621,8 @@
       2.481,
       2.445,
       2.39,
-      2.339
+      2.339,
+      2.523
     ],
     "eq_def": [
       0.989,
@@ -833,7 +833,6 @@
       1.76,
       1.919,
       1.98,
-      1.929,
       1.876,
       1.905,
       1.909,
@@ -892,7 +891,8 @@
       1.664,
       1.639,
       1.616,
-      1.619
+      1.619,
+      1.649
     ],
     "eq_b50": [
       1.01,
@@ -1103,7 +1103,6 @@
       1.03,
       1.108,
       1.15,
-      1.074,
       1.072,
       1.076,
       1.098,
@@ -1162,7 +1161,8 @@
       0.793,
       0.783,
       0.75,
-      0.772
+      0.772,
+      0.771
     ],
     "health_mo": [
       35.3,
@@ -1373,7 +1373,6 @@
       68.3,
       83.2,
       69.0,
-      43.8,
       41.0,
       47.6,
       58.0,
@@ -1432,7 +1431,8 @@
       18.0,
       13.7,
       12.8,
-      22.4
+      22.4,
+      25.4
     ],
     "stsi": [
       48.9,
@@ -1643,7 +1643,6 @@
       50.3,
       76.0,
       60.9,
-      19.1,
       34.7,
       52.4,
       73.3,
@@ -1702,7 +1701,8 @@
       16.9,
       8.5,
       6.3,
-      34.3
+      34.3,
+      55.2
     ],
     "mo_pct": [
       -1.3,
@@ -1913,7 +1913,6 @@
       7.7,
       10.3,
       3.9,
-      -1.0,
       1.9,
       2.2,
       3.1,
@@ -1972,7 +1971,8 @@
       -6.5,
       -8.8,
       -11.5,
-      -5.8
+      -5.8,
+      -5.7
     ],
     "s_mb10": [
       89.6,
@@ -2183,7 +2183,6 @@
       0.1,
       0.2,
       61.7,
-      43.8,
       25.0,
       26.7,
       30.5,
@@ -2242,7 +2241,8 @@
       70.8,
       87.4,
       89.7,
-      80.6
+      80.6,
+      86.5
     ],
     "mb_raw_pct": [
       -3.3,
@@ -2453,7 +2453,6 @@
       -6.9,
       -23.5,
       6.4,
-      1.3,
       -22.4,
       2.5,
       19.8,
@@ -2512,7 +2511,8 @@
       23.9,
       20.1,
       12.7,
-      -4.3
+      -4.3,
+      14.5
     ],
     "big_loss_pct": [
       8.8,
@@ -2723,7 +2723,6 @@
       4.2,
       12.7,
       22.1,
-      25.5,
       26.1,
       7.7,
       3.9,
@@ -2782,7 +2781,8 @@
       38.2,
       38.5,
       60.9,
-      0.0
+      0.0,
+      13.0
     ],
     "cy_zz_ratio": [
       1.0,
@@ -2993,7 +2993,6 @@
       0.988,
       0.956,
       0.975,
-      0.958,
       0.943,
       0.946,
       0.939,
@@ -3052,7 +3051,8 @@
       0.798,
       0.807,
       0.819,
-      0.82
+      0.82,
+      0.821
     ],
     "pos": [
       0.0,
@@ -3276,7 +3276,6 @@
       1.0,
       1.0,
       1.0,
-      1.0,
       0.0,
       0.0,
       0.0,
@@ -3322,6 +3321,7 @@
       1.0,
       1.0,
       1.0,
+      0.0,
       0.0
     ],
     "w_core": [
@@ -3588,7 +3588,7 @@
       0.0,
       0.0,
       0.0,
-      0.0,
+      1.0,
       1.0,
       1.0,
       1.0,
@@ -3803,7 +3803,6 @@
       7076.0,
       7734.0,
       7946.0,
-      7491.0,
       7527.0,
       7545.0,
       7733.0,
@@ -3862,7 +3861,8 @@
       6053.0,
       5939.0,
       5649.0,
-      5812.0
+      5812.0,
+      5799.0
     ],
     "chinext": [
       3352.0,
@@ -4073,7 +4073,6 @@
       3344.0,
       3537.0,
       3706.0,
-      3432.0,
       3398.0,
       3415.0,
       3473.0,
@@ -4132,7 +4131,8 @@
       2312.0,
       2293.0,
       2212.0,
-      2280.0
+      2280.0,
+      2279.0
     ]
   },
   "acsi_series": {
@@ -4352,7 +4352,6 @@
       "2026-08-18",
       "2026-09-03",
       "2026-09-21",
-      "2026-10-13",
       "2026-10-14",
       "2026-10-15",
       "2026-10-16",
@@ -4381,7 +4380,8 @@
       "2026-11-18",
       "2026-11-19",
       "2026-11-20",
-      "2026-11-23"
+      "2026-11-23",
+      "2026-11-24"
     ],
     "acsi": [
       25.9,
@@ -4599,7 +4599,6 @@
       37.0,
       34.6,
       20.6,
-      12.4,
       11.4,
       10.5,
       9.3,
@@ -4628,7 +4627,8 @@
       10.1,
       9.8,
       9.0,
-      8.3
+      8.4,
+      7.9
     ],
     "hs300": [
       2931.0,
@@ -4846,7 +4846,6 @@
       4726.0,
       4553.0,
       4540.0,
-      4276.0,
       4218.0,
       4166.0,
       4171.0,
@@ -4875,7 +4874,8 @@
       3984.0,
       3985.0,
       3955.0,
-      3958.0
+      3958.0,
+      3964.0
     ],
     "eq_acsi": [
       1.0,
@@ -5093,7 +5093,6 @@
       2.187,
       2.107,
       2.101,
-      1.979,
       1.952,
       1.928,
       1.93,
@@ -5122,7 +5121,8 @@
       1.843,
       1.844,
       1.83,
-      1.832
+      1.832,
+      1.834
     ],
     "eq_hs300": [
       1.0,
@@ -5340,7 +5340,6 @@
       1.613,
       1.553,
       1.549,
-      1.459,
       1.439,
       1.422,
       1.423,
@@ -5369,7 +5368,8 @@
       1.359,
       1.36,
       1.349,
-      1.351
+      1.351,
+      1.353
     ],
     "pos": [
       1.0,
@@ -5621,11 +5621,30 @@
   },
   "recent": [
     {
+      "date": "2026-11-24",
+      "is_live": false,
+      "zz1000_ret": -0.23,
+      "chinext_ret": -0.05,
+      "acsi": 7.9,
+      "health_mo": 25.4,
+      "mo_pct": -5.74,
+      "s_mb10": 86.5,
+      "mb_raw": 14.5,
+      "stsi": 55.2,
+      "zt": 55,
+      "dt": 2,
+      "big_loss": 13.0,
+      "directive": "空仓防守",
+      "pos": 0,
+      "w_core": 100,
+      "relay": "观望"
+    },
+    {
       "date": "2026-11-23",
       "is_live": false,
       "zz1000_ret": 2.9,
       "chinext_ret": 3.08,
-      "acsi": 8.3,
+      "acsi": 8.4,
       "health_mo": 22.4,
       "mo_pct": -5.78,
       "s_mb10": 80.6,
@@ -6075,150 +6094,240 @@
       "pos": 0,
       "w_core": 0,
       "relay": "观望"
-    },
-    {
-      "date": "2026-10-20",
-      "is_live": false,
-      "zz1000_ret": 1.02,
-      "chinext_ret": -0.26,
-      "acsi": 7.4,
-      "health_mo": 17.1,
-      "mo_pct": -3.13,
-      "s_mb10": 17.2,
-      "mb_raw": -6.2,
-      "stsi": 33.7,
-      "zt": 51,
-      "dt": 6,
-      "big_loss": 16.3,
-      "directive": "空仓防守",
-      "pos": 0,
-      "w_core": 0,
-      "relay": "观望"
     }
   ],
   "boards": {
     "top_zt": [
       {
-        "code": "sh688836",
-        "name": "宇树科技-W",
-        "close": 708.0,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.2,
-        "amt_yi": 46.77,
-        "ret_pct": 20.0
-      },
-      {
-        "code": "sh603893",
-        "name": "瑞芯微",
-        "close": 202.88,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 36.55,
-        "ret_pct": 10.0
-      },
-      {
-        "code": "sz000530",
-        "name": "冰山冷热",
-        "close": 13.52,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 28.89,
-        "ret_pct": 10.01
-      },
-      {
-        "code": "sh601689",
-        "name": "拓普集团",
-        "close": 52.92,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 27.61,
-        "ret_pct": 10.0
-      },
-      {
         "code": "sz002579",
         "name": "中京电子",
-        "close": 14.73,
-        "lb": 1,
+        "close": 16.2,
+        "lb": 4,
+        "yizi": true,
+        "lim": 0.1,
+        "amt_yi": 8.33,
+        "ret_pct": 9.98
+      },
+      {
+        "code": "sz002086",
+        "name": "东方海洋",
+        "close": 4.54,
+        "lb": 3,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 25.87,
+        "amt_yi": 24.94,
+        "ret_pct": 9.93
+      },
+      {
+        "code": "sz002548",
+        "name": "金新农",
+        "close": 4.55,
+        "lb": 3,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 3.48,
+        "ret_pct": 9.9
+      },
+      {
+        "code": "sh605018",
+        "name": "长华集团",
+        "close": 12.42,
+        "lb": 3,
+        "yizi": true,
+        "lim": 0.1,
+        "amt_yi": 0.62,
         "ret_pct": 10.01
+      },
+      {
+        "code": "sh603960",
+        "name": "克来机电",
+        "close": 16.91,
+        "lb": 3,
+        "yizi": true,
+        "lim": 0.1,
+        "amt_yi": 0.26,
+        "ret_pct": 10.02
+      },
+      {
+        "code": "sz002685",
+        "name": "华东重机",
+        "close": 8.95,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 42.92,
+        "ret_pct": 9.95
+      },
+      {
+        "code": "sz301413",
+        "name": "安培龙",
+        "close": 89.71,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.2,
+        "amt_yi": 16.17,
+        "ret_pct": 20.0
       },
       {
         "code": "sz002242",
         "name": "九阳股份",
-        "close": 31.86,
-        "lb": 1,
+        "close": 35.05,
+        "lb": 2,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 25.19,
+        "amt_yi": 11.43,
         "ret_pct": 10.01
       },
       {
-        "code": "sz000678",
-        "name": "襄阳轴承",
-        "close": 18.68,
-        "lb": 1,
+        "code": "sz002724",
+        "name": "海洋王",
+        "close": 10.56,
+        "lb": 2,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 24.48,
-        "ret_pct": 10.01
-      },
-      {
-        "code": "sz000636",
-        "name": "风华高科",
-        "close": 28.99,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 23.18,
-        "ret_pct": 10.02
-      },
-      {
-        "code": "sh688585",
-        "name": "上纬新材",
-        "close": 178.99,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.2,
-        "amt_yi": 20.95,
-        "ret_pct": 20.0
-      },
-      {
-        "code": "sz002148",
-        "name": "北纬科技",
-        "close": 11.07,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 19.51,
-        "ret_pct": 10.04
-      },
-      {
-        "code": "sz002815",
-        "name": "崇达技术",
-        "close": 14.96,
-        "lb": 1,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 18.65,
+        "amt_yi": 10.31,
         "ret_pct": 10.0
       },
       {
-        "code": "sz002771",
-        "name": "真视通",
-        "close": 17.4,
-        "lb": 1,
+        "code": "sh605488",
+        "name": "福莱新材",
+        "close": 51.45,
+        "lb": 2,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 18.52,
-        "ret_pct": 9.99
+        "amt_yi": 10.08,
+        "ret_pct": 10.01
+      },
+      {
+        "code": "sh603662",
+        "name": "柯力传感",
+        "close": 53.01,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 8.76,
+        "ret_pct": 10.0
+      },
+      {
+        "code": "sh601599",
+        "name": "浙文影业",
+        "close": 4.02,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 8.52,
+        "ret_pct": 10.14
       }
     ],
-    "prev_zt_board": []
+    "prev_zt_board": [
+      {
+        "code": "sz002771",
+        "name": "真视通",
+        "prev_lb": 5,
+        "ret_pct": -0.4,
+        "open_pct": 2.3,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh603324",
+        "name": "盛剑科技",
+        "prev_lb": 5,
+        "ret_pct": -3.74,
+        "open_pct": -0.98,
+        "promoted": false,
+        "big_loss": true
+      },
+      {
+        "code": "sz002579",
+        "name": "中京电子",
+        "prev_lb": 3,
+        "ret_pct": 9.98,
+        "open_pct": 9.98,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sz301313",
+        "name": "凡拓数创",
+        "prev_lb": 2,
+        "ret_pct": 16.64,
+        "open_pct": 12.52,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh603960",
+        "name": "克来机电",
+        "prev_lb": 2,
+        "ret_pct": 10.02,
+        "open_pct": 10.02,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sh605018",
+        "name": "长华集团",
+        "prev_lb": 2,
+        "ret_pct": 10.01,
+        "open_pct": 10.01,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sz002086",
+        "name": "东方海洋",
+        "prev_lb": 2,
+        "ret_pct": 9.93,
+        "open_pct": 6.78,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sz002548",
+        "name": "金新农",
+        "prev_lb": 2,
+        "ret_pct": 9.9,
+        "open_pct": -0.48,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sz002199",
+        "name": "东晶电子",
+        "prev_lb": 2,
+        "ret_pct": 9.62,
+        "open_pct": 7.69,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh600467",
+        "name": "好当家",
+        "prev_lb": 2,
+        "ret_pct": 3.81,
+        "open_pct": -5.08,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh605577",
+        "name": "龙版传媒",
+        "prev_lb": 2,
+        "ret_pct": 2.25,
+        "open_pct": -0.56,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh600327",
+        "name": "大东方",
+        "prev_lb": 2,
+        "ret_pct": -0.19,
+        "open_pct": -5.08,
+        "promoted": false,
+        "big_loss": false
+      }
+    ]
   }
 }
