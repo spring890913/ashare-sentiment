@@ -1,86 +1,86 @@
 {
   "meta": {
-    "updated_at_bjt": "2026-11-26 01:58:05 BJT",
-    "snap_date": "2026-11-25",
+    "updated_at_bjt": "2026-11-27 01:43:14 BJT",
+    "snap_date": "2026-11-26",
     "quote_time": "16:14:09",
-    "last_confirmed_date": "2026-11-25",
+    "last_confirmed_date": "2026-11-26",
     "has_intraday": false,
-    "elapsed_sec": 30.49,
-    "active_stocks": 5216,
+    "elapsed_sec": 19.85,
+    "active_stocks": 5221,
     "ak_status": {
-      "margin_info.csv": "updated (2026-11-24)",
+      "margin_info.csv": "updated (2026-11-25)",
       "qvix_50etf.csv": "updated (2026-11-19)",
-      "below_net_asset.csv": "updated (2026-11-25)",
-      "ebs_hs300.csv": "updated (2026-11-25)"
+      "below_net_asset.csv": "updated (2026-11-26)",
+      "ebs_hs300.csv": "updated (2026-11-26)"
     }
   },
   "eod": {
-    "date": "2026-11-25",
-    "mode_label": "收盘确认 · 2026-11-25",
+    "date": "2026-11-26",
+    "mode_label": "收盘确认 · 2026-11-26",
     "phase": "3_发酵主升",
-    "acsi": 7.1,
+    "acsi": 6.3,
     "acsi_pos": 100.0,
     "acsi_zone": "极度恐慌 (0-20)",
     "acsi_action": "分批重仓逆向布局",
     "acsi_tone": "green",
-    "health_mo": 24.7,
-    "stsi": 60.1,
-    "mo_pct": -8.18,
-    "s_mo": 3.4,
-    "s_seal": 22.7,
-    "s_anti_nuke": 0.3,
-    "s_mb10": 87.9,
-    "mb_raw_pct": 7.69,
-    "b_pct": 11.0,
-    "m_pct": 18.7,
-    "up_cnt": 567,
-    "dn_cnt": 4588,
-    "tot_amt_yi": 13692.0,
-    "zt_count": 51,
-    "dt_count": 48,
-    "zb_count": 30,
-    "zb_rate_pct": 37.0,
+    "health_mo": 30.0,
+    "stsi": 52.5,
+    "mo_pct": -8.0,
+    "s_mo": 3.9,
+    "s_seal": 39.5,
+    "s_anti_nuke": 48.3,
+    "s_mb10": 88.5,
+    "mb_raw_pct": 19.88,
+    "b_pct": 33.3,
+    "m_pct": 53.2,
+    "up_cnt": 1683,
+    "dn_cnt": 3375,
+    "tot_amt_yi": 13003.0,
+    "zt_count": 67,
+    "dt_count": 5,
+    "zb_count": 32,
+    "zb_rate_pct": 32.3,
     "max_lb": 5,
-    "lb2_count": 14,
-    "prev_zt_cnt": 55,
-    "promo_rate_pct": 25.5,
-    "big_loss_pct": 58.2,
-    "prev_zt_ret_pct": -1.37,
+    "lb2_count": 15,
+    "prev_zt_cnt": 51,
+    "promo_rate_pct": 29.4,
+    "big_loss_pct": 21.6,
+    "prev_zt_ret_pct": 3.22,
     "pos_pct": 0,
     "w_core_pct": 100,
     "timing_action": "0% 空仓防守 (货币基金)",
-    "timing_reason": "Health_MO 处于弱势区 (24.7)",
-    "timing_dist": "距右侧进场 (60) 差 35.3 分；距冰点抄底 (STSI≤20) 差 40.1 分",
+    "timing_reason": "Health_MO 处于弱势区 (30.0)",
+    "timing_dist": "距右侧进场 (60) 差 30.0 分；距冰点抄底 (STSI≤20) 差 32.5 分",
     "timing_tone": "amber",
     "style_target": "创业板指 (核心龙头)",
     "style_etf": "创业板ETF (159915)",
-    "style_dist": "s_MB10=87.9，距切回中证1000 (≤35) 还有 52.9 分",
+    "style_dist": "s_MB10=88.5，距切回中证1000 (≤35) 还有 53.5 分",
     "style_tone": "purple",
     "dual_directive": "0% 空仓防守（风格偏向：创业板指 (核心龙头)）",
     "relay_action": "空仓观望 · 等待出清",
-    "relay_reason": "未满足：STSI=60.1>25，大面率=58.2%≥50%(防核按钮)",
+    "relay_reason": "未满足：STSI=52.5>25",
     "relay_tone": "amber",
-    "hs300_close": 3898.24,
-    "hs300_ret_pct": -1.65,
-    "zz1000_close": 5541.55,
-    "zz1000_ret_pct": -4.44,
-    "chinext_close": 2183.58,
-    "chinext_ret_pct": -4.19
+    "hs300_close": 3900.55,
+    "hs300_ret_pct": 0.06,
+    "zz1000_close": 5531.84,
+    "zz1000_ret_pct": -0.18,
+    "chinext_close": 2189.82,
+    "chinext_ret_pct": 0.29
   },
   "live": null,
   "perf": {
-    "years": 5.38,
+    "years": 5.39,
     "main_total_pct": 152.1,
-    "main_cagr_pct": 18.74,
+    "main_cagr_pct": 18.73,
     "main_mdd_pct": -23.2,
     "main_sharpe": 0.74,
     "bench_total_pct": -26.2,
-    "bench_cagr_pct": -5.5,
+    "bench_cagr_pct": -5.48,
     "bench_mdd_pct": -50.9,
     "acsi_years": 10.7,
     "acsi_cagr_pct": 5.65,
     "acsi_mdd_pct": -28.2,
-    "hs300_cagr_pct": 2.69,
+    "hs300_cagr_pct": 2.7,
     "hs300_mdd_pct": -45.6
   },
   "st_series": {
@@ -352,7 +352,8 @@
       "2026-11-20",
       "2026-11-23",
       "2026-11-24",
-      "2026-11-25"
+      "2026-11-25",
+      "2026-11-26"
     ],
     "eq_main": [
       0.986,
@@ -622,6 +623,7 @@
       2.39,
       2.339,
       2.523,
+      2.521,
       2.521
     ],
     "eq_def": [
@@ -892,6 +894,7 @@
       1.616,
       1.619,
       1.649,
+      1.647,
       1.647
     ],
     "eq_b50": [
@@ -1162,6 +1165,7 @@
       0.75,
       0.772,
       0.771,
+      0.738,
       0.738
     ],
     "health_mo": [
@@ -1432,7 +1436,8 @@
       12.8,
       22.4,
       25.4,
-      24.7
+      24.7,
+      30.0
     ],
     "stsi": [
       48.9,
@@ -1702,7 +1707,8 @@
       6.3,
       34.3,
       55.2,
-      60.1
+      60.1,
+      52.5
     ],
     "mo_pct": [
       -1.3,
@@ -1972,7 +1978,8 @@
       -11.5,
       -5.8,
       -5.7,
-      -8.2
+      -8.2,
+      -8.0
     ],
     "s_mb10": [
       89.6,
@@ -2242,7 +2249,8 @@
       89.7,
       80.6,
       86.5,
-      87.9
+      87.9,
+      88.5
     ],
     "mb_raw_pct": [
       -3.3,
@@ -2512,7 +2520,8 @@
       12.7,
       -4.3,
       14.5,
-      7.7
+      7.7,
+      19.9
     ],
     "big_loss_pct": [
       8.8,
@@ -2782,7 +2791,8 @@
       60.9,
       0.0,
       13.0,
-      58.2
+      58.2,
+      21.6
     ],
     "cy_zz_ratio": [
       1.0,
@@ -3052,7 +3062,8 @@
       0.819,
       0.82,
       0.821,
-      0.824
+      0.824,
+      0.827
     ],
     "pos": [
       0.0,
@@ -3322,6 +3333,7 @@
       1.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "w_core": [
@@ -3587,6 +3599,7 @@
       0.0,
       0.0,
       0.0,
+      1.0,
       1.0,
       1.0,
       1.0,
@@ -3862,7 +3875,8 @@
       5649.0,
       5812.0,
       5799.0,
-      5542.0
+      5542.0,
+      5532.0
     ],
     "chinext": [
       3352.0,
@@ -4132,7 +4146,8 @@
       2212.0,
       2280.0,
       2279.0,
-      2184.0
+      2184.0,
+      2190.0
     ]
   },
   "acsi_series": {
@@ -4381,7 +4396,8 @@
       "2026-11-20",
       "2026-11-23",
       "2026-11-24",
-      "2026-11-25"
+      "2026-11-25",
+      "2026-11-26"
     ],
     "acsi": [
       25.9,
@@ -4628,7 +4644,8 @@
       9.0,
       8.4,
       7.9,
-      7.1
+      7.1,
+      6.3
     ],
     "hs300": [
       2931.0,
@@ -4875,7 +4892,8 @@
       3955.0,
       3958.0,
       3964.0,
-      3898.0
+      3898.0,
+      3901.0
     ],
     "eq_acsi": [
       1.0,
@@ -5122,7 +5140,8 @@
       1.83,
       1.832,
       1.834,
-      1.804
+      1.804,
+      1.805
     ],
     "eq_hs300": [
       1.0,
@@ -5369,7 +5388,8 @@
       1.349,
       1.351,
       1.353,
-      1.33
+      1.33,
+      1.331
     ],
     "pos": [
       1.0,
@@ -5616,10 +5636,30 @@
       1.0,
       1.0,
       1.0,
+      1.0,
       1.0
     ]
   },
   "recent": [
+    {
+      "date": "2026-11-26",
+      "is_live": false,
+      "zz1000_ret": -0.18,
+      "chinext_ret": 0.29,
+      "acsi": 6.3,
+      "health_mo": 30.0,
+      "mo_pct": -8.0,
+      "s_mb10": 88.5,
+      "mb_raw": 19.9,
+      "stsi": 52.5,
+      "zt": 67,
+      "dt": 5,
+      "big_loss": 21.6,
+      "directive": "空仓防守",
+      "pos": 0,
+      "w_core": 100,
+      "relay": "观望"
+    },
     {
       "date": "2026-11-25",
       "is_live": false,
@@ -6075,257 +6115,238 @@
       "pos": 0,
       "w_core": 0,
       "relay": "观望"
-    },
-    {
-      "date": "2026-10-22",
-      "is_live": false,
-      "zz1000_ret": -2.98,
-      "chinext_ret": -4.37,
-      "acsi": 6.2,
-      "health_mo": 21.4,
-      "mo_pct": -6.69,
-      "s_mb10": 26.3,
-      "mb_raw": 6.9,
-      "stsi": 49.4,
-      "zt": 32,
-      "dt": 53,
-      "big_loss": 56.2,
-      "directive": "空仓防守",
-      "pos": 0,
-      "w_core": 0,
-      "relay": "观望"
     }
   ],
   "boards": {
     "top_zt": [
       {
-        "code": "sz002579",
-        "name": "中京电子",
-        "close": 17.82,
+        "code": "sh603960",
+        "name": "克来机电",
+        "close": 20.46,
         "lb": 5,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 41.87,
+        "amt_yi": 13.05,
         "ret_pct": 10.0
-      },
-      {
-        "code": "sz002548",
-        "name": "金新农",
-        "close": 5.01,
-        "lb": 4,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 8.75,
-        "ret_pct": 10.11
-      },
-      {
-        "code": "sh603960",
-        "name": "克来机电",
-        "close": 18.6,
-        "lb": 4,
-        "yizi": true,
-        "lim": 0.1,
-        "amt_yi": 0.71,
-        "ret_pct": 9.99
-      },
-      {
-        "code": "sz002242",
-        "name": "九阳股份",
-        "close": 38.56,
-        "lb": 3,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 41.09,
-        "ret_pct": 10.01
-      },
-      {
-        "code": "sz002122",
-        "name": "汇洲智能",
-        "close": 3.59,
-        "lb": 3,
-        "yizi": true,
-        "lim": 0.1,
-        "amt_yi": 8.1,
-        "ret_pct": 10.12
-      },
-      {
-        "code": "sz002164",
-        "name": "宁波东力",
-        "close": 21.7,
-        "lb": 3,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 8.09,
-        "ret_pct": 9.98
-      },
-      {
-        "code": "sz300703",
-        "name": "创源股份",
-        "close": 17.8,
-        "lb": 3,
-        "yizi": false,
-        "lim": 0.2,
-        "amt_yi": 6.95,
-        "ret_pct": 20.03
-      },
-      {
-        "code": "sh603926",
-        "name": "铁流股份",
-        "close": 17.97,
-        "lb": 3,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 4.7,
-        "ret_pct": 9.98
       },
       {
         "code": "sh600814",
         "name": "杭州解百",
-        "close": 8.35,
-        "lb": 3,
+        "close": 9.19,
+        "lb": 4,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 3.32,
-        "ret_pct": 10.01
+        "amt_yi": 14.93,
+        "ret_pct": 10.06
       },
       {
         "code": "sh600722",
         "name": "金牛化工",
-        "close": 13.15,
-        "lb": 2,
+        "close": 14.47,
+        "lb": 3,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 19.13,
+        "amt_yi": 15.03,
         "ret_pct": 10.04
-      },
-      {
-        "code": "sh603360",
-        "name": "百傲化学",
-        "close": 10.56,
-        "lb": 2,
-        "yizi": false,
-        "lim": 0.1,
-        "amt_yi": 5.81,
-        "ret_pct": 10.0
       },
       {
         "code": "sh603030",
         "name": "全筑股份",
-        "close": 2.61,
+        "close": 2.87,
+        "lb": 3,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 8.97,
+        "ret_pct": 9.96
+      },
+      {
+        "code": "sz002651",
+        "name": "利君股份",
+        "close": 8.69,
+        "lb": 3,
+        "yizi": true,
+        "lim": 0.1,
+        "amt_yi": 0.97,
+        "ret_pct": 10.0
+      },
+      {
+        "code": "sz002872",
+        "name": "天圣制药",
+        "close": 7.81,
+        "lb": 3,
+        "yizi": true,
+        "lim": 0.1,
+        "amt_yi": 0.27,
+        "ret_pct": 10.0
+      },
+      {
+        "code": "sh600103",
+        "name": "青山纸业",
+        "close": 4.16,
         "lb": 2,
         "yizi": false,
         "lim": 0.1,
-        "amt_yi": 3.88,
-        "ret_pct": 10.13
+        "amt_yi": 30.48,
+        "ret_pct": 10.05
+      },
+      {
+        "code": "sh600467",
+        "name": "好当家",
+        "close": 3.96,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 15.48,
+        "ret_pct": 10.0
+      },
+      {
+        "code": "sh600227",
+        "name": "赤天化",
+        "close": 3.55,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 11.82,
+        "ret_pct": 9.91
+      },
+      {
+        "code": "sh603324",
+        "name": "盛剑科技",
+        "close": 35.5,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 10.85,
+        "ret_pct": 10.01
+      },
+      {
+        "code": "sh603708",
+        "name": "家家悦",
+        "close": 10.65,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 5.92,
+        "ret_pct": 10.02
+      },
+      {
+        "code": "sz002197",
+        "name": "证通电子",
+        "close": 7.05,
+        "lb": 2,
+        "yizi": false,
+        "lim": 0.1,
+        "amt_yi": 5.7,
+        "ret_pct": 9.98
       }
     ],
     "prev_zt_board": [
       {
         "code": "sz002579",
         "name": "中京电子",
+        "prev_lb": 5,
+        "ret_pct": 7.91,
+        "open_pct": 0.73,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sh603960",
+        "name": "克来机电",
         "prev_lb": 4,
         "ret_pct": 10.0,
-        "open_pct": 3.4,
+        "open_pct": 8.6,
         "promoted": true,
         "big_loss": false
       },
       {
         "code": "sz002548",
         "name": "金新农",
-        "prev_lb": 3,
-        "ret_pct": 10.11,
-        "open_pct": 10.11,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sh603960",
-        "name": "克来机电",
-        "prev_lb": 3,
-        "ret_pct": 9.99,
-        "open_pct": 9.99,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sh605018",
-        "name": "长华集团",
-        "prev_lb": 3,
-        "ret_pct": 4.91,
-        "open_pct": 3.7,
+        "prev_lb": 4,
+        "ret_pct": 6.39,
+        "open_pct": 3.19,
         "promoted": false,
-        "big_loss": false
-      },
-      {
-        "code": "sz002086",
-        "name": "东方海洋",
-        "prev_lb": 3,
-        "ret_pct": -4.41,
-        "open_pct": 0.0,
-        "promoted": false,
-        "big_loss": true
-      },
-      {
-        "code": "sz300703",
-        "name": "创源股份",
-        "prev_lb": 2,
-        "ret_pct": 20.03,
-        "open_pct": 6.07,
-        "promoted": true,
-        "big_loss": false
-      },
-      {
-        "code": "sz002122",
-        "name": "汇洲智能",
-        "prev_lb": 2,
-        "ret_pct": 10.12,
-        "open_pct": 10.12,
-        "promoted": true,
         "big_loss": false
       },
       {
         "code": "sh600814",
         "name": "杭州解百",
-        "prev_lb": 2,
-        "ret_pct": 10.01,
-        "open_pct": 8.3,
+        "prev_lb": 3,
+        "ret_pct": 10.06,
+        "open_pct": 10.06,
         "promoted": true,
         "big_loss": false
       },
       {
         "code": "sz002242",
         "name": "九阳股份",
-        "prev_lb": 2,
-        "ret_pct": 10.01,
-        "open_pct": 6.79,
-        "promoted": true,
+        "prev_lb": 3,
+        "ret_pct": 8.66,
+        "open_pct": 0.0,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sz002122",
+        "name": "汇洲智能",
+        "prev_lb": 3,
+        "ret_pct": 5.85,
+        "open_pct": 5.85,
+        "promoted": false,
         "big_loss": false
       },
       {
         "code": "sh603926",
         "name": "铁流股份",
-        "prev_lb": 2,
-        "ret_pct": 9.98,
-        "open_pct": 8.69,
-        "promoted": true,
+        "prev_lb": 3,
+        "ret_pct": 2.67,
+        "open_pct": -2.62,
+        "promoted": false,
         "big_loss": false
       },
       {
         "code": "sz002164",
         "name": "宁波东力",
+        "prev_lb": 3,
+        "ret_pct": -2.95,
+        "open_pct": 2.12,
+        "promoted": false,
+        "big_loss": false
+      },
+      {
+        "code": "sz300703",
+        "name": "创源股份",
+        "prev_lb": 3,
+        "ret_pct": -8.43,
+        "open_pct": -9.38,
+        "promoted": false,
+        "big_loss": true
+      },
+      {
+        "code": "sh600722",
+        "name": "金牛化工",
         "prev_lb": 2,
-        "ret_pct": 9.98,
-        "open_pct": 7.75,
+        "ret_pct": 10.04,
+        "open_pct": -1.14,
         "promoted": true,
         "big_loss": false
       },
       {
-        "code": "sz001358",
-        "name": "兴欣新材",
+        "code": "sz002651",
+        "name": "利君股份",
         "prev_lb": 2,
-        "ret_pct": 5.57,
-        "open_pct": -3.4,
-        "promoted": false,
+        "ret_pct": 10.0,
+        "open_pct": 10.0,
+        "promoted": true,
+        "big_loss": false
+      },
+      {
+        "code": "sz002872",
+        "name": "天圣制药",
+        "prev_lb": 2,
+        "ret_pct": 10.0,
+        "open_pct": 10.0,
+        "promoted": true,
         "big_loss": false
       }
     ]
