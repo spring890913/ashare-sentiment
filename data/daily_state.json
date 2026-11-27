@@ -1,611 +1,3842 @@
 {
-  "last_confirmed_date": "2026-11-26",
-  "updated_at": "2026-11-27 01:43:33 BJT",
-  "zt_count": 67,
-  "max_lb": 5,
+  "last_confirmed_date": "2026-11-27",
+  "updated_at": "2026-11-28 01:28:38 BJT",
+  "zt_count": 426,
+  "max_lb": 6,
   "zt_stocks": {
     "sh603960": {
       "name": "克来机电",
-      "close": 20.46,
-      "lb": 5,
+      "close": 22.51,
+      "lb": 6,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 13.28,
+      "ret_pct": 10.02
+    },
+    "sz002872": {
+      "name": "天圣制药",
+      "close": 8.59,
+      "lb": 4,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 8.34,
+      "ret_pct": 9.99
+    },
+    "sz002651": {
+      "name": "利君股份",
+      "close": 9.56,
+      "lb": 4,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.31,
+      "ret_pct": 10.01
+    },
+    "sh603030": {
+      "name": "全筑股份",
+      "close": 3.16,
+      "lb": 4,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.04,
+      "ret_pct": 10.1
+    },
+    "sh600280": {
+      "name": "中央商场",
+      "close": 3.41,
+      "lb": 3,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 8.28,
+      "ret_pct": 10.0
+    },
+    "sz002144": {
+      "name": "宏达高科",
+      "close": 10.99,
+      "lb": 3,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.71,
+      "ret_pct": 10.01
+    },
+    "sz002197": {
+      "name": "证通电子",
+      "close": 7.76,
+      "lb": 3,
+      "yizi": true,
+      "lim": 0.1,
+      "amt_yi": 0.97,
+      "ret_pct": 10.07
+    },
+    "sz002815": {
+      "name": "崇达技术",
+      "close": 16.79,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 35.12,
+      "ret_pct": 10.03
+    },
+    "sz300324": {
+      "name": "旋极信息",
+      "close": 6.05,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 30.48,
+      "ret_pct": 20.04
+    },
+    "sz002081": {
+      "name": "金 螳 螂",
+      "close": 4.82,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 22.09,
+      "ret_pct": 10.05
+    },
+    "sz002261": {
+      "name": "拓维信息",
+      "close": 23.06,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 20.88,
+      "ret_pct": 10.02
+    },
+    "sz002565": {
+      "name": "顺灏股份",
+      "close": 9.27,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 18.83,
+      "ret_pct": 9.96
+    },
+    "sz002077": {
+      "name": "大港股份",
+      "close": 14.07,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 16.23,
+      "ret_pct": 10.01
+    },
+    "sz000603": {
+      "name": "盛达资源",
+      "close": 26.25,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 15.81,
+      "ret_pct": 10.02
+    },
+    "sh603203": {
+      "name": "快克智能",
+      "close": 34.05,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.74,
+      "ret_pct": 10.02
+    },
+    "sh603386": {
+      "name": "骏亚科技",
+      "close": 15.97,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.84,
+      "ret_pct": 9.99
+    },
+    "sz002843": {
+      "name": "泰嘉股份",
+      "close": 15.57,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.59,
+      "ret_pct": 10.04
+    },
+    "sz002453": {
+      "name": "华软科技",
+      "close": 4.91,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.03,
+      "ret_pct": 10.09
+    },
+    "sh603687": {
+      "name": "大胜达",
+      "close": 13.66,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.73,
+      "ret_pct": 9.98
+    },
+    "sh600567": {
+      "name": "山鹰国际",
+      "close": 1.11,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.7,
+      "ret_pct": 9.9
+    },
+    "sz002298": {
+      "name": "中电鑫龙",
+      "close": 7.76,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.44,
+      "ret_pct": 10.07
+    },
+    "sz003040": {
+      "name": "楚天龙",
+      "close": 12.18,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.4,
+      "ret_pct": 10.03
+    },
+    "sz002199": {
+      "name": "东晶电子",
+      "close": 12.42,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.21,
+      "ret_pct": 10.01
+    },
+    "sz000158": {
+      "name": "常山北明",
+      "close": 15.27,
+      "lb": 2,
+      "yizi": true,
+      "lim": 0.1,
+      "amt_yi": 3.67,
+      "ret_pct": 10.01
+    },
+    "sz002713": {
+      "name": "东易日盛",
+      "close": 8.36,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.44,
+      "ret_pct": 10.0
+    },
+    "sh600520": {
+      "name": "三佳科技",
+      "close": 22.07,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.41,
+      "ret_pct": 10.02
+    },
+    "sz000889": {
+      "name": "中嘉博创",
+      "close": 4.3,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.02,
+      "ret_pct": 9.97
+    },
+    "sh603051": {
+      "name": "鹿山新材",
+      "close": 23.96,
+      "lb": 2,
+      "yizi": true,
+      "lim": 0.1,
+      "amt_yi": 1.16,
+      "ret_pct": 10.01
+    },
+    "sh603373": {
+      "name": "安邦护卫",
+      "close": 36.07,
+      "lb": 2,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.52,
+      "ret_pct": 10.0
+    },
+    "sz300502": {
+      "name": "新易盛",
+      "close": 226.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 269.24,
+      "ret_pct": 20.0
+    },
+    "sz002384": {
+      "name": "东山精密",
+      "close": 79.77,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 121.78,
+      "ret_pct": 10.0
+    },
+    "sz002463": {
+      "name": "沪电股份",
+      "close": 89.2,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 90.88,
+      "ret_pct": 10.0
+    },
+    "sh603986": {
+      "name": "兆易创新",
+      "close": 217.34,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 90.33,
+      "ret_pct": 10.0
+    },
+    "sh688012": {
+      "name": "中微公司",
+      "close": 269.1,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 87.14,
+      "ret_pct": 20.0
+    },
+    "sh600183": {
+      "name": "生益科技",
+      "close": 68.04,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 86.1,
+      "ret_pct": 10.01
+    },
+    "sh688347": {
+      "name": "华虹宏力",
+      "close": 212.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 79.07,
+      "ret_pct": 20.0
+    },
+    "sh688498": {
+      "name": "源杰科技",
+      "close": 704.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 69.81,
+      "ret_pct": 20.0
+    },
+    "sz002371": {
+      "name": "北方华创",
+      "close": 527.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 60.56,
+      "ret_pct": 10.0
+    },
+    "sz300604": {
+      "name": "长川科技",
+      "close": 200.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 60.18,
+      "ret_pct": 20.0
+    },
+    "sh600487": {
+      "name": "亨通光电",
+      "close": 38.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 58.56,
+      "ret_pct": 10.01
+    },
+    "sh600410": {
+      "name": "华胜天成",
+      "close": 20.9,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 55.56,
+      "ret_pct": 10.0
+    },
+    "sh600176": {
+      "name": "中国巨石",
+      "close": 28.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 55.35,
+      "ret_pct": 9.98
+    },
+    "sh688820": {
+      "name": "盛合晶微",
+      "close": 121.32,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 48.63,
+      "ret_pct": 20.0
+    },
+    "sz002428": {
+      "name": "云南锗业",
+      "close": 68.32,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 47.14,
+      "ret_pct": 10.0
+    },
+    "sh600584": {
+      "name": "长电科技",
+      "close": 52.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 46.57,
+      "ret_pct": 10.0
+    },
+    "sh603893": {
+      "name": "瑞芯微",
+      "close": 211.72,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 44.39,
+      "ret_pct": 10.0
+    },
+    "sh688072": {
+      "name": "拓荆科技",
+      "close": 547.37,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 44.05,
+      "ret_pct": 20.0
+    },
+    "sh600206": {
+      "name": "有研新材",
+      "close": 40.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 37.82,
+      "ret_pct": 10.0
+    },
+    "sh603083": {
+      "name": "剑桥科技",
+      "close": 105.63,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 37.2,
+      "ret_pct": 10.0
+    },
+    "sz001309": {
+      "name": "德明利",
+      "close": 173.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 37.16,
+      "ret_pct": 10.0
+    },
+    "sz000988": {
+      "name": "华工科技",
+      "close": 64.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 36.8,
+      "ret_pct": 10.01
+    },
+    "sz002156": {
+      "name": "通富微电",
+      "close": 40.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 36.57,
+      "ret_pct": 10.01
+    },
+    "sh688629": {
+      "name": "华丰科技",
+      "close": 111.0,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 36.46,
+      "ret_pct": 20.0
+    },
+    "sh603228": {
+      "name": "景旺电子",
+      "close": 64.53,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 34.12,
+      "ret_pct": 10.01
+    },
+    "sz002185": {
+      "name": "华天科技",
+      "close": 13.89,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 33.71,
+      "ret_pct": 9.98
+    },
+    "sz000977": {
+      "name": "浪潮信息",
+      "close": 46.81,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 32.94,
+      "ret_pct": 10.01
+    },
+    "sz000938": {
+      "name": "紫光股份",
+      "close": 23.57,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 31.86,
+      "ret_pct": 9.99
+    },
+    "sz002281": {
+      "name": "光迅科技",
+      "close": 87.05,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 31.08,
+      "ret_pct": 9.99
+    },
+    "sz301396": {
+      "name": "宏景科技",
+      "close": 115.45,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 30.78,
+      "ret_pct": 20.0
+    },
+    "sh603019": {
+      "name": "中科曙光",
+      "close": 76.05,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 30.05,
+      "ret_pct": 9.99
+    },
+    "sz002916": {
+      "name": "深南电路",
+      "close": 224.92,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 29.89,
+      "ret_pct": 10.0
+    },
+    "sz002436": {
+      "name": "兴森科技",
+      "close": 26.41,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 29.76,
+      "ret_pct": 10.0
+    },
+    "sz300666": {
+      "name": "江丰电子",
+      "close": 209.03,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 28.81,
+      "ret_pct": 20.0
+    },
+    "sz002636": {
+      "name": "金安国纪",
+      "close": 51.46,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 28.36,
+      "ret_pct": 10.0
+    },
+    "sz301660": {
+      "name": "粤芯半导体-U",
+      "close": 32.26,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 28.29,
+      "ret_pct": 20.01
+    },
+    "sh600839": {
+      "name": "四川长虹",
+      "close": 6.63,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 28.07,
+      "ret_pct": 9.95
+    },
+    "sh688313": {
+      "name": "仕佳光子",
+      "close": 87.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 27.0,
+      "ret_pct": 20.01
+    },
+    "sz000636": {
+      "name": "风华高科",
+      "close": 29.57,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 26.66,
+      "ret_pct": 10.01
+    },
+    "sh688120": {
+      "name": "华海清科",
+      "close": 217.85,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 26.53,
+      "ret_pct": 20.0
+    },
+    "sh603629": {
+      "name": "利通电子",
+      "close": 62.35,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 26.02,
+      "ret_pct": 10.0
+    },
+    "sh601869": {
+      "name": "长飞光纤",
+      "close": 221.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 25.68,
+      "ret_pct": 10.0
+    },
+    "sh688521": {
+      "name": "芯原股份",
+      "close": 89.81,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 25.35,
+      "ret_pct": 20.0
+    },
+    "sh688585": {
+      "name": "上纬新材",
+      "close": 190.32,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 24.47,
+      "ret_pct": 20.0
+    },
+    "sh688702": {
+      "name": "盛科通信-U",
+      "close": 196.32,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 23.94,
+      "ret_pct": 20.0
+    },
+    "sh688037": {
+      "name": "芯源微",
+      "close": 275.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 23.93,
+      "ret_pct": 20.0
+    },
+    "sz002008": {
+      "name": "大族激光",
+      "close": 47.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 23.8,
+      "ret_pct": 10.0
+    },
+    "sh600186": {
+      "name": "莲花控股",
+      "close": 9.61,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 23.76,
+      "ret_pct": 9.95
+    },
+    "sh688361": {
+      "name": "中科飞测",
+      "close": 260.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 23.7,
+      "ret_pct": 20.0
+    },
+    "sz000657": {
+      "name": "中钨高新",
+      "close": 36.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 23.44,
+      "ret_pct": 10.01
+    },
+    "sh688630": {
+      "name": "芯碁微装",
+      "close": 251.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 22.99,
+      "ret_pct": 20.0
+    },
+    "sz300339": {
+      "name": "润和软件",
+      "close": 34.69,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 22.88,
+      "ret_pct": 19.99
+    },
+    "sh688019": {
+      "name": "安集科技",
+      "close": 228.85,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 22.43,
+      "ret_pct": 20.0
+    },
+    "sh600105": {
+      "name": "永鼎股份",
+      "close": 20.98,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 22.38,
+      "ret_pct": 10.02
+    },
+    "sz002708": {
+      "name": "光洋股份",
+      "close": 25.59,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 21.97,
+      "ret_pct": 10.02
+    },
+    "sz300085": {
+      "name": "银之杰",
+      "close": 29.34,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 21.95,
+      "ret_pct": 20.0
+    },
+    "sz002080": {
+      "name": "中材科技",
+      "close": 33.07,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 21.69,
+      "ret_pct": 10.01
+    },
+    "sz002851": {
+      "name": "麦格米特",
+      "close": 66.14,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 21.43,
+      "ret_pct": 10.0
+    },
+    "sh600498": {
+      "name": "烽火通信",
+      "close": 27.27,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 21.33,
+      "ret_pct": 10.0
+    },
+    "sh688372": {
+      "name": "伟测科技",
+      "close": 101.48,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 21.05,
+      "ret_pct": 20.0
+    },
+    "sz002164": {
+      "name": "宁波东力",
+      "close": 23.17,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 20.54,
+      "ret_pct": 10.02
+    },
+    "sz002938": {
+      "name": "鹏鼎控股",
+      "close": 50.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 20.42,
+      "ret_pct": 10.0
+    },
+    "sz000426": {
+      "name": "兴业银锡",
+      "close": 20.47,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 19.05,
+      "ret_pct": 9.99
+    },
+    "sz301236": {
+      "name": "软通动力",
+      "close": 35.86,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 18.92,
+      "ret_pct": 20.01
+    },
+    "sh603078": {
+      "name": "江化微",
+      "close": 28.85,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 18.55,
+      "ret_pct": 9.99
+    },
+    "sh688048": {
+      "name": "长光华芯",
+      "close": 125.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 18.36,
+      "ret_pct": 20.0
+    },
+    "sz000021": {
+      "name": "深科技",
+      "close": 25.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 18.33,
+      "ret_pct": 9.99
+    },
+    "sh603186": {
+      "name": "华正新材",
+      "close": 125.25,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 18.12,
+      "ret_pct": 10.0
+    },
+    "sz000066": {
+      "name": "中国长城",
+      "close": 11.66,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 16.94,
+      "ret_pct": 10.0
+    },
+    "sh600641": {
+      "name": "先导基电",
+      "close": 27.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 16.45,
+      "ret_pct": 9.98
+    },
+    "sh600667": {
+      "name": "太极实业",
+      "close": 11.97,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 16.39,
+      "ret_pct": 10.02
+    },
+    "sh688200": {
+      "name": "华峰测控",
+      "close": 223.55,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 16.17,
+      "ret_pct": 20.0
+    },
+    "sh603236": {
+      "name": "移远通信",
+      "close": 85.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 16.12,
+      "ret_pct": 10.01
+    },
+    "sz300684": {
+      "name": "中石科技",
+      "close": 58.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 15.59,
+      "ret_pct": 20.01
+    },
+    "sh688143": {
+      "name": "长盈通",
+      "close": 108.94,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 15.55,
+      "ret_pct": 20.0
+    },
+    "sz301316": {
+      "name": "慧博云通",
+      "close": 38.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 15.38,
+      "ret_pct": 19.99
+    },
+    "sh688082": {
+      "name": "盛美上海",
+      "close": 244.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 15.11,
+      "ret_pct": 20.0
+    },
+    "sz002837": {
+      "name": "英维克",
+      "close": 33.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 14.99,
+      "ret_pct": 10.01
+    },
+    "sh688141": {
+      "name": "杰华特",
+      "close": 66.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 14.88,
+      "ret_pct": 20.01
+    },
+    "sh600460": {
+      "name": "士兰微",
+      "close": 22.29,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 14.55,
+      "ret_pct": 10.02
+    },
+    "sz002396": {
+      "name": "星网锐捷",
+      "close": 22.0,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 14.33,
+      "ret_pct": 10.0
+    },
+    "sz002122": {
+      "name": "汇洲智能",
+      "close": 4.18,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 13.98,
+      "ret_pct": 10.0
+    },
+    "sz002353": {
+      "name": "杰瑞股份",
+      "close": 71.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 13.93,
+      "ret_pct": 10.0
+    },
+    "sh603626": {
+      "name": "科森科技",
+      "close": 25.88,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 13.91,
+      "ret_pct": 9.99
+    },
+    "sh601208": {
+      "name": "东材科技",
+      "close": 28.33,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 13.77,
+      "ret_pct": 10.02
+    },
+    "sh688432": {
+      "name": "有研硅",
+      "close": 31.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 13.72,
+      "ret_pct": 20.0
+    },
+    "sh603667": {
+      "name": "五洲新春",
+      "close": 48.82,
+      "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 13.05,
       "ret_pct": 10.0
     },
-    "sh600814": {
-      "name": "杭州解百",
-      "close": 9.19,
-      "lb": 4,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 14.93,
-      "ret_pct": 10.06
-    },
-    "sh600722": {
-      "name": "金牛化工",
-      "close": 14.47,
-      "lb": 3,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 15.03,
-      "ret_pct": 10.04
-    },
-    "sh603030": {
-      "name": "全筑股份",
-      "close": 2.87,
-      "lb": 3,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 8.97,
-      "ret_pct": 9.96
-    },
-    "sz002651": {
-      "name": "利君股份",
-      "close": 8.69,
-      "lb": 3,
-      "yizi": true,
-      "lim": 0.1,
-      "amt_yi": 0.97,
-      "ret_pct": 10.0
-    },
-    "sz002872": {
-      "name": "天圣制药",
-      "close": 7.81,
-      "lb": 3,
-      "yizi": true,
-      "lim": 0.1,
-      "amt_yi": 0.27,
-      "ret_pct": 10.0
-    },
-    "sh600103": {
-      "name": "青山纸业",
-      "close": 4.16,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 30.48,
-      "ret_pct": 10.05
-    },
-    "sh600467": {
-      "name": "好当家",
-      "close": 3.96,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 15.48,
-      "ret_pct": 10.0
-    },
-    "sh600227": {
-      "name": "赤天化",
-      "close": 3.55,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 11.82,
-      "ret_pct": 9.91
-    },
-    "sh603324": {
-      "name": "盛剑科技",
-      "close": 35.5,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 10.85,
-      "ret_pct": 10.01
-    },
-    "sh603708": {
-      "name": "家家悦",
-      "close": 10.65,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 5.92,
-      "ret_pct": 10.02
-    },
-    "sz002197": {
-      "name": "证通电子",
-      "close": 7.05,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 5.7,
-      "ret_pct": 9.98
-    },
-    "sh600280": {
-      "name": "中央商场",
-      "close": 3.1,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 4.92,
-      "ret_pct": 9.93
-    },
-    "sh600229": {
-      "name": "城市传媒",
-      "close": 5.95,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 3.35,
-      "ret_pct": 9.98
-    },
-    "sz002144": {
-      "name": "宏达高科",
-      "close": 9.99,
-      "lb": 2,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 1.83,
-      "ret_pct": 10.02
-    },
-    "sz002086": {
-      "name": "东方海洋",
-      "close": 4.77,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 30.97,
-      "ret_pct": 9.91
-    },
-    "sz000530": {
-      "name": "冰山冷热",
-      "close": 16.17,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 27.3,
-      "ret_pct": 10.0
-    },
-    "sz300324": {
-      "name": "旋极信息",
-      "close": 5.04,
+    "sz300672": {
+      "name": "国科微",
+      "close": 117.88,
       "lb": 1,
       "yizi": false,
       "lim": 0.2,
-      "amt_yi": 25.31,
+      "amt_yi": 13.05,
       "ret_pct": 20.0
     },
-    "sz002148": {
-      "name": "北纬科技",
-      "close": 11.3,
+    "sh688729": {
+      "name": "屹唐股份",
+      "close": 22.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 12.96,
+      "ret_pct": 19.98
+    },
+    "sz002409": {
+      "name": "雅克科技",
+      "close": 80.14,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 25.03,
-      "ret_pct": 10.03
+      "amt_yi": 12.83,
+      "ret_pct": 10.01
     },
-    "sz000678": {
-      "name": "襄阳轴承",
-      "close": 21.96,
+    "sz002491": {
+      "name": "通鼎互联",
+      "close": 12.66,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 24.67,
-      "ret_pct": 10.02
+      "amt_yi": 12.61,
+      "ret_pct": 9.99
     },
-    "sz002261": {
-      "name": "拓维信息",
-      "close": 20.96,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 24.49,
-      "ret_pct": 10.03
-    },
-    "sz002815": {
-      "name": "崇达技术",
-      "close": 15.26,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 21.09,
-      "ret_pct": 10.02
-    },
-    "sh603118": {
-      "name": "共进股份",
-      "close": 13.26,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 15.06,
-      "ret_pct": 10.04
-    },
-    "sz000158": {
-      "name": "常山北明",
-      "close": 13.88,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 13.09,
-      "ret_pct": 9.98
-    },
-    "sh600127": {
-      "name": "金健米业",
-      "close": 9.41,
+    "sh603127": {
+      "name": "昭衍新药",
+      "close": 36.99,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 12.52,
-      "ret_pct": 10.06
-    },
-    "sz000603": {
-      "name": "盛达资源",
-      "close": 23.86,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 10.73,
-      "ret_pct": 10.0
-    },
-    "sz002081": {
-      "name": "金 螳 螂",
-      "close": 4.38,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 10.25,
-      "ret_pct": 10.05
-    },
-    "sz002639": {
-      "name": "雪人集团",
-      "close": 12.62,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 9.61,
-      "ret_pct": 10.03
-    },
-    "sz000889": {
-      "name": "中嘉博创",
-      "close": 3.91,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 8.94,
-      "ret_pct": 10.14
-    },
-    "sz002246": {
-      "name": "北化股份",
-      "close": 20.04,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 7.5,
       "ret_pct": 9.99
     },
-    "sz002077": {
-      "name": "大港股份",
-      "close": 12.79,
+    "sz002222": {
+      "name": "福晶科技",
+      "close": 47.45,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 7.27,
-      "ret_pct": 9.97
-    },
-    "sz002141": {
-      "name": "贤丰控股",
-      "close": 4.64,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 7.16,
-      "ret_pct": 9.95
-    },
-    "sz002226": {
-      "name": "江南化工",
-      "close": 5.7,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 6.51,
-      "ret_pct": 10.04
-    },
-    "sh600499": {
-      "name": "科达制造",
-      "close": 12.73,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 6.49,
-      "ret_pct": 10.03
-    },
-    "sh603687": {
-      "name": "大胜达",
-      "close": 12.42,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 6.47,
-      "ret_pct": 10.01
-    },
-    "sh605058": {
-      "name": "澳弘电子",
-      "close": 42.48,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 5.29,
+      "amt_yi": 12.45,
       "ret_pct": 9.99
     },
-    "sh603278": {
-      "name": "大业股份",
-      "close": 11.98,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 5.28,
-      "ret_pct": 10.01
-    },
-    "sz002843": {
-      "name": "泰嘉股份",
-      "close": 14.15,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 5.2,
-      "ret_pct": 10.03
-    },
-    "sz002298": {
-      "name": "中电鑫龙",
-      "close": 7.05,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 3.6,
-      "ret_pct": 9.98
-    },
-    "sh600629": {
-      "name": "华建集团",
-      "close": 13.08,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 3.59,
-      "ret_pct": 10.01
-    },
-    "sh600691": {
-      "name": "潞化科技",
-      "close": 2.44,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 3.29,
-      "ret_pct": 9.91
-    },
-    "sz301190": {
-      "name": "善水科技",
-      "close": 28.56,
+    "sh688172": {
+      "name": "燕东微",
+      "close": 37.78,
       "lb": 1,
       "yizi": false,
       "lim": 0.2,
-      "amt_yi": 3.2,
-      "ret_pct": 20.0
+      "amt_yi": 12.31,
+      "ret_pct": 20.01
     },
-    "sz002470": {
-      "name": "金正大",
-      "close": 1.75,
+    "sz002913": {
+      "name": "奥士康",
+      "close": 69.27,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 3.19,
-      "ret_pct": 10.06
-    },
-    "sh603166": {
-      "name": "福达股份",
-      "close": 10.62,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.96,
-      "ret_pct": 10.05
-    },
-    "sh600628": {
-      "name": "新世界",
-      "close": 6.38,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.83,
+      "amt_yi": 12.1,
       "ret_pct": 10.0
     },
-    "sz002713": {
-      "name": "东易日盛",
-      "close": 7.6,
+    "sz000700": {
+      "name": "模塑科技",
+      "close": 14.84,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 2.83,
-      "ret_pct": 9.99
-    },
-    "sz002199": {
-      "name": "东晶电子",
-      "close": 11.29,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.57,
-      "ret_pct": 10.04
-    },
-    "sh600520": {
-      "name": "三佳科技",
-      "close": 20.06,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.53,
-      "ret_pct": 9.98
-    },
-    "sh600963": {
-      "name": "岳阳林纸",
-      "close": 3.49,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.41,
-      "ret_pct": 10.09
-    },
-    "sz000993": {
-      "name": "闽东电力",
-      "close": 11.1,
-      "lb": 1,
-      "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.38,
+      "amt_yi": 12.09,
       "ret_pct": 10.01
     },
-    "sz002453": {
-      "name": "华软科技",
-      "close": 4.46,
+    "sh688757": {
+      "name": "胜科纳米",
+      "close": 34.7,
       "lb": 1,
       "yizi": false,
-      "lim": 0.1,
-      "amt_yi": 2.25,
-      "ret_pct": 10.12
+      "lim": 0.2,
+      "amt_yi": 12.01,
+      "ret_pct": 19.99
     },
-    "sh603203": {
-      "name": "快克智能",
-      "close": 30.95,
+    "sh688205": {
+      "name": "德科立",
+      "close": 87.6,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 11.72,
+      "ret_pct": 20.0
+    },
+    "sz002980": {
+      "name": "华盛昌",
+      "close": 68.73,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 2.2,
+      "amt_yi": 11.69,
+      "ret_pct": 10.0
+    },
+    "sz001389": {
+      "name": "广合科技",
+      "close": 90.61,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 11.51,
+      "ret_pct": 10.0
+    },
+    "sh688596": {
+      "name": "正帆科技",
+      "close": 55.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 11.36,
+      "ret_pct": 20.0
+    },
+    "sh688195": {
+      "name": "腾景科技",
+      "close": 102.34,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 11.07,
+      "ret_pct": 20.0
+    },
+    "sz002929": {
+      "name": "润建股份",
+      "close": 50.33,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.99,
+      "ret_pct": 10.01
+    },
+    "sz300567": {
+      "name": "精测电子",
+      "close": 100.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.99,
+      "ret_pct": 20.0
+    },
+    "sh603296": {
+      "name": "华勤技术",
+      "close": 67.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.97,
+      "ret_pct": 10.0
+    },
+    "sh688409": {
+      "name": "富创精密",
+      "close": 114.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.91,
+      "ret_pct": 20.0
+    },
+    "sh688362": {
+      "name": "甬矽电子",
+      "close": 39.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.88,
+      "ret_pct": 20.01
+    },
+    "sh600895": {
+      "name": "张江高科",
+      "close": 24.97,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.63,
+      "ret_pct": 10.0
+    },
+    "sz300363": {
+      "name": "博腾股份",
+      "close": 27.6,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.63,
+      "ret_pct": 20.0
+    },
+    "sh600825": {
+      "name": "新华传媒",
+      "close": 12.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.62,
+      "ret_pct": 9.96
+    },
+    "sh688627": {
+      "name": "精智达",
+      "close": 208.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.58,
+      "ret_pct": 20.0
+    },
+    "sz002642": {
+      "name": "荣联科技",
+      "close": 9.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.58,
+      "ret_pct": 9.96
+    },
+    "sh603256": {
+      "name": "宏和科技",
+      "close": 70.47,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.51,
+      "ret_pct": 10.01
+    },
+    "sz301391": {
+      "name": "卡莱特",
+      "close": 68.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.38,
+      "ret_pct": 20.01
+    },
+    "sz300377": {
+      "name": "赢时胜",
+      "close": 13.49,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 10.31,
+      "ret_pct": 20.02
+    },
+    "sh600330": {
+      "name": "天通股份",
+      "close": 14.48,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.27,
+      "ret_pct": 10.03
+    },
+    "sz000811": {
+      "name": "冰轮环境",
+      "close": 21.18,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 10.14,
+      "ret_pct": 10.03
+    },
+    "sh688668": {
+      "name": "鼎通科技",
+      "close": 95.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 9.76,
+      "ret_pct": 20.0
+    },
+    "sh688691": {
+      "name": "灿芯股份",
+      "close": 59.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 9.72,
+      "ret_pct": 20.0
+    },
+    "sh688535": {
+      "name": "华海诚科",
+      "close": 78.35,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 9.58,
+      "ret_pct": 20.0
+    },
+    "sh688502": {
+      "name": "茂莱光学",
+      "close": 427.2,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 9.5,
+      "ret_pct": 20.0
+    },
+    "sh688343": {
+      "name": "云天励飞-U",
+      "close": 53.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 9.4,
+      "ret_pct": 20.0
+    },
+    "sh600246": {
+      "name": "万通发展",
+      "close": 9.21,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 9.25,
+      "ret_pct": 10.04
+    },
+    "sz000034": {
+      "name": "神州数码",
+      "close": 21.35,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 9.2,
       "ret_pct": 9.99
     },
-    "sz002565": {
-      "name": "顺灏股份",
-      "close": 8.43,
-      "lb": 1,
-      "yizi": true,
-      "lim": 0.1,
-      "amt_yi": 2.12,
-      "ret_pct": 10.05
-    },
-    "sh603586": {
-      "name": "金麒麟",
-      "close": 13.2,
+    "sh605358": {
+      "name": "立昂微",
+      "close": 27.07,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 2.03,
+      "amt_yi": 9.01,
       "ret_pct": 10.0
     },
-    "sh603051": {
-      "name": "鹿山新材",
-      "close": 21.78,
+    "sz002484": {
+      "name": "江海股份",
+      "close": 31.2,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 1.98,
+      "amt_yi": 8.77,
+      "ret_pct": 10.01
+    },
+    "sz003021": {
+      "name": "兆威机电",
+      "close": 83.29,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 8.68,
       "ret_pct": 10.0
     },
-    "sz002949": {
-      "name": "华阳国际",
-      "close": 10.54,
+    "sz301421": {
+      "name": "波长光电",
+      "close": 75.78,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 8.54,
+      "ret_pct": 20.0
+    },
+    "sz002536": {
+      "name": "飞龙股份",
+      "close": 24.42,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 1.93,
+      "amt_yi": 8.48,
+      "ret_pct": 10.0
+    },
+    "sz000628": {
+      "name": "高新发展",
+      "close": 49.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 8.22,
+      "ret_pct": 10.01
+    },
+    "sh603358": {
+      "name": "华达科技",
+      "close": 18.98,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 8.02,
+      "ret_pct": 10.03
+    },
+    "sh603005": {
+      "name": "晶方科技",
+      "close": 20.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.97,
       "ret_pct": 10.02
     },
-    "sh603386": {
-      "name": "骏亚科技",
-      "close": 14.52,
+    "sz002850": {
+      "name": "科达利",
+      "close": 152.33,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 1.82,
+      "amt_yi": 7.95,
       "ret_pct": 10.0
     },
-    "sh603109": {
-      "name": "神驰机电",
+    "sz001339": {
+      "name": "智微智能",
+      "close": 54.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.91,
+      "ret_pct": 10.01
+    },
+    "sh603002": {
+      "name": "宏昌电子",
+      "close": 12.28,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.86,
+      "ret_pct": 10.04
+    },
+    "sz301611": {
+      "name": "珂玛科技",
+      "close": 64.74,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.71,
+      "ret_pct": 20.0
+    },
+    "sz002975": {
+      "name": "博杰股份",
+      "close": 69.14,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.7,
+      "ret_pct": 10.01
+    },
+    "sh603119": {
+      "name": "浙江荣泰",
+      "close": 52.99,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.68,
+      "ret_pct": 10.01
+    },
+    "sz002119": {
+      "name": "康强电子",
+      "close": 18.12,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.62,
+      "ret_pct": 10.02
+    },
+    "sh603650": {
+      "name": "彤程新材",
+      "close": 48.51,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.6,
+      "ret_pct": 10.0
+    },
+    "sz300473": {
+      "name": "德尔股份",
+      "close": 52.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.46,
+      "ret_pct": 20.0
+    },
+    "sh688147": {
+      "name": "微导纳米",
+      "close": 53.23,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.45,
+      "ret_pct": 20.0
+    },
+    "sh688652": {
+      "name": "京仪装备",
+      "close": 97.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.44,
+      "ret_pct": 20.0
+    },
+    "sz301209": {
+      "name": "联合化学",
+      "close": 49.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.43,
+      "ret_pct": 20.01
+    },
+    "sh600619": {
+      "name": "海立股份",
+      "close": 14.47,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.37,
+      "ret_pct": 10.04
+    },
+    "sz002655": {
+      "name": "共达电声",
+      "close": 27.29,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.26,
+      "ret_pct": 10.0
+    },
+    "sz300870": {
+      "name": "欧陆通",
+      "close": 93.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 7.12,
+      "ret_pct": 20.01
+    },
+    "sh603936": {
+      "name": "博敏电子",
+      "close": 12.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 7.09,
+      "ret_pct": 10.01
+    },
+    "sh600378": {
+      "name": "昊华科技",
+      "close": 30.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.97,
+      "ret_pct": 10.0
+    },
+    "sh603067": {
+      "name": "振华股份",
+      "close": 18.82,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.91,
+      "ret_pct": 9.99
+    },
+    "sh688797": {
+      "name": "臻宝科技",
+      "close": 172.45,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 6.8,
+      "ret_pct": 20.0
+    },
+    "sz002979": {
+      "name": "雷赛智能",
+      "close": 46.53,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.8,
+      "ret_pct": 10.0
+    },
+    "sz301717": {
+      "name": "超纯应材",
+      "close": 259.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 6.79,
+      "ret_pct": 20.0
+    },
+    "sz300843": {
+      "name": "胜蓝股份",
+      "close": 91.56,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 6.69,
+      "ret_pct": 20.0
+    },
+    "sh603931": {
+      "name": "格林达",
+      "close": 30.46,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.67,
+      "ret_pct": 10.0
+    },
+    "sh605376": {
+      "name": "博迁新材",
+      "close": 64.68,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.64,
+      "ret_pct": 10.0
+    },
+    "sh600666": {
+      "name": "奥瑞德",
+      "close": 2.88,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.63,
+      "ret_pct": 9.92
+    },
+    "sh600353": {
+      "name": "旭光电子",
+      "close": 16.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.57,
+      "ret_pct": 10.01
+    },
+    "sh603283": {
+      "name": "赛腾股份",
+      "close": 38.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.56,
+      "ret_pct": 9.99
+    },
+    "sz002048": {
+      "name": "宁波华翔",
+      "close": 17.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.41,
+      "ret_pct": 9.98
+    },
+    "sh603773": {
+      "name": "沃格光电",
+      "close": 49.83,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.28,
+      "ret_pct": 10.0
+    },
+    "sh688809": {
+      "name": "强一股份",
+      "close": 259.14,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 6.17,
+      "ret_pct": 20.0
+    },
+    "sh600536": {
+      "name": "中国软件",
+      "close": 28.05,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.15,
+      "ret_pct": 10.0
+    },
+    "sh605111": {
+      "name": "新洁能",
+      "close": 34.9,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 6.01,
+      "ret_pct": 9.99
+    },
+    "sz002025": {
+      "name": "航天电器",
+      "close": 55.26,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.94,
+      "ret_pct": 9.99
+    },
+    "sz000062": {
+      "name": "深圳华强",
+      "close": 18.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.84,
+      "ret_pct": 9.98
+    },
+    "sz000070": {
+      "name": "特发信息",
+      "close": 11.78,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.75,
+      "ret_pct": 9.99
+    },
+    "sz301392": {
+      "name": "汇成真空",
+      "close": 121.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 5.71,
+      "ret_pct": 20.0
+    },
+    "sz300192": {
+      "name": "科德教育",
+      "close": 18.47,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 5.65,
+      "ret_pct": 20.01
+    },
+    "sz300862": {
+      "name": "蓝盾光电",
+      "close": 28.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 5.59,
+      "ret_pct": 19.98
+    },
+    "sz002046": {
+      "name": "国机精工",
+      "close": 30.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.58,
+      "ret_pct": 10.0
+    },
+    "sh688545": {
+      "name": "兴福电子",
+      "close": 56.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 5.56,
+      "ret_pct": 19.99
+    },
+    "sz000962": {
+      "name": "东方钽业",
+      "close": 31.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.52,
+      "ret_pct": 10.01
+    },
+    "sh603305": {
+      "name": "旭升集团",
+      "close": 11.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.5,
+      "ret_pct": 10.02
+    },
+    "sh603175": {
+      "name": "超颖电子",
+      "close": 105.6,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.47,
+      "ret_pct": 10.0
+    },
+    "sz002552": {
+      "name": "宝鼎科技",
+      "close": 30.03,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.43,
+      "ret_pct": 10.0
+    },
+    "sh601519": {
+      "name": "大智慧",
+      "close": 7.56,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.34,
+      "ret_pct": 10.04
+    },
+    "sh603459": {
+      "name": "红板科技",
+      "close": 55.14,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.31,
+      "ret_pct": 9.99
+    },
+    "sz002335": {
+      "name": "科华数据",
+      "close": 23.07,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.31,
+      "ret_pct": 10.01
+    },
+    "sh600602": {
+      "name": "云赛智联",
+      "close": 14.27,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.26,
+      "ret_pct": 10.02
+    },
+    "sz000032": {
+      "name": "深桑达Ａ",
+      "close": 10.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.15,
+      "ret_pct": 10.03
+    },
+    "sz300480": {
+      "name": "光力科技",
+      "close": 25.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 5.04,
+      "ret_pct": 19.98
+    },
+    "sh603738": {
+      "name": "泰晶科技",
+      "close": 21.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 5.02,
+      "ret_pct": 10.01
+    },
+    "sh603061": {
+      "name": "金海通",
+      "close": 190.67,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.99,
+      "ret_pct": 10.0
+    },
+    "sz003031": {
+      "name": "中瓷电子",
+      "close": 77.51,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.99,
+      "ret_pct": 10.01
+    },
+    "sz001267": {
+      "name": "汇绿生态",
+      "close": 19.99,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.97,
+      "ret_pct": 10.02
+    },
+    "sz301086": {
+      "name": "鸿富瀚",
+      "close": 96.48,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.97,
+      "ret_pct": 20.0
+    },
+    "sz000859": {
+      "name": "国风新材",
+      "close": 7.74,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.92,
+      "ret_pct": 9.94
+    },
+    "sh688593": {
+      "name": "新相微",
+      "close": 20.94,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.84,
+      "ret_pct": 20.0
+    },
+    "sz300598": {
+      "name": "诚迈科技",
+      "close": 28.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.78,
+      "ret_pct": 20.0
+    },
+    "sz300508": {
+      "name": "维宏股份",
+      "close": 45.77,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.77,
+      "ret_pct": 20.01
+    },
+    "sz300461": {
+      "name": "田中精机",
+      "close": 36.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.75,
+      "ret_pct": 20.0
+    },
+    "sz002897": {
+      "name": "意华股份",
+      "close": 43.66,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.71,
+      "ret_pct": 10.0
+    },
+    "sh688485": {
+      "name": "九州一轨",
+      "close": 70.88,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.67,
+      "ret_pct": 19.99
+    },
+    "sz002670": {
+      "name": "国盛证券",
+      "close": 9.7,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.65,
+      "ret_pct": 9.98
+    },
+    "sz000026": {
+      "name": "飞亚达",
+      "close": 21.86,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.64,
+      "ret_pct": 10.02
+    },
+    "sh603990": {
+      "name": "麦迪科技",
+      "close": 18.92,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.63,
+      "ret_pct": 10.0
+    },
+    "sz002219": {
+      "name": "新里程",
+      "close": 1.99,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.56,
+      "ret_pct": 9.94
+    },
+    "sh688035": {
+      "name": "德邦科技",
+      "close": 56.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.52,
+      "ret_pct": 20.0
+    },
+    "sz002190": {
+      "name": "成飞集成",
+      "close": 21.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.52,
+      "ret_pct": 9.99
+    },
+    "sh600552": {
+      "name": "凯盛科技",
+      "close": 11.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.51,
+      "ret_pct": 10.0
+    },
+    "sz002943": {
+      "name": "宇晶股份",
+      "close": 22.78,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.47,
+      "ret_pct": 10.0
+    },
+    "sh603220": {
+      "name": "中贝通信",
       "close": 15.25,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
-      "amt_yi": 1.8,
+      "amt_yi": 4.46,
       "ret_pct": 10.03
     },
-    "sz301059": {
-      "name": "金三江",
-      "close": 11.26,
+    "sz002065": {
+      "name": "东华软件",
+      "close": 5.95,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.44,
+      "ret_pct": 9.98
+    },
+    "sh603011": {
+      "name": "合锻智能",
+      "close": 14.98,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.36,
+      "ret_pct": 9.99
+    },
+    "sh600095": {
+      "name": "湘财股份",
+      "close": 7.15,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.35,
+      "ret_pct": 10.0
+    },
+    "sz002859": {
+      "name": "洁美科技",
+      "close": 36.0,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.34,
+      "ret_pct": 9.99
+    },
+    "sh603337": {
+      "name": "杰克科技",
+      "close": 37.73,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.28,
+      "ret_pct": 10.0
+    },
+    "sz002348": {
+      "name": "高乐股份",
+      "close": 8.09,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.22,
+      "ret_pct": 10.07
+    },
+    "sz300820": {
+      "name": "英杰电气",
+      "close": 48.4,
       "lb": 1,
       "yizi": false,
       "lim": 0.2,
-      "amt_yi": 1.67,
-      "ret_pct": 20.04
+      "amt_yi": 4.2,
+      "ret_pct": 20.01
     },
-    "sz003040": {
-      "name": "楚天龙",
-      "close": 11.07,
+    "sh688605": {
+      "name": "先锋精科",
+      "close": 63.78,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.19,
+      "ret_pct": 20.0
+    },
+    "sh603678": {
+      "name": "火炬电子",
+      "close": 27.96,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.13,
+      "ret_pct": 9.99
+    },
+    "sh603663": {
+      "name": "三祥新材",
+      "close": 26.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.12,
+      "ret_pct": 10.0
+    },
+    "sh688827": {
+      "name": "钶锐锶",
+      "close": 86.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 4.12,
+      "ret_pct": 19.99
+    },
+    "sz000766": {
+      "name": "通化金马",
+      "close": 10.51,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.1,
+      "ret_pct": 10.05
+    },
+    "sz002364": {
+      "name": "中恒电气",
+      "close": 21.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.1,
+      "ret_pct": 10.01
+    },
+    "sz000510": {
+      "name": "新金路",
+      "close": 7.81,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.03,
+      "ret_pct": 10.0
+    },
+    "sz002272": {
+      "name": "川润股份",
+      "close": 10.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 4.0,
+      "ret_pct": 10.02
+    },
+    "sz300943": {
+      "name": "春晖智控",
+      "close": 24.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.99,
+      "ret_pct": 19.98
+    },
+    "sh603063": {
+      "name": "禾望电气",
+      "close": 18.47,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.93,
+      "ret_pct": 10.01
+    },
+    "sh603306": {
+      "name": "华懋科技",
+      "close": 39.61,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.92,
+      "ret_pct": 10.0
+    },
+    "sh603929": {
+      "name": "亚翔集成",
+      "close": 82.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.88,
+      "ret_pct": 10.0
+    },
+    "sz300925": {
+      "name": "法本信息",
+      "close": 13.31,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.88,
+      "ret_pct": 20.02
+    },
+    "sh600345": {
+      "name": "长江通信",
+      "close": 34.05,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.85,
+      "ret_pct": 10.02
+    },
+    "sh603690": {
+      "name": "至纯科技",
+      "close": 17.82,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.84,
+      "ret_pct": 10.0
+    },
+    "sh688530": {
+      "name": "欧莱新材",
+      "close": 43.45,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.74,
+      "ret_pct": 19.99
+    },
+    "sh603997": {
+      "name": "继峰股份",
+      "close": 10.11,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.71,
+      "ret_pct": 10.01
+    },
+    "sz002889": {
+      "name": "东方嘉盛",
+      "close": 13.05,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.67,
+      "ret_pct": 10.03
+    },
+    "sh603009": {
+      "name": "北特科技",
+      "close": 45.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.64,
+      "ret_pct": 10.01
+    },
+    "sz300047": {
+      "name": "天源迪科",
+      "close": 8.7,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.64,
+      "ret_pct": 20.0
+    },
+    "sz002152": {
+      "name": "广电运通",
+      "close": 8.49,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.63,
+      "ret_pct": 9.97
+    },
+    "sh600162": {
+      "name": "香江控股",
+      "close": 3.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.58,
+      "ret_pct": 10.16
+    },
+    "sh603688": {
+      "name": "石英股份",
+      "close": 30.78,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.57,
+      "ret_pct": 10.01
+    },
+    "sh603319": {
+      "name": "美湖股份",
+      "close": 18.46,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.48,
+      "ret_pct": 10.01
+    },
+    "sh600114": {
+      "name": "东睦股份",
+      "close": 17.27,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.44,
+      "ret_pct": 10.0
+    },
+    "sz002957": {
+      "name": "科瑞技术",
+      "close": 23.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.38,
+      "ret_pct": 10.02
+    },
+    "sz002657": {
+      "name": "中科金财",
+      "close": 12.96,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.35,
+      "ret_pct": 10.02
+    },
+    "sh603636": {
+      "name": "南威软件",
+      "close": 7.19,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.32,
+      "ret_pct": 9.94
+    },
+    "sz300663": {
+      "name": "科蓝软件",
+      "close": 6.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.31,
+      "ret_pct": 20.07
+    },
+    "sh688552": {
+      "name": "航天南湖",
+      "close": 28.81,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.24,
+      "ret_pct": 19.99
+    },
+    "sh603031": {
+      "name": "安孚科技",
+      "close": 25.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.18,
+      "ret_pct": 10.02
+    },
+    "sh603989": {
+      "name": "艾华集团",
+      "close": 20.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.18,
+      "ret_pct": 9.99
+    },
+    "sh603068": {
+      "name": "博通集成",
+      "close": 30.69,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.17,
+      "ret_pct": 10.0
+    },
+    "sz002290": {
+      "name": "禾盛新材",
+      "close": 34.85,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.16,
+      "ret_pct": 10.01
+    },
+    "sz002768": {
+      "name": "国恩股份",
+      "close": 50.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.15,
+      "ret_pct": 10.0
+    },
+    "sh688807": {
+      "name": "优迅股份",
+      "close": 166.08,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.14,
+      "ret_pct": 20.0
+    },
+    "sz002779": {
+      "name": "中坚科技",
+      "close": 72.03,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.13,
+      "ret_pct": 10.0
+    },
+    "sh603683": {
+      "name": "晶华新材",
+      "close": 13.29,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.09,
+      "ret_pct": 10.02
+    },
+    "sh688636": {
+      "name": "智明达",
+      "close": 18.06,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.04,
+      "ret_pct": 20.0
+    },
+    "sh603859": {
+      "name": "能科科技",
+      "close": 33.11,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 3.02,
+      "ret_pct": 10.0
+    },
+    "sh688515": {
+      "name": "裕太微-U",
+      "close": 100.45,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 3.0,
+      "ret_pct": 20.0
+    },
+    "sz000818": {
+      "name": "航锦科技",
+      "close": 9.37,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.97,
+      "ret_pct": 9.98
+    },
+    "sz003033": {
+      "name": "征和工业",
+      "close": 69.94,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.94,
+      "ret_pct": 10.0
+    },
+    "sh601789": {
+      "name": "宁波建工",
+      "close": 3.71,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.88,
+      "ret_pct": 10.09
+    },
+    "sz000555": {
+      "name": "神州信息",
+      "close": 8.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.79,
+      "ret_pct": 10.0
+    },
+    "sh603171": {
+      "name": "税友股份",
+      "close": 37.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.77,
+      "ret_pct": 10.01
+    },
+    "sh605318": {
+      "name": "法狮龙",
+      "close": 81.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.69,
+      "ret_pct": 10.0
+    },
+    "sz002757": {
+      "name": "南兴股份",
+      "close": 14.72,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.69,
+      "ret_pct": 10.01
+    },
+    "sh603608": {
+      "name": "天创股份",
+      "close": 14.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.64,
+      "ret_pct": 10.04
+    },
+    "sh603269": {
+      "name": "海鸥股份",
+      "close": 12.23,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.63,
+      "ret_pct": 9.98
+    },
+    "sh601133": {
+      "name": "柏诚股份",
+      "close": 16.69,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.58,
+      "ret_pct": 10.02
+    },
+    "sh603927": {
+      "name": "中科软",
+      "close": 12.91,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.58,
+      "ret_pct": 9.97
+    },
+    "sz003018": {
+      "name": "金富科技",
+      "close": 27.86,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.56,
+      "ret_pct": 9.99
+    },
+    "sz002213": {
+      "name": "大为股份",
+      "close": 19.24,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.55,
+      "ret_pct": 10.01
+    },
+    "sz002965": {
+      "name": "祥鑫科技",
+      "close": 20.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.55,
+      "ret_pct": 10.01
+    },
+    "sz300939": {
+      "name": "秋田微",
+      "close": 58.75,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 2.55,
+      "ret_pct": 20.0
+    },
+    "sz002575": {
+      "name": "群兴玩具",
+      "close": 4.26,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.54,
+      "ret_pct": 10.08
+    },
+    "sz301178": {
+      "name": "天亿马",
+      "close": 34.88,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 2.54,
+      "ret_pct": 19.99
+    },
+    "sz002990": {
+      "name": "盛视科技",
+      "close": 31.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.52,
+      "ret_pct": 10.01
+    },
+    "sh603757": {
+      "name": "大元泵业",
+      "close": 33.5,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.48,
+      "ret_pct": 10.02
+    },
+    "sz002971": {
+      "name": "和远气体",
+      "close": 31.24,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.48,
+      "ret_pct": 10.0
+    },
+    "sz002338": {
+      "name": "奥普光电",
+      "close": 35.82,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.44,
+      "ret_pct": 10.01
+    },
+    "sh603496": {
+      "name": "恒为科技",
+      "close": 18.87,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.4,
+      "ret_pct": 10.03
+    },
+    "sh603297": {
+      "name": "永新光学",
+      "close": 96.34,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.37,
+      "ret_pct": 10.0
+    },
+    "sh603124": {
+      "name": "江南新材",
+      "close": 68.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.34,
+      "ret_pct": 9.99
+    },
+    "sh603938": {
+      "name": "三孚股份",
+      "close": 27.53,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.33,
+      "ret_pct": 9.99
+    },
+    "sh603978": {
+      "name": "深圳新星",
+      "close": 17.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.31,
+      "ret_pct": 9.98
+    },
+    "sz002947": {
+      "name": "恒铭达",
+      "close": 42.48,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.31,
+      "ret_pct": 9.99
+    },
+    "sh603138": {
+      "name": "海量数据",
+      "close": 12.88,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.3,
+      "ret_pct": 9.99
+    },
+    "sh603956": {
+      "name": "威派格",
+      "close": 6.45,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.3,
+      "ret_pct": 10.07
+    },
+    "sz002647": {
+      "name": "仁东控股",
+      "close": 6.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.3,
+      "ret_pct": 10.09
+    },
+    "sz002406": {
+      "name": "远东传动",
+      "close": 6.0,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.29,
+      "ret_pct": 10.09
+    },
+    "sh603901": {
+      "name": "永创智能",
+      "close": 10.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.26,
+      "ret_pct": 9.99
+    },
+    "sh600446": {
+      "name": "金证股份",
+      "close": 9.1,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.22,
+      "ret_pct": 10.04
+    },
+    "sh600850": {
+      "name": "电科数字",
+      "close": 12.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.22,
+      "ret_pct": 10.05
+    },
+    "sh603955": {
+      "name": "灵动股份",
+      "close": 28.18,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.17,
+      "ret_pct": 9.99
+    },
+    "sh688785": {
+      "name": "恒运昌",
+      "close": 219.96,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 2.1,
+      "ret_pct": 20.0
+    },
+    "sz002885": {
+      "name": "京泉华",
+      "close": 18.34,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.05,
+      "ret_pct": 10.02
+    },
+    "sh605289": {
+      "name": "罗曼股份",
+      "close": 50.71,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 2.04,
+      "ret_pct": 10.0
+    },
+    "sz002787": {
+      "name": "华源控股",
+      "close": 15.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.99,
+      "ret_pct": 10.0
+    },
+    "sz002631": {
+      "name": "德尔未来",
+      "close": 7.9,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.94,
+      "ret_pct": 10.03
+    },
+    "sz003007": {
+      "name": "直真科技",
+      "close": 31.91,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.94,
+      "ret_pct": 10.0
+    },
+    "sz002403": {
+      "name": "爱仕达",
+      "close": 9.92,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.93,
+      "ret_pct": 9.98
+    },
+    "sh688371": {
+      "name": "菲沃泰",
+      "close": 18.4,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.92,
+      "ret_pct": 20.03
+    },
+    "sz000948": {
+      "name": "南天信息",
+      "close": 12.94,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.92,
+      "ret_pct": 10.03
+    },
+    "sh688419": {
+      "name": "耐科装备",
+      "close": 37.56,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.9,
+      "ret_pct": 20.0
+    },
+    "sz002123": {
+      "name": "梦网科技",
+      "close": 6.79,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.85,
+      "ret_pct": 10.05
+    },
+    "sh603322": {
+      "name": "超讯科技",
+      "close": 19.8,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.84,
+      "ret_pct": 10.0
+    },
+    "sz301107": {
+      "name": "瑜欣电子",
+      "close": 22.2,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.84,
+      "ret_pct": 20.0
+    },
+    "sh603040": {
+      "name": "新坐标",
+      "close": 35.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.83,
+      "ret_pct": 10.0
+    },
+    "sz002649": {
+      "name": "博彦科技",
+      "close": 8.55,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.83,
+      "ret_pct": 10.04
+    },
+    "sz002903": {
+      "name": "宇环数控",
+      "close": 20.11,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.83,
+      "ret_pct": 10.01
+    },
+    "sh600589": {
+      "name": "大位科技",
+      "close": 5.93,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.82,
+      "ret_pct": 10.02
+    },
+    "sz301172": {
+      "name": "君逸数码",
+      "close": 14.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.82,
+      "ret_pct": 19.97
+    },
+    "sz003043": {
+      "name": "华亚智能",
+      "close": 40.46,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.79,
+      "ret_pct": 10.01
+    },
+    "sz003026": {
+      "name": "中晶科技",
+      "close": 24.18,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.77,
+      "ret_pct": 10.01
+    },
+    "sh605255": {
+      "name": "天普股份",
+      "close": 65.48,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.75,
+      "ret_pct": 9.99
+    },
+    "sh688610": {
+      "name": "埃科光电",
+      "close": 69.9,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.73,
+      "ret_pct": 20.0
+    },
+    "sh605118": {
+      "name": "力鼎光电",
+      "close": 23.25,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.71,
+      "ret_pct": 9.98
+    },
+    "sz000029": {
+      "name": "深深房Ａ",
+      "close": 16.24,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.71,
+      "ret_pct": 10.03
+    },
+    "sh603045": {
+      "name": "福达合金",
+      "close": 28.27,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.7,
+      "ret_pct": 10.0
+    },
+    "sh600571": {
+      "name": "信雅达",
+      "close": 8.67,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.65,
+      "ret_pct": 10.03
+    },
+    "sh603680": {
+      "name": "今创集团",
+      "close": 10.42,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.64,
+      "ret_pct": 10.03
+    },
+    "sh603950": {
+      "name": "长源东谷",
+      "close": 27.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.62,
+      "ret_pct": 10.0
+    },
+    "sz002527": {
+      "name": "新时达",
+      "close": 9.69,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.6,
+      "ret_pct": 9.99
+    },
+    "sh600651": {
+      "name": "飞乐音响",
+      "close": 4.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.57,
+      "ret_pct": 10.1
+    },
+    "sz002870": {
+      "name": "香山股份",
+      "close": 31.97,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.57,
+      "ret_pct": 10.01
+    },
+    "sh605178": {
+      "name": "时空科技",
+      "close": 47.99,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.55,
+      "ret_pct": 9.99
+    },
+    "sh603316": {
+      "name": "诚邦股份",
+      "close": 9.35,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.54,
+      "ret_pct": 10.0
+    },
+    "sz002614": {
+      "name": "奥佳华",
+      "close": 6.13,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.54,
+      "ret_pct": 10.05
+    },
+    "sz001212": {
+      "name": "中旗新材",
+      "close": 23.23,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.53,
+      "ret_pct": 9.99
+    },
+    "sh603037": {
+      "name": "凯众股份",
+      "close": 10.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.52,
+      "ret_pct": 9.96
+    },
+    "sh688788": {
+      "name": "科思科技",
+      "close": 21.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.51,
+      "ret_pct": 20.02
+    },
+    "sz002534": {
+      "name": "西子洁能",
+      "close": 12.65,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 1.5,
-      "ret_pct": 10.04
+      "ret_pct": 10.0
     },
-    "sz000798": {
-      "name": "中水渔业",
-      "close": 8.65,
+    "sh600683": {
+      "name": "京投发展",
+      "close": 6.69,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.44,
+      "ret_pct": 10.03
+    },
+    "sz002480": {
+      "name": "新筑股份",
+      "close": 5.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.44,
+      "ret_pct": 10.06
+    },
+    "sz002730": {
+      "name": "电光科技",
+      "close": 14.21,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.44,
+      "ret_pct": 9.98
+    },
+    "sz000571": {
+      "name": "新大洲A",
+      "close": 3.99,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.41,
+      "ret_pct": 9.92
+    },
+    "sz002368": {
+      "name": "太极股份",
+      "close": 10.97,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.4,
+      "ret_pct": 10.03
+    },
+    "sh603800": {
+      "name": "洪田股份",
+      "close": 30.68,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.38,
+      "ret_pct": 10.0
+    },
+    "sz001393": {
+      "name": "维通利",
+      "close": 35.27,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.38,
+      "ret_pct": 10.01
+    },
+    "sz002988": {
+      "name": "豪美新材",
+      "close": 28.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.38,
+      "ret_pct": 9.98
+    },
+    "sz002687": {
+      "name": "乔治白",
+      "close": 6.16,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.36,
+      "ret_pct": 10.0
+    },
+    "sh605398": {
+      "name": "新炬网络",
+      "close": 23.09,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.34,
+      "ret_pct": 10.0
+    },
+    "sh603038": {
+      "name": "华立股份",
+      "close": 10.91,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.32,
+      "ret_pct": 9.98
+    },
+    "sh605168": {
+      "name": "三人行",
+      "close": 36.41,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.32,
+      "ret_pct": 10.0
+    },
+    "sh603213": {
+      "name": "镇洋发展",
+      "close": 13.97,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.29,
+      "ret_pct": 10.0
+    },
+    "sh603918": {
+      "name": "金桥信息",
+      "close": 8.83,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.29,
+      "ret_pct": 9.96
+    },
+    "sz000935": {
+      "name": "四川双马",
+      "close": 15.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.23,
+      "ret_pct": 9.99
+    },
+    "sz002674": {
+      "name": "兴业科技",
+      "close": 16.15,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.2,
+      "ret_pct": 10.01
+    },
+    "sh603375": {
+      "name": "盛景微",
+      "close": 39.19,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.18,
+      "ret_pct": 9.99
+    },
+    "sh603739": {
+      "name": "蔚蓝生物",
+      "close": 11.52,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.18,
+      "ret_pct": 10.03
+    },
+    "sh603407": {
+      "name": "长裕集团",
+      "close": 36.91,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 1.17,
-      "ret_pct": 10.05
+      "ret_pct": 10.01
     },
-    "sh603373": {
-      "name": "安邦护卫",
-      "close": 32.79,
+    "sz000573": {
+      "name": "粤宏远Ａ",
+      "close": 3.77,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.17,
+      "ret_pct": 9.91
+    },
+    "sz301259": {
+      "name": "艾布鲁",
+      "close": 14.6,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.16,
+      "ret_pct": 19.97
+    },
+    "sh603912": {
+      "name": "佳力图",
+      "close": 6.18,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.14,
+      "ret_pct": 9.96
+    },
+    "sz002976": {
+      "name": "瑞玛精密",
+      "close": 14.22,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.14,
+      "ret_pct": 9.98
+    },
+    "sh603163": {
+      "name": "圣晖集成",
+      "close": 53.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.13,
+      "ret_pct": 10.01
+    },
+    "sh603679": {
+      "name": "华体科技",
+      "close": 15.94,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 1.1,
+      "ret_pct": 10.01
+    },
+    "sh688693": {
+      "name": "锴威特",
+      "close": 50.24,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 1.06,
+      "ret_pct": 19.99
+    },
+    "sz002331": {
+      "name": "皖通科技",
+      "close": 6.44,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.06,
+      "ret_pct": 10.09
+    },
+    "sz002785": {
+      "name": "万里石",
+      "close": 27.37,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.06,
+      "ret_pct": 10.01
+    },
+    "sz002819": {
+      "name": "东方中科",
+      "close": 17.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.05,
       "ret_pct": 10.0
     },
-    "sz000912": {
-      "name": "泸天化",
-      "close": 3.27,
+    "sz003036": {
+      "name": "泰坦股份",
+      "close": 27.19,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.05,
+      "ret_pct": 9.99
+    },
+    "sz001388": {
+      "name": "信通电子",
+      "close": 18.89,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.03,
+      "ret_pct": 10.02
+    },
+    "sz003005": {
+      "name": "竞业达",
+      "close": 11.81,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.03,
+      "ret_pct": 9.96
+    },
+    "sh603303": {
+      "name": "得邦照明",
+      "close": 21.84,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 1.02,
+      "ret_pct": 10.03
+    },
+    "sh603052": {
+      "name": "可川科技",
+      "close": 32.26,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.98,
+      "ret_pct": 9.99
+    },
+    "sh603421": {
+      "name": "鼎信通讯",
+      "close": 5.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.97,
+      "ret_pct": 10.09
+    },
+    "sz002855": {
+      "name": "捷荣技术",
+      "close": 9.98,
       "lb": 1,
       "yizi": false,
       "lim": 0.1,
       "amt_yi": 0.96,
-      "ret_pct": 10.1
+      "ret_pct": 10.03
     },
-    "sh603703": {
-      "name": "盛洋科技",
-      "close": 8.4,
+    "sz002253": {
+      "name": "川大智胜",
+      "close": 7.02,
       "lb": 1,
-      "yizi": true,
+      "yizi": false,
       "lim": 0.1,
-      "amt_yi": 0.76,
-      "ret_pct": 9.95
+      "amt_yi": 0.93,
+      "ret_pct": 10.03
     },
-    "sh603396": {
-      "name": "金辰股份",
-      "close": 25.48,
+    "sz001228": {
+      "name": "永泰运",
+      "close": 32.23,
       "lb": 1,
-      "yizi": true,
+      "yizi": false,
       "lim": 0.1,
-      "amt_yi": 0.51,
+      "amt_yi": 0.92,
+      "ret_pct": 10.0
+    },
+    "sz003019": {
+      "name": "宸展光电",
+      "close": 22.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.91,
+      "ret_pct": 9.99
+    },
+    "sh603090": {
+      "name": "宏盛股份",
+      "close": 25.08,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.9,
+      "ret_pct": 10.0
+    },
+    "sh605389": {
+      "name": "长龄液压",
+      "close": 59.29,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.88,
+      "ret_pct": 10.0
+    },
+    "sh688069": {
+      "name": "德林海",
+      "close": 30.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.2,
+      "amt_yi": 0.88,
+      "ret_pct": 20.02
+    },
+    "sz000409": {
+      "name": "云鼎科技",
+      "close": 8.12,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.88,
+      "ret_pct": 10.03
+    },
+    "sh603722": {
+      "name": "阿科力",
+      "close": 23.75,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.87,
+      "ret_pct": 10.0
+    },
+    "sz002921": {
+      "name": "联诚精密",
+      "close": 13.62,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.87,
       "ret_pct": 10.02
     },
-    "sh600185": {
-      "name": "珠免集团",
-      "close": 4.71,
+    "sh605208": {
+      "name": "永茂泰",
+      "close": 9.44,
       "lb": 1,
-      "yizi": true,
+      "yizi": false,
       "lim": 0.1,
-      "amt_yi": 0.43,
+      "amt_yi": 0.85,
+      "ret_pct": 10.02
+    },
+    "sz002825": {
+      "name": "纳尔股份",
+      "close": 9.02,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.85,
+      "ret_pct": 10.0
+    },
+    "sh603661": {
+      "name": "恒林股份",
+      "close": 24.31,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.83,
+      "ret_pct": 10.0
+    },
+    "sz001326": {
+      "name": "联域股份",
+      "close": 56.55,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.83,
+      "ret_pct": 10.0
+    },
+    "sh603285": {
+      "name": "键邦股份",
+      "close": 24.74,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.81,
+      "ret_pct": 10.0
+    },
+    "sz002963": {
+      "name": "豪尔赛",
+      "close": 15.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.81,
+      "ret_pct": 9.98
+    },
+    "sh603080": {
+      "name": "新疆火炬",
+      "close": 16.94,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.79,
+      "ret_pct": 10.0
+    },
+    "sh600797": {
+      "name": "浙大网新",
+      "close": 5.9,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.78,
+      "ret_pct": 10.07
+    },
+    "sh603380": {
+      "name": "易德龙",
+      "close": 23.71,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.77,
+      "ret_pct": 10.02
+    },
+    "sh605588": {
+      "name": "冠石科技",
+      "close": 34.93,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.77,
+      "ret_pct": 10.02
+    },
+    "sh603015": {
+      "name": "弘讯科技",
+      "close": 8.65,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.7,
       "ret_pct": 10.05
     },
-    "sh600567": {
-      "name": "山鹰国际",
-      "close": 1.01,
+    "sh603033": {
+      "name": "三维股份",
+      "close": 5.7,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.66,
+      "ret_pct": 10.04
+    },
+    "sh603400": {
+      "name": "华之杰",
+      "close": 30.36,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.65,
+      "ret_pct": 10.0
+    },
+    "sz002492": {
+      "name": "恒基达鑫",
+      "close": 4.5,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.64,
+      "ret_pct": 10.02
+    },
+    "sh600071": {
+      "name": "凤凰光学",
+      "close": 13.61,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.61,
+      "ret_pct": 10.02
+    },
+    "sz002723": {
+      "name": "小崧股份",
+      "close": 5.58,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.61,
+      "ret_pct": 10.06
+    },
+    "sz001225": {
+      "name": "和泰机电",
+      "close": 27.23,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.55,
+      "ret_pct": 10.02
+    },
+    "sz002972": {
+      "name": "科安达",
+      "close": 9.76,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.54,
+      "ret_pct": 10.03
+    },
+    "sh603895": {
+      "name": "天永智能",
+      "close": 24.64,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.52,
+      "ret_pct": 10.0
+    },
+    "sz001306": {
+      "name": "夏厦精密",
+      "close": 50.49,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.52,
+      "ret_pct": 10.0
+    },
+    "sh603917": {
+      "name": "合力科技",
+      "close": 10.43,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.47,
+      "ret_pct": 10.02
+    },
+    "sz002344": {
+      "name": "海宁皮城",
+      "close": 3.7,
       "lb": 1,
       "yizi": true,
       "lim": 0.1,
-      "amt_yi": 0.36,
-      "ret_pct": 9.78
+      "amt_yi": 0.44,
+      "ret_pct": 10.12
+    },
+    "sz002871": {
+      "name": "伟隆股份",
+      "close": 12.38,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.42,
+      "ret_pct": 10.04
+    },
+    "sh600561": {
+      "name": "江西长运",
+      "close": 4.61,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.4,
+      "ret_pct": 10.02
+    },
+    "sz001373": {
+      "name": "翔腾新材",
+      "close": 21.59,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.4,
+      "ret_pct": 9.98
+    },
+    "sh603655": {
+      "name": "朗博科技",
+      "close": 20.87,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.33,
+      "ret_pct": 10.02
+    },
+    "sh603172": {
+      "name": "万丰股份",
+      "close": 15.31,
+      "lb": 1,
+      "yizi": false,
+      "lim": 0.1,
+      "amt_yi": 0.27,
+      "ret_pct": 9.99
+    },
+    "sz002930": {
+      "name": "宏川智慧",
+      "close": 6.68,
+      "lb": 1,
+      "yizi": true,
+      "lim": 0.1,
+      "amt_yi": 0.15,
+      "ret_pct": 10.05
     }
   }
 }
